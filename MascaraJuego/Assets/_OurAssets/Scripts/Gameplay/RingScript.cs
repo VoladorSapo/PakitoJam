@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using Reflex.Attributes;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 public class RingScript : MonoBehaviour
 {
-
+    [Inject] private GameEvents gameEvents;
+    
     [ReadOnly, SerializeField] private List<BaseEnemy> enemyList;
     [ReadOnly, SerializeField] private List<BasePlayerCharacter> playerList;
     public void OnTriggerEnter2D(Collider2D other)
@@ -22,6 +25,8 @@ public class RingScript : MonoBehaviour
         {
             playerList.Add(player);
         }
+        
+        CheckIfLosing();
     }
 
 
@@ -38,13 +43,13 @@ public class RingScript : MonoBehaviour
         {
             playerList.Remove(player);
         }
+
+        CheckIfLosing();
     }
 
-    void Update()
+    void CheckIfLosing()
     {
-        if (enemyList.Count > 0 && playerList.Count == 0)
-        {
-            Debug.Log("AQUI PIERDES EN 3 SEGUNDOS");
-        }
+        bool losing = enemyList.Count > 0 && playerList.Count == 0;
+        gameEvents.InvokeLosingAlert(losing);
     }
 }

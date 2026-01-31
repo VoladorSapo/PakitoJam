@@ -36,6 +36,7 @@ public class RoundController : MonoBehaviour
             PlayOpeningCutscene();
         }
         gameEvents.OnRoundStarted += StartRound;
+        gameEvents.OnRoundEnded += CheckEnd;
     }
 
     private void OnDestroy()
@@ -70,6 +71,12 @@ public class RoundController : MonoBehaviour
         {
             LoseRound();
         }
+    }
+
+    void CheckEnd(bool hasWon)
+    {
+        if(hasWon) WinRound();
+        else LoseRound();
     }
     public void WinRound()
     {

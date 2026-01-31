@@ -6,6 +6,7 @@ public class EnemyFactory : MonoBehaviour
 {
     [Inject] RoundScoreTracker scoreTracker;
     [Inject] GameEvents gameEvents;
+    [Inject] PrefabLocator prefabLocator;
 
     [HorizontalLine(color: EColor.Red)]
     [SerializeField] BaseEnemy[] enemyPrefabs;
@@ -53,7 +54,7 @@ public class EnemyFactory : MonoBehaviour
         BaseEnemy prefab = GetWeightedRandomEnemy(maxEnemyQuality);
         
         BaseEnemy enemy = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-        enemy.Initialize(gameEvents);
+        enemy.Initialize(gameEvents, prefabLocator);
         
         return enemy;
     }

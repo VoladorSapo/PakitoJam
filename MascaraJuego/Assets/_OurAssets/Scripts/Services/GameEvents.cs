@@ -73,6 +73,12 @@ public class GameEvents
         OnDifficultyIncreased?.Invoke(currentDifficulty);
     }
 
+    public event Action<bool> OnLosingAlerted;
+    public void InvokeLosingAlert(bool isLosing)
+    {
+        OnLosingAlerted?.Invoke(isLosing);
+    }
+
     #endregion
 
 }

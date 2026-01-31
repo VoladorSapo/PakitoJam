@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Prefab Locator
   m_EditorClassIdentifier: 
   TextParticlePrefab: {fileID: 6171895867507668437, guid: c73b358efd8fadd4ea8d2da6579de013, type: 3}
+  OnomatopoeiaParticlePrefab: {fileID: 3906902513544423507, guid: bf46fd956451472409ba1116836d442d, type: 3}

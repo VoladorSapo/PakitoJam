@@ -4,4 +4,5 @@ using UnityEngine;
 public class PrefabLocator : ScriptableObject
 {
     public GameObject TextParticlePrefab;
+    public GameObject OnomatopoeiaParticlePrefab;
 }
