@@ -50,8 +50,14 @@ public class findObjectiveAction : UnityAction
                 bestcol = col;
             }
         }
-        characterBehaviour.setObjective(bestcol.GetComponent<ACharacter>());
-
+        if (bestcol != null)
+        {
+            characterBehaviour.setObjective(bestcol.GetComponent<ACharacter>());
+        }
+        else
+        {
+            characterBehaviour.setObjective(null);
+        }
 }
 
     public override Status Update()
