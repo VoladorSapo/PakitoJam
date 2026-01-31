@@ -1,0 +1,206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db249917b7c50574eaa600c74aff1437, type: 3}
+  m_Name: BasePlayer
+  m_EditorClassIdentifier: 
+  data:
+    graphs:
+    - name: BaseBT
+      id: fa5c9122-3969-4b76-a359-365175f1201a
+      graph:
+        rid: 2590372030727586082
+      nodes:
+      - name: 
+        id: 4fd7c9bb-36df-4d23-9f86-14c767e2f6fd
+        position: {x: 0, y: 0}
+        node:
+          rid: 2590372030727586123
+        references: []
+        parentIds: []
+        childIds:
+        - afb61c33-b3c7-4315-8b0c-30649c62ec3e
+      - name: Sequencer
+        id: afb61c33-b3c7-4315-8b0c-30649c62ec3e
+        position: {x: 0, y: 200}
+        node:
+          rid: 2590372030727586084
+        references: []
+        parentIds:
+        - 4fd7c9bb-36df-4d23-9f86-14c767e2f6fd
+        childIds:
+        - 65b1cbf7-4f78-437f-90ab-182b3ab73da6
+        - c5cd02c9-52f9-48cb-be0b-18b13daf9409
+        - 2937ae15-d583-49e2-af2f-14fcddc2403f
+      - name: WalkToObjective
+        id: c5cd02c9-52f9-48cb-be0b-18b13daf9409
+        position: {x: 0, y: 400}
+        node:
+          rid: 2590372030727586094
+        references:
+        - fieldName: Action
+          value:
+            rid: 2590372030727586101
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - afb61c33-b3c7-4315-8b0c-30649c62ec3e
+        childIds: []
+      - name: Attack
+        id: 359a02f6-1454-44b4-9b33-39abd440dbd6
+        position: {x: 450, y: 800}
+        node:
+          rid: 2590372030727586102
+        references:
+        - fieldName: Action
+          value:
+            rid: 2590372030727586103
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 4961448b-4dbd-4ee4-9dc3-38c840b6ff4e
+        childIds: []
+      - name: 
+        id: 2937ae15-d583-49e2-af2f-14fcddc2403f
+        position: {x: 300, y: 400}
+        node:
+          rid: 2590372030727586201
+        references:
+        - fieldName: Perception
+          value:
+            rid: 2590372030727586202
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - afb61c33-b3c7-4315-8b0c-30649c62ec3e
+        childIds:
+        - de2ade1d-64ea-4da9-8c42-7f87865aa495
+        - 4961448b-4dbd-4ee4-9dc3-38c840b6ff4e
+      - name: 
+        id: 4961448b-4dbd-4ee4-9dc3-38c840b6ff4e
+        position: {x: 450, y: 600}
+        node:
+          rid: 2590372030727586203
+        references: []
+        parentIds:
+        - 2937ae15-d583-49e2-af2f-14fcddc2403f
+        childIds:
+        - 359a02f6-1454-44b4-9b33-39abd440dbd6
+      - name: 
+        id: de2ade1d-64ea-4da9-8c42-7f87865aa495
+        position: {x: 150, y: 600}
+        node:
+          rid: 2590372030727586204
+        references:
+        - fieldName: Action
+          value:
+            rid: 2590372030727586205
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2937ae15-d583-49e2-af2f-14fcddc2403f
+        childIds: []
+      - name: 
+        id: 65b1cbf7-4f78-437f-90ab-182b3ab73da6
+        position: {x: -300, y: 400}
+        node:
+          rid: 2590372030727586220
+        references:
+        - fieldName: Action
+          value:
+            rid: 2590372030727586221
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - afb61c33-b3c7-4315-8b0c-30649c62ec3e
+        childIds: []
+    pushPerceptions: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 2590372030727586082
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 2590372030727586084
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 2590372030727586094
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 2590372030727586101
+      type: {class: WalkToObjectiveAction, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2590372030727586102
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 2590372030727586103
+      type: {class: AttackAction, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2590372030727586123
+      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        Iterations: -1
+    - rid: 2590372030727586201
+      type: {class: TrueFalseBranchNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+        waitTimeFrames: 0
+        syncUpdate: 0
+    - rid: 2590372030727586202
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: CharacterAssetBehaviourRunner
+          methodName: objectiveOnAttackDistance
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 2590372030727586203
+      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        Iterations: -1
+    - rid: 2590372030727586204
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 2590372030727586205
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: 
+          methodName: 
+        update:
+          componentName: CharacterAssetBehaviourRunner
+          methodName: forceFail
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 2590372030727586220
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 2590372030727586221
+      type: {class: findObjectiveAction, ns: , asm: Assembly-CSharp}
+      data: 
