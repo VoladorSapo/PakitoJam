@@ -137,11 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aa30199925cc8419f616608bdc3f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingMask: {fileID: 0}
   _baseLife: 5
   _currentMaxLife: 0
   _currentLife: 0
   <_baseDamage>k__BackingField: 2
   <Dead>k__BackingField: 0
+  SpawnWeight: 0
 --- !u!50 &44267629582793350
 Rigidbody2D:
   serializedVersion: 5
@@ -259,6 +261,7 @@ MonoBehaviour:
   <EnemyLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
+  walkStopDistance: 0
 --- !u!1 &8498798207767024584
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,19 +309,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owner: {fileID: 0}
-  effects:
-  - rid: 2590372034004910337
-  _type: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 2590372034004910337
-      type: {class: FreezeEffect, ns: , asm: Assembly-CSharp}
-      data:
-        owner: {fileID: 0}
-        objective: {fileID: 0}
-        freezeDuration: 2
-        slowdownMult: 0.7
 --- !u!61 &1727345270549650313
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -326,7 +316,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8498798207767024584}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

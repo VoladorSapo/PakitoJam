@@ -20,12 +20,23 @@ MonoBehaviour:
         rid: 2590372030727586082
       nodes:
       - name: 
+        id: 3844902f-4c2e-4636-ab16-c574cb281454
+        position: {x: -45.6, y: -323.2}
+        node:
+          rid: 2590372045617102930
+        references: []
+        parentIds: []
+        childIds:
+        - 856766db-f228-4b86-bfc5-4640ab3c6aae
+        - 4fd7c9bb-36df-4d23-9f86-14c767e2f6fd
+      - name: 
         id: 4fd7c9bb-36df-4d23-9f86-14c767e2f6fd
         position: {x: 0, y: 0}
         node:
           rid: 2590372030727586123
         references: []
-        parentIds: []
+        parentIds:
+        - 3844902f-4c2e-4636-ab16-c574cb281454
         childIds:
         - afb61c33-b3c7-4315-8b0c-30649c62ec3e
       - name: Sequencer
@@ -122,6 +133,20 @@ MonoBehaviour:
         parentIds:
         - afb61c33-b3c7-4315-8b0c-30649c62ec3e
         childIds: []
+      - name: EnterRing
+        id: 856766db-f228-4b86-bfc5-4640ab3c6aae
+        position: {x: -377.6, y: -54.399998}
+        node:
+          rid: 2590372045617102929
+        references:
+        - fieldName: Action
+          value:
+            rid: 2590372045617102931
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 3844902f-4c2e-4636-ab16-c574cb281454
+        childIds: []
     pushPerceptions: []
   references:
     version: 2
@@ -203,4 +228,14 @@ MonoBehaviour:
       data: 
     - rid: 2590372030727586221
       type: {class: findObjectiveAction, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2590372045617102929
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 2590372045617102930
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 2590372045617102931
+      type: {class: enterRingAction, ns: , asm: Assembly-CSharp}
       data: 

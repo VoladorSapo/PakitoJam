@@ -14,7 +14,7 @@ public class WalkToObjectiveAction : UnityAction
             return Status.Failure;
         }
        // Debug.Log(speed);
-        context.Transform.position = Vector3.MoveTowards(context.Transform.position, characterBehaviour.objective.transform.position, speed * Time.deltaTime);
+        context.Transform.position = Vector3.MoveTowards(context.Transform.position, characterBehaviour.objective.transform.position, character._currentMask.getSpeed() * Time.deltaTime);
         if (characterBehaviour.objectiveOnAttackDistance())
         {
             return Status.Success;
@@ -28,6 +28,5 @@ public class WalkToObjectiveAction : UnityAction
         base.Start();
         characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
         character = characterBehaviour.character;
-        speed = character._currentMask.getSpeed();
     }
 }

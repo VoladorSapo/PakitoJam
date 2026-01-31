@@ -11,6 +11,8 @@ public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
     public bool actionFinished {  get; private set; }
   [field:SerializeField]  public LayerMask EnemyLayerMask { get; private set; }
 
+    [SerializeField] float walkStopDistance;
+
     public void setObjective(ACharacter character)
     {
         if (objective != null && !objective.Equals(character))
@@ -37,6 +39,10 @@ public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
         if(objective == null)
             return false;
         return Vector3.SqrMagnitude(transform.position - objective.transform.position) <= character._currentMask.getAttackDistance();
+    }
+    public bool transformOnWalkDistance(Transform objTransform)
+    {
+        return Vector3.SqrMagnitude(transform.position - objTransform.transform.position) <= walkStopDistance;
     }
     protected override void OnStarted()
     {

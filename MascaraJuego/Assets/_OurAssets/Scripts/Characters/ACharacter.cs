@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using Reflex.Attributes;
 
 public abstract class ACharacter : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public abstract class ACharacter : MonoBehaviour
 
     List<ATimedEffect> activeEffects;
 
+
+    [Inject] GameEvents gameEvents;
     public void getDamaged(int damage)
     {
         _currentLife -= damage;
@@ -64,11 +67,15 @@ public abstract class ACharacter : MonoBehaviour
     private void Awake()
     {
         characterBehaviour = GetComponent<CharacterAssetBehaviourRunner>();
-     startGame();
-        activeEffects = new List<ATimedEffect>();
+            activeEffects = new List<ATimedEffect>();
 
     }
+ 
+    private void OnDestroy()
+    {
+     //  gameEvents.OnRoundStarted -= startGame;
 
+    }
     private void startGame()
     {
         _currentMaxLife = _baseLife;
@@ -83,6 +90,8 @@ public abstract class ACharacter : MonoBehaviour
     void Start()
     {
         print("start"+gameObject.name);
+      //  gameEvents.OnRoundStarted += startGame;
+
         dieEvent = new UnityEvent<ACharacter>();
     }
 
