@@ -6,7 +6,6 @@ public class RoundScoreTracker : MonoBehaviour
 {
     [Inject] GameEvents gameEvents;
     
-    
     [HorizontalLine(color: EColor.Blue)]
     [SerializeField] int maxCoins;
     [SerializeField] int totalCoins;
@@ -16,6 +15,8 @@ public class RoundScoreTracker : MonoBehaviour
     [SerializeField] int enemiesToIncreaseDifficulty;
     [SerializeField] int currentDifficulty;
     
+    [HorizontalLine(color: EColor.Blue)]
+    [ReadOnly] public bool IsLosing = false;
     public bool IsGameActive => hasStarted && !isPaused;
     bool isPaused;
     bool hasStarted;

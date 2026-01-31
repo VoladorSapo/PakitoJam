@@ -14,6 +14,11 @@ public class AwakeFadingObject : MonoBehaviour
         gameEvents.OnRoundAwakened += PlayAnimation;
     }
 
+    void OnDestroy()
+    {
+        gameEvents.OnRoundAwakened -= PlayAnimation;
+    }
+
     void PlayAnimation()
     {
         textMesh.text = possibleMessages[Random.Range(0, possibleMessages.Length)];

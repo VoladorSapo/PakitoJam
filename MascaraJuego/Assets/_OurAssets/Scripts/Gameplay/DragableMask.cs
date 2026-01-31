@@ -21,8 +21,6 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
     GlobalCamera globalCamera;
     RectTransform rectTransform;
     
-    
-
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();

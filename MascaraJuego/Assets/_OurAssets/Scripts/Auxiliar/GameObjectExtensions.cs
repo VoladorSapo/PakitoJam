@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public static class GameObjectExtensions
 {
@@ -14,6 +15,20 @@ public static class GameObjectExtensions
     {
         yield return new WaitForSeconds(seconds);
         action?.Invoke();
+    }
+}
+
+public static class AuxiliaryMethods
+{
+    public static char GetRandomLetter()
+    {
+        int index = Random.Range(0, 26); 
+        return (char)('A' + index);
+    }
+    
+    public static Color GetRandomColor(Color a, Color b) {
+        float t = Random.value;
+        return Color.Lerp(a, b, t);
     }
 
 }
