@@ -58,6 +58,8 @@ public class RingScript : MonoBehaviour
 
     void UpdatePlayerCount()
     {
+        if(!roundScoreTracker.EnteredOnceInRing) roundScoreTracker.EnteredOnceInRing = true;
+        
         roundScoreTracker.PlayersInRing = playerList.Count;
     }
 }

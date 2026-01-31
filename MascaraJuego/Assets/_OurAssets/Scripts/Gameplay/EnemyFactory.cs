@@ -42,7 +42,7 @@ public class EnemyFactory : MonoBehaviour
 
     void Update()
     {
-        if (!scoreTracker.IsGameActive) return;
+        if (!scoreTracker.IsGameActive || !scoreTracker.EnteredOnceInRing) return;
 
         if (countdownTimer.Decrement(Time.deltaTime))
         {
