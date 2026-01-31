@@ -30,6 +30,18 @@ public class UIEvents
         OnButtonSelected?.Invoke(null);
     }
 
+    public event Action<int> OnButtonGroupEnabled;
+    public event Action<int> OnButtonGroupDisabled;
+
+    public void EnableButtonGroup(int group)
+    {
+        OnButtonGroupEnabled?.Invoke(group);
+    }
+    public void DisableButtonGroup(int group)
+    {
+        OnButtonGroupDisabled?.Invoke(group);
+    }
+
     public event Action OnOptionsChanged;
     public void NotifyOptionsChanged() => OnOptionsChanged?.Invoke();
 }

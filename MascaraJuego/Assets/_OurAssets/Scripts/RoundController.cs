@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -5,6 +6,7 @@ using UnityEngine.Timeline;
 
 public class RoundController : MonoBehaviour
 {
+    [Inject] UIEvents uiEvents;
     [Inject] GameEvents gameEvents;
     [Inject] PauseService pauseService;
 
@@ -15,6 +17,11 @@ public class RoundController : MonoBehaviour
     [SerializeField] private float endDelay = 1;
     [SerializeField] private bool debugEndCutscene;
     [SerializeField] TimelineAsset endCutscene;
+    
+    [HorizontalLine(color: EColor.White)]
+    [SerializeField] SceneServiceClient sceneServiceClient;
+    [SerializeField, Scene] private string NextRoundScene;
+    [SerializeField, Scene] private string MenuScene;
     
     bool roundStarted;
     
@@ -93,5 +100,21 @@ public class RoundController : MonoBehaviour
         Debug.Log("endCutscene.name");
         this.InvokeDelayed(2 + endDelay, () => gameEvents.NotifyResultScreenCalled());
         pauseService.Resume(PauseLevel.Dialog);
+    }
+
+    public void LeaveGame()
+    {
+        uiEvents.DisableButtonGroup(1);
+        MoveToMenu();
+        this.InvokeDelayed(0.75f, () => pauseService.Resume(PauseLevel.UI));
+    }
+    public void MoveToMenu()
+    {
+        sceneServiceClient.ChangeScene(MenuScene);
+    }
+
+    public void MoveToNextRound()
+    {
+        sceneServiceClient.ChangeScene(NextRoundScene);
     }
 }

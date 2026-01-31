@@ -1,10 +1,12 @@
 using NaughtyAttributes;
 using PrimeTween;
+using Reflex.Attributes;
 using UnityEngine;
 
 [RequireComponent(typeof(PauseServiceClient))]
 public class PausePanel : MonoBehaviour, IPausable
 {
+    
     [HorizontalLine(color: EColor.White)]
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] float fadeDuration = 1;
@@ -15,6 +17,7 @@ public class PausePanel : MonoBehaviour, IPausable
     {
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
     public void Pause()
     {
@@ -29,6 +32,7 @@ public class PausePanel : MonoBehaviour, IPausable
     void FadeIn() {
         if(currentTween.isAlive) currentTween.Stop();
         
+        canvasGroup.blocksRaycasts = true;
         currentTween = Tween.Custom(
             startValue: 0f,
             endValue: 1f,
@@ -41,6 +45,7 @@ public class PausePanel : MonoBehaviour, IPausable
         if(currentTween.isAlive) currentTween.Stop();
         
         canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
         currentTween = Tween.Custom(
             startValue: 1f,
             endValue: 0f,

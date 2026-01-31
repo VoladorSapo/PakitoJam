@@ -45,7 +45,7 @@ public class MenuCanvas : MonoBehaviour
     public void PlayGame()
     {
         musicService.StopMusic(0, 1);
-        GetComponent<SceneServiceClient>().ChangeScene("HubScene");
+        GetComponent<SceneServiceClient>().ChangeScene("RaulTest");
     }
 
     public void SaveConfiguration()

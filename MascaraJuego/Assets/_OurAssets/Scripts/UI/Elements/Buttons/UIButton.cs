@@ -1,3 +1,4 @@
+using System;
 using NaughtyAttributes;
 using Reflex.Attributes;
 using Reflex.Extensions;
@@ -32,6 +33,9 @@ public class UIButton : UIInteractiveElement
             UiEvents.OnButtonUnselected += OnUnselectButton;
             
             UiEvents.OnButtonGroupSelected += OnSelectButtonGroup;
+            
+            UiEvents.OnButtonGroupDisabled += DisableButton;
+            UiEvents.OnButtonGroupEnabled += EnableButton;
         }
         protected virtual void UnRegisterEvents()
         {
@@ -39,6 +43,9 @@ public class UIButton : UIInteractiveElement
             UiEvents.OnButtonUnselected -= OnUnselectButton;
             
             UiEvents.OnButtonGroupSelected -= OnSelectButtonGroup;
+            
+            UiEvents.OnButtonGroupDisabled -= DisableButton;
+            UiEvents.OnButtonGroupEnabled -= EnableButton;
         }
         protected void OnSelectButton(UIButton button)
         {
@@ -77,15 +84,24 @@ public class UIButton : UIInteractiveElement
         {
             UiEvents.SelectButton(this);
         }
+
+        void DisableButton(int group)
+        {
+            if(group != ButtonGroupId || !Interactable) return;
+            SetInteractive(false);
+        }
+
+        void EnableButton(int group)
+        {
+            if(group != ButtonGroupId || Interactable) return;
+            SetInteractive(true);
+        }
         
         public override void SetInteractive(bool isInteractive)
         {
             base.SetInteractive(isInteractive);
             
             if(!isInteractive) SelectButton(false);
-            
-            UnityButton ??= GetComponent<Button>();
             UnityButton.interactable = Interactable;
         }
-        
     }
