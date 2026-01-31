@@ -133,7 +133,7 @@ public abstract class ACharacter : MonoBehaviour
 
         }
     }
-    public void setMask(PowerMaskStats Mask)
+    public virtual void setMask(PowerMaskStats Mask)
     {
         print("setMask");
         if(Mask == null)
@@ -165,13 +165,14 @@ public abstract class ACharacter : MonoBehaviour
         print("NEW MASK");
     }
 
-    public void startHover()
+    public virtual void startHover()
     {
         //Efecto 
     }
 
-    public void stopHover()
+    public virtual void stopHover()
     {
+        //Efecto 
     }
     public bool checkHittable(HittableCheckTypes checkType, ACharacter attacker)
     {

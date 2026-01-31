@@ -88,6 +88,7 @@ public class RoundScoreTracker : MonoBehaviour
         if (enemiesKilled % enemiesToIncreaseDifficulty == 0)
         {
             currentDifficulty++;
+            AddCoins(200);
             gameEvents.NotifyDifficultyIncreased(currentDifficulty);
             gameEvents.InvokeDisplayText("ROUND INCREASED");
         }
