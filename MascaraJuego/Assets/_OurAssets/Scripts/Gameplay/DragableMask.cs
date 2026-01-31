@@ -133,5 +133,8 @@ public enum MaskTypes
     CombatMask,
     FreezeMask,
     SpeedMask,
-    RegularEnemy
+    RegularEnemy,
+    AreaMask,
+    MiniEnemy,
+    HeavyEnemy
 }
