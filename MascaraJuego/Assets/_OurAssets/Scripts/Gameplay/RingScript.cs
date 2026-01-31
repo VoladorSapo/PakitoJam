@@ -8,6 +8,7 @@ using UnityEngine.TextCore.Text;
 
 public class RingScript : MonoBehaviour
 {
+    [Inject] private RoundScoreTracker roundScoreTracker;
     [Inject] private GameEvents gameEvents;
     
     [ReadOnly, SerializeField] private List<BaseEnemy> enemyList;
@@ -25,7 +26,8 @@ public class RingScript : MonoBehaviour
         {
             playerList.Add(player);
         }
-        
+
+        UpdatePlayerCount();
         CheckIfLosing();
     }
 
@@ -44,6 +46,7 @@ public class RingScript : MonoBehaviour
             playerList.Remove(player);
         }
 
+        UpdatePlayerCount();
         CheckIfLosing();
     }
 
@@ -51,5 +54,10 @@ public class RingScript : MonoBehaviour
     {
         bool losing = enemyList.Count > 0 && playerList.Count == 0;
         gameEvents.InvokeLosingAlert(losing);
+    }
+
+    void UpdatePlayerCount()
+    {
+        roundScoreTracker.PlayersInRing = playerList.Count;
     }
 }

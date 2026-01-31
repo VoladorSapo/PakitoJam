@@ -31,5 +31,10 @@ public class enterRingAction : UnityAction
         characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
         character = characterBehaviour.character;
         objectiveTransform = RingEntranceManager.Instance.getEntrancePoint(character);
+
+        if (character is BasePlayerCharacter characterBase)
+        {
+            characterBase.EnterRing();
+        }
     }
 }

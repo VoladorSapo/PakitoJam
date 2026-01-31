@@ -12,7 +12,6 @@ public class RoundController : MonoBehaviour
     [Inject] PauseService pauseService;
 
     [HorizontalLine(color: EColor.Blue)]
-    [SerializeField] private float startDelay = 1;
     [SerializeField] private bool debugStartCutscene;
     [SerializeField] TimelineAsset startCutscene;
     
