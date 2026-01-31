@@ -166,19 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owner: {fileID: 0}
-  effects:
-  - rid: 2590372034004910346
   _type: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 2590372034004910346
-      type: {class: FreezeEffect, ns: , asm: Assembly-CSharp}
-      data:
-        owner: {fileID: 0}
-        objective: {fileID: 0}
-        freezeDuration: 2
-        slowdownMult: 0.7
 --- !u!61 &54002578
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -284,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc097ec51cf9d1b4684b15e93a4604c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingMask: {fileID: 0}
   _baseLife: 5
   _currentMaxLife: 0
   _currentLife: 0
@@ -702,18 +691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owner: {fileID: 0}
-  effects:
-  - rid: 2590372027647656035
   _type: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 2590372027647656035
-      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
-      data:
-        owner: {fileID: 0}
-        objective: {fileID: 0}
-        damage: 1
 --- !u!224 &1483247623 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2422599129538159500, guid: c43f828bd5ffef841906e9a44c52611d, type: 3}
@@ -1204,6 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aa30199925cc8419f616608bdc3f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingMask: {fileID: 0}
   _baseLife: 5
   _currentMaxLife: 0
   _currentLife: 0
@@ -1420,6 +1399,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2438057366426751718, guid: 7773e5e0a3b9023499cd5e7361b43094, type: 3}
+      propertyPath: startingMask
+      value: 
+      objectReference: {fileID: 11400000, guid: a29d9719e08e909428d6cee362374cb1, type: 2}
     - target: {fileID: 6535030753055034704, guid: 7773e5e0a3b9023499cd5e7361b43094, type: 3}
       propertyPath: m_Name
       value: Enemy

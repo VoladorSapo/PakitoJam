@@ -11,6 +11,8 @@ using System.Collections.Generic;
 public abstract class ACharacter : MonoBehaviour
 {
     CharacterAssetBehaviourRunner characterBehaviour;
+
+    [SerializeField] PowerMaskStats startingMask;
     [field:SerializeField, ReadOnly] public APowerMask _currentMask {  get; private set; }
     [SerializeField] private int _baseLife;
     [SerializeField,ReadOnly] private int _currentMaxLife;
@@ -72,10 +74,15 @@ public abstract class ACharacter : MonoBehaviour
         _currentMaxLife = _baseLife;
         setLifeToMax();
         Dead = false;
+        if (startingMask)
+        {
+            setMask(startingMask);
+        }
     }
     //Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        print("start"+gameObject.name);
         dieEvent = new UnityEvent<ACharacter>();
     }
 
@@ -117,6 +124,7 @@ public abstract class ACharacter : MonoBehaviour
         }
         else
         {
+
             effect.Activate(this);
 
         }
@@ -183,8 +191,12 @@ public abstract class ACharacter : MonoBehaviour
             case HittableCheckTypes.allCharacters:
                 return true;
             case HittableCheckTypes.onlyObjective:
-                return attacker.characterBehaviour.objective.Equals(this);
-                break;
+                ACharacter ojective = attacker.characterBehaviour.objective;
+                print(ojective);
+                print(this);
+                if (ojective == null)
+                    return false;
+                return ojective.Equals(this);
             default:
                 return false;
         }
@@ -220,7 +232,7 @@ public abstract class APowerMask
 {
     Animator anim;
    protected ACharacter _character;
-    PowerMaskStats powerMaskStat;
+  public  PowerMaskStats powerMaskStat {  get; private set; }
     private float speedMultiplier;
 
     Dictionary<MultiplierType, float> multipliersDict;
@@ -236,10 +248,14 @@ public abstract class APowerMask
 
     public virtual void setChar(ACharacter character,PowerMaskStats stats)
     {
-        
+        multipliersDict = new Dictionary<MultiplierType, float>();
         _character = character;
         powerMaskStat = stats;
         anim = _character.GetComponentInChildren<Animator>();
+        foreach (var effect in stats.effects)
+        {
+            effect.setOwner(character);
+        }
     }
     
     public abstract MaskTypes type();
@@ -291,6 +307,7 @@ public abstract class APowerMask
     {
         anim.speed /= mult;
     }
+    
 
 }
 public class CombatMask : APowerMask
