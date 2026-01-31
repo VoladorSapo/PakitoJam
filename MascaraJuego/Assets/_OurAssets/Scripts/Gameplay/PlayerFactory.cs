@@ -14,8 +14,8 @@ public class PlayerFactory : MonoBehaviour
     [SerializeField] int MaxPlayerCount;
     [SerializeField] CountdownTimer countdownTimer;
     [SerializeField] PlayerSlot[] playerSlots;
-    
-    int playersReady;
+
+    private int PlayersReady => playerSlots.Count(slot => slot.HasPlayer);
 
     void Awake()
     {
@@ -32,8 +32,8 @@ public class PlayerFactory : MonoBehaviour
         if (!scoreTracker.IsGameActive) return;
 
         if (countdownTimer.Decrement(Time.deltaTime)
-            && playersReady < playerSlots.Length
-            && (scoreTracker.PlayersInRing + playersReady) < MaxPlayerCount)
+            && PlayersReady < playerSlots.Length
+            && (scoreTracker.PlayersInRing + PlayersReady) < MaxPlayerCount)
         {
             SpawnPlayer();
         }
@@ -48,7 +48,6 @@ public class PlayerFactory : MonoBehaviour
     BasePlayerCharacter SpawnPlayer()
     {
         var slot = GetEmptySlot();
-        playersReady++;
         
         BasePlayerCharacter player = Instantiate(playerPrefab, slot.SpawnSpot.position, Quaternion.identity);
         player.Initialize(slot);

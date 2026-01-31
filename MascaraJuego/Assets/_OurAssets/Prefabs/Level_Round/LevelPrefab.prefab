@@ -83,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded8eacb232c9c545874b1ffd09536ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 1
   debugStartCutscene: 1
   startCutscene: {fileID: 0}
   endDelay: 1
@@ -136,6 +135,7 @@ MonoBehaviour:
   enemiesToIncreaseDifficulty: 15
   currentDifficulty: 0
   IsLosing: 0
+  PlayersInRing: 0
 --- !u!114 &2414095928691523005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 3
+      value: 2
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -169,22 +169,22 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 5
-      value: 2
-      inSlope: -0.084337674
-      outSlope: -0.084337674
+      value: 1.6
+      inSlope: -0.015694624
+      outSlope: -0.015694624
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.28030768
       outWeight: 0.029325295
     - serializedVersion: 3
       time: 10
       value: 0.75
       inSlope: -0.057170745
-      outSlope: -0.057170745
-      tangentMode: 0
+      outSlope: -0.12790029
+      tangentMode: 1
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.035313703
+      outWeight: 0.1802248
     - serializedVersion: 3
       time: 20
       value: 0.25
@@ -386,6 +386,10 @@ PrefabInstance:
       propertyPath: OnPointerClickInsideEvent._PersistentCalls.Array.data[0]._Target
       value: 
       objectReference: {fileID: 8441500827255353133}
+    - target: {fileID: 4703793945114421848, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
+      propertyPath: maskStats
+      value: 
+      objectReference: {fileID: 11400000, guid: ab354d8f0752ac949bbf6e562fa7baa9, type: 2}
     - target: {fileID: 4950562446415903728, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -493,10 +497,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3531497564401112679, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5834943037223670161}
   m_SourcePrefab: {fileID: 100100000, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
 --- !u!224 &83218177306349691 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4950562446415903728, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
   m_PrefabInstance: {fileID: 5013711643552607115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8400953281852505580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3531497564401112679, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
+  m_PrefabInstance: {fileID: 5013711643552607115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &5834943037223670161
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8400953281852505580}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
