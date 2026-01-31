@@ -50,8 +50,7 @@ public class findObjectiveAction : UnityAction
                 bestcol = col;
             }
         }
-        Debug.Log($"Best Character{bestcol.gameObject.name}");
-        characterBehaviour.objective = bestcol.GetComponent<ACharacter>();
+        characterBehaviour.setObjective(bestcol.GetComponent<ACharacter>());
 
 }
 

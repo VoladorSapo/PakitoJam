@@ -1233,16 +1233,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 0}
   effects:
-  - rid: 2590372027647656035
+  - rid: 2590372034004910337
   _type: 0
   references:
     version: 2
     RefIds:
-    - rid: 2590372027647656035
-      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+    - rid: 2590372034004910337
+      type: {class: FreezeEffect, ns: , asm: Assembly-CSharp}
       data:
         owner: {fileID: 0}
-        damage: 1
+        freezeDuration: 2
+        slowdownMult: 0.7
 --- !u!1 &1745183924
 GameObject:
   m_ObjectHideFlags: 0

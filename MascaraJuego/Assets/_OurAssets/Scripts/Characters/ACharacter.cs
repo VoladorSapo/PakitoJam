@@ -5,16 +5,21 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.Events;
+using System.Collections.Generic;
 
 public abstract class ACharacter : MonoBehaviour
 {
+    CharacterAssetBehaviourRunner characterBehaviour;
     [field:SerializeField, ReadOnly] public APowerMask _currentMask {  get; private set; }
     [SerializeField] private int _baseLife;
     [SerializeField,ReadOnly] private int _currentMaxLife;
     [SerializeField, ReadOnly] private int _currentLife;
     [field:SerializeField] public int _baseDamage { get; private set; }
  [field:SerializeField]   public bool Dead { get; private set; }
+    UnityEvent<ACharacter> dieEvent;
 
+    List<ATimedEffect> activeEffects;
 
     public void getDamaged(int damage)
     {
@@ -50,10 +55,16 @@ public abstract class ACharacter : MonoBehaviour
         _currentLife = life;
     }
 
-    public abstract void Die();
+    public virtual void Die()
+    {
+        dieEvent.Invoke(this);
+    }
     private void Awake()
     {
+        characterBehaviour = GetComponent<CharacterAssetBehaviourRunner>();
      startGame();
+        activeEffects = new List<ATimedEffect>();
+
     }
 
     private void startGame()
@@ -65,13 +76,50 @@ public abstract class ACharacter : MonoBehaviour
     //Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        dieEvent = new UnityEvent<ACharacter>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = activeEffects.Count - 1; i >= 0; i--)
+        {
+            print($"Check{i}");
+            var effect = activeEffects[i];
+            if (effect.Update())
+            {
+                effect.End();
+                activeEffects.RemoveAt(i);
+            }
+        }
+    }
+
+    public void addEffect(ABaseEffect effect)
+    {
+
+        if (!effect.Instant())
+        {
+            print("Timed");
+            ATimedEffect timed = (ATimedEffect)effect;
+            if (activeEffects.Contains(timed)){
+                print("contains");
+                if (timed.Refreshable())
+                {
+                    timed.Refresh(this);
+                }
+                return;
+            }
+            print("no contains");
+            effect.Activate(this);
+            activeEffects.Add((ATimedEffect)effect);
+
+
+        }
+        else
+        {
+            effect.Activate(this);
+
+        }
     }
     public void setMask(PowerMaskStats Mask)
     {
@@ -117,7 +165,7 @@ public abstract class ACharacter : MonoBehaviour
         switch (checkType)
         {
             case HittableCheckTypes.onlyOtherTeam:
-                if(GetComponent<BaseEnemy>() != null)
+                if (GetComponent<BaseEnemy>() != null)
                 {
                     return attacker.GetComponent<BaseEnemy>() == null;
                 }
@@ -134,20 +182,36 @@ public abstract class ACharacter : MonoBehaviour
                 return !gameObject.Equals(attacker.gameObject);
             case HittableCheckTypes.allCharacters:
                 return true;
-                default:
+            case HittableCheckTypes.onlyObjective:
+                return attacker.characterBehaviour.objective.Equals(this);
+                break;
+            default:
                 return false;
         }
-        
+
+    }
+
+    public void subscribeToDieEvent(UnityAction<ACharacter> action)
+    {
+        dieEvent.AddListener(action);
+
+    }
+    public void unSubscribeToDieEvent(UnityAction<ACharacter> action)
+    {
+        dieEvent.RemoveListener(action);
+
     }
 }
 
 
 public enum HittableCheckTypes
 {
+    onlyObjective,
     onlyOtherTeam,
     onlyMyTeam,
     allCharactersNoMe,
     allCharacters,
+    
     
     
 }
@@ -157,6 +221,9 @@ public abstract class APowerMask
     Animator anim;
    protected ACharacter _character;
     PowerMaskStats powerMaskStat;
+    private float speedMultiplier;
+
+    Dictionary<MultiplierType, float> multipliersDict;
 
     public abstract void Die();
 
@@ -177,12 +244,53 @@ public abstract class APowerMask
     
     public abstract MaskTypes type();
 
-    internal float getSpeed() => powerMaskStat.speed;
+    internal float getSpeed() => powerMaskStat.speed * getMultiplier(MultiplierType.Speed);
     internal float getAttackDistance() => powerMaskStat.attackDistance;
 
     internal float getDetectRadius() => powerMaskStat.detectRadius;
 
-    
+    public void addMultiplier(MultiplierType multName,float mult )
+    {
+        float val;
+        if (multipliersDict.TryGetValue(multName, out val))
+        {
+            multipliersDict[multName] = val * mult;
+        }
+        else
+        {
+            val = 1;
+            multipliersDict.Add(multName, val * mult);
+        }
+    }
+    public void removeMultiplier(MultiplierType multName,float mult)
+    {
+        float val;
+        if (multipliersDict.TryGetValue(multName, out val))
+        {
+            multipliersDict[multName] = val / mult;
+        }
+    }
+    public float getMultiplier(MultiplierType multName)
+    {
+        if (multipliersDict.TryGetValue(multName, out float val)) 
+        {
+            return val;
+        }
+        return 1;
+    }
+
+    public void resetAnimSpeed()
+    {
+        anim.speed = 1;
+    }
+    public void addAnimMult(float mult)
+    {
+        anim.speed *= mult;
+    }
+    public void removeAnimMult(float mult)
+    {
+        anim.speed /= mult;
+    }
 
 }
 public class CombatMask : APowerMask
@@ -224,4 +332,8 @@ public class FreezeMask : APowerMask
         return MaskTypes.FreezeMask;
     }
    
+}
+public enum MultiplierType
+{
+    Speed
 }

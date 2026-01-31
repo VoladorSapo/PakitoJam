@@ -13,7 +13,7 @@ public class WalkToObjectiveAction : UnityAction
         {
             return Status.Failure;
         }
-        Debug.Log(speed);
+       // Debug.Log(speed);
         context.Transform.position = Vector3.MoveTowards(context.Transform.position, characterBehaviour.objective.transform.position, speed * Time.deltaTime);
         if (characterBehaviour.objectiveOnAttackDistance())
         {

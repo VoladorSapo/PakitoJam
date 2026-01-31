@@ -8,17 +8,35 @@ public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
 {
     public ACharacter character {  get; private set; }
     [field: SerializeField] public ACharacter objective;
-    float attackDistance;
     public bool actionFinished {  get; private set; }
   [field:SerializeField]  public LayerMask EnemyLayerMask { get; private set; }
 
     public void setObjective(ACharacter character)
     {
-        this.character = character;
+        if (objective != null && !objective.Equals(character))
+        {
+            objective.unSubscribeToDieEvent(objectiveDie);
+        }
+        this.objective = character;
+        if (objective != null)
+        {
+            objective.subscribeToDieEvent(objectiveDie);
+        }
+
+    }
+    public void objectiveDie(ACharacter character)
+    {
+        if (objective.Equals(character))
+        {
+            objective.unSubscribeToDieEvent(objectiveDie);
+            objective = null;
+        }
     }
     public bool objectiveOnAttackDistance()
     {
-        return Vector3.SqrMagnitude(transform.position - objective.transform.position) <= attackDistance;
+        if(objective == null)
+            return false;
+        return Vector3.SqrMagnitude(transform.position - objective.transform.position) <= character._currentMask.getAttackDistance();
     }
     protected override void OnStarted()
     {

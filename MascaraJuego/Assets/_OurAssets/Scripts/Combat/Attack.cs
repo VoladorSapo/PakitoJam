@@ -19,7 +19,7 @@ public class Attack : MonoBehaviour
             {
                 foreach(ABaseEffect effect in effects)
                 {
-                    effect.Activate(character);
+                    character.addEffect(effect);
                 }
             }
             else
@@ -41,6 +41,10 @@ public class Attack : MonoBehaviour
     public void addDamageEffect(int damage)
     {
         effects.Add(new  DamageEffect(damage));
+    }
+    public void addFreezeEffect(float duration, float slowMultiplier)
+    {
+        effects.Add(new FreezeEffect(duration, slowMultiplier));
     }
 }
 
