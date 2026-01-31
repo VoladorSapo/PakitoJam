@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cd461fba8c3744884fb572ecff7001, type: 3}
   m_Name: RegularEnemyMask
   m_EditorClassIdentifier: 
-  speed: 5
+  speedModifier: 5
   detectRadius: 10
   lifeModifier: 0
   controller: {fileID: 22100000, guid: 883179a900c3d20478e2361d74e70445, type: 2}
@@ -22,7 +22,6 @@ MonoBehaviour:
   cooldown: 2
   sprite: {fileID: 0}
   attackDistance: 1
-  attackCooldown: 0
   effects:
   - rid: 2590372047603368825
   hittablecheck: 0

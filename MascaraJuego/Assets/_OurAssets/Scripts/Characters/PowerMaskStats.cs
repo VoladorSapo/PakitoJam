@@ -9,7 +9,6 @@ public class PowerMaskStats : ScriptableObject
     public float speedModifier;
     public float detectRadius;
     public int lifeModifier;
-    public int damageModifier;
 
     public RuntimeAnimatorController controller;
     public BehaviourSystem IASystem;

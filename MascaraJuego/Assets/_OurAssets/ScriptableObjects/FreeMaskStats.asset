@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cd461fba8c3744884fb572ecff7001, type: 3}
   m_Name: FreeMaskStats
   m_EditorClassIdentifier: 
-  speed: 5
+  speedModifier: 5
   detectRadius: 10
   lifeModifier: 0
   controller: {fileID: 22100000, guid: 5017b3d0b330f4a4da5e8a7c3f83a34d, type: 2}
@@ -22,7 +22,6 @@ MonoBehaviour:
   cooldown: 2
   sprite: {fileID: 0}
   attackDistance: 1
-  attackCooldown: 0
   effects: []
   hittablecheck: 0
   references:
