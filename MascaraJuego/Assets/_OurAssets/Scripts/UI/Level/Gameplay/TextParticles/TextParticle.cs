@@ -4,8 +4,7 @@ using PrimeTween;
 using TMPro;
 
 public class TextParticle : MonoBehaviour {
-    [SerializeField] TextMeshProUGUI textMesh;
-    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] TMP_Text textMesh;
     [SerializeField] Transform target;
     [SerializeField] float distance = 20f;
     [SerializeField] float duration = 2f;
@@ -16,7 +15,7 @@ public class TextParticle : MonoBehaviour {
         textMesh.text = text;
         textMesh.color = color;
         
-        canvasGroup.alpha = 0f;
+        textMesh.alpha = 0f;
         float halfDuration = duration / 2f;
         Vector3 startPos = target.localPosition;
         Vector3 halfPos = startPos + Vector3.up * distance / 2;
@@ -24,8 +23,8 @@ public class TextParticle : MonoBehaviour {
         
         sequence = Sequence.Create(cycles: 1, cycleMode: Sequence.SequenceCycleMode.Rewind)
             .Group(Tween.LocalPosition(target, halfPos, halfDuration,Ease.InQuad))
-            .Group(Tween.Custom(startValue: 0f, endValue: 1f, duration: halfDuration, onValueChange: v => canvasGroup.alpha = v))
-            .Chain(Tween.Custom(startValue: 1f, endValue: 0f, duration: halfDuration, onValueChange: v => canvasGroup.alpha = v))
+            .Group(Tween.Custom(startValue: 0f, endValue: 1f, duration: halfDuration, onValueChange: v => textMesh.alpha = v))
+            .Chain(Tween.Custom(startValue: 1f, endValue: 0f, duration: halfDuration, onValueChange: v => textMesh.alpha = v))
             .Group(Tween.LocalPosition(target, endPos, halfDuration,Ease.OutQuad))
             .OnComplete(()=>Destroy(this.gameObject));
     }
