@@ -369,7 +369,7 @@ public abstract class APowerMask
     }
     internal void Idle()
     {
-        anim.Play("idle", 0, 0);
+        anim.Play("idle");
     }
 
     internal float getAttackCooldown() => powerMaskStat.cooldown / getMultiplier(MultiplierType.Speed);

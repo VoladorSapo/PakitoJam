@@ -35,6 +35,7 @@ public class IdleAction : UnityAction
     public override void Start()
     {
         base.Start();
+        Debug.Log("IdleAction");
         characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
         //characterBehaviour.startAction();
         characterBehaviour.character._currentMask.Idle();
