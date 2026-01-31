@@ -9,11 +9,13 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using Reflex.Attributes;
 using System.Collections;
+using PrimeTween;
+using Sequence = PrimeTween.Sequence;
 
 public abstract class ACharacter : MonoBehaviour
 {
     CharacterAssetBehaviourRunner characterBehaviour;
-
+    [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] PowerMaskStats startingMask;
     [field:SerializeField, ReadOnly] public APowerMask _currentMask {  get; private set; }
     [SerializeField] private int _baseLife;
@@ -29,9 +31,23 @@ public abstract class ACharacter : MonoBehaviour
     public void getDamaged(int damage)
     {
         _currentLife -= damage;
+        
+        Color ogColor = spriteRenderer.color;
+        Sequence.Create(cycles: 1)
+            .Chain(Tween.ScaleX(transform, 0.9f, 0.15f, Ease.OutBounce))
+            .Group(Tween.Custom(startValue: ogColor,
+                endValue: new Color(0.6f, 0.1f, 0.1f, 1),
+                duration: 0.15f, onValueChange:
+                value => spriteRenderer.color = value))
+            .Chain(Tween.ScaleX(transform, 1f, 0.15f, Ease.OutBounce))
+            .Group(Tween.Custom(startValue: new Color(0.6f, 0.1f, 0.1f, 1),
+                endValue: ogColor,
+                duration: 0.15f, onValueChange:
+                value => spriteRenderer.color = value));
+        
         if (_currentLife < 0)
         {
-            Die();
+            this.InvokeDelayed(0.3f, Die);
         }
     }
     public void setLifeToMax()
@@ -146,15 +162,11 @@ public abstract class ACharacter : MonoBehaviour
         {
             return;
         }
-        bool firstMask = false;
-        if (_currentMask == null)
-        {
-            firstMask = true;
-        }
+        bool firstMask = _currentMask == null;
         switch (Mask.type)
         {
             case MaskTypes.CombatMask:
-              _currentMask = new CombatMask();
+                _currentMask = new CombatMask();
                 
                 break;
             case MaskTypes.FreezeMask:
@@ -173,7 +185,7 @@ public abstract class ACharacter : MonoBehaviour
         {
             StartCoroutine(_currentMask.changeAnim());
         }
-            setMaxLifeModifier(Mask.lifeModifier);
+        setMaxLifeModifier(Mask.lifeModifier);
         GetComponent<CharacterAssetBehaviourRunner>().enabled = true;
 
         print("NEW MASK");
