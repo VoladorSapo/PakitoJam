@@ -44,6 +44,7 @@ public class RoundScoreTracker : MonoBehaviour
     void ProcessStart()
     {
         hasStarted = true;
+        gameEvents.InvokeDisplayText("BEGIN!!!");
     }
     void ProcessEnd(bool _)
     {
@@ -86,6 +87,7 @@ public class RoundScoreTracker : MonoBehaviour
         {
             currentDifficulty++;
             gameEvents.NotifyDifficultyIncreased(currentDifficulty);
+            gameEvents.InvokeDisplayText("ROUND INCREASED");
         }
     }
 }

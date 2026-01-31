@@ -51,7 +51,11 @@ public class EnemyFactory : MonoBehaviour
     
     BaseEnemy SpawnEnemy() {
         BaseEnemy prefab = GetWeightedRandomEnemy(maxEnemyQuality);
-        return Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        
+        BaseEnemy enemy = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        enemy.Initialize(gameEvents);
+        
+        return enemy;
     }
     
     BaseEnemy GetWeightedRandomEnemy(int maxIndex) {

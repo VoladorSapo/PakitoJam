@@ -33,6 +33,12 @@ public class GameEvents
         OnResultScreenCalled?.Invoke();
     }
 
+    public event Action<string> OnDisplayTextCalled;
+    public void InvokeDisplayText(string text)
+    {
+        OnDisplayTextCalled?.Invoke(text);
+    }
+
     #endregion
     
     #region Gameplay
