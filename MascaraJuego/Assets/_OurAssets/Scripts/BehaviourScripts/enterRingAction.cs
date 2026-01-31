@@ -43,3 +43,24 @@ public class enterRingAction : UnityAction
 
     }
 }
+public class WaitCoolDownAction : UnityAction
+{
+    public float time;
+    CharacterAssetBehaviourRunner characterBehaviour;
+    ACharacter character;
+    public override Status Update()
+    {
+        time += Time.deltaTime;
+        if(time>= character._currentMask.getAttackCooldown())
+        {
+            return Status.Success;
+        }
+        return Status.Running;
+    }
+    public override void Start()
+    {
+        base.Start();
+        characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
+        character = characterBehaviour.character;
+    }
+    }

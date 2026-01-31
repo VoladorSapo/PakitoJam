@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aa30199925cc8419f616608bdc3f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMask: {fileID: 11400000, guid: a29d9719e08e909428d6cee362374cb1, type: 2}
+  startingMask: {fileID: 11400000, guid: d41eb17fb57a6e54d8c6c161520bc32e, type: 2}
   _baseLife: 5
   _currentMaxLife: 0
   _currentLife: 0

@@ -275,7 +275,15 @@ public abstract class APowerMask
         anim = _character.GetComponentInChildren<Animator>();
        spriteRenderer = _character.GetComponentInChildren<SpriteRenderer>();
         Debug.Log("animatorcontroller");
+
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        int stateHash = stateInfo.fullPathHash;
+        float normalizedTime = stateInfo.normalizedTime;
+
         anim.runtimeAnimatorController = stats.controller;
+
+        // 3. Restore animation position
+        anim.Play(stateHash, 0, normalizedTime);
         foreach (var effect in stats.effects)
         {
             effect.setOwner(character);
@@ -341,6 +349,11 @@ public abstract class APowerMask
     internal void Idle()
     {
         anim.Play("idle", 0, 0);
+    }
+
+    internal float getAttackCooldown()
+    {
+        return 0;
     }
 }
 public class CombatMask : APowerMask
