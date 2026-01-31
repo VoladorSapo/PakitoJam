@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -6,6 +7,10 @@ public class BasePlayerCharacter : ACharacter
 {
     private PlayerSlot spawnSlot;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [MinMaxSlider(-5, 10)] public Vector2Int HealthRanges;
+    [MinMaxSlider(-5, 10)] public Vector2Int SpeedRanges;
+    [MinMaxSlider(-5, 10)] public Vector2Int AttackRanges;
+
 
     public void Initialize(PlayerSlot spawnSlot)
     {
