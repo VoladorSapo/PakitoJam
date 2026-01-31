@@ -25,8 +25,6 @@ public abstract class ACharacter : MonoBehaviour
     UnityEvent<ACharacter> dieEvent;
 
     List<ATimedEffect> activeEffects;
-
-    [Inject] GameEvents gameEvents;
     public void getDamaged(int damage)
     {
         _currentLife -= damage;
@@ -70,13 +68,6 @@ public abstract class ACharacter : MonoBehaviour
         characterBehaviour = GetComponent<CharacterAssetBehaviourRunner>();
             activeEffects = new List<ATimedEffect>();
 
-    }
- 
-   
-    private void OnDestroy()
-    {
-        
-        gameEvents.OnRoundStarted -= startGame;
     }
 
     protected void startGame()
