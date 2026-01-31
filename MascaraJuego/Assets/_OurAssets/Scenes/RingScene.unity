@@ -345,7 +345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &186017065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +366,9 @@ MonoBehaviour:
   <Dead>k__BackingField: 0
   <onRing>k__BackingField: 0
   spriteRenderer: {fileID: 0}
+  HealthRanges: {x: 0, y: 0}
+  SpeedRanges: {x: 0, y: 0}
+  AttackRanges: {x: 0, y: 0}
 --- !u!4 &186017066
 Transform:
   m_ObjectHideFlags: 0
@@ -1039,7 +1042,7 @@ Animator:
   m_GameObject: {fileID: 1745183924}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c521f71509dc35f46aa1e706f487c17d, type: 2}
+  m_Controller: {fileID: 22100000, guid: da90a65cfb21b92479e61d6ae40398b2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
