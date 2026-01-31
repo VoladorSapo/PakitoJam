@@ -104,7 +104,40 @@ public class FreezeEffect : ATimedEffect
         objective._currentMask.removeAnimMult(slowdownMult);
 
         objective._currentMask.removeMultiplier(MultiplierType.Speed, slowdownMult);
+    }
+}
 
+public class aditiveSpeedEffect : ATimedEffect
+{
+    public float freezeDuration;
+    public float slowdownMult;
+    
+    public aditiveSpeedEffect(float freezeDuration, float slowdownMultiplier)
+    {
+        this.freezeDuration = freezeDuration;
+        this.slowdownMult = slowdownMultiplier;
 
+    }
+    public override float getDuration()
+    {
+        return freezeDuration;
+    }
+    public override void Activate(ACharacter character)
+    {
+
+        base.Activate(character);
+        Debug.Log($"{_identifier}: Freeze");
+        character._currentMask.addMultiplier(MultiplierType.Speed, slowdownMult);
+        character._currentMask.addAnimMult(slowdownMult);
+        //    character.addVisualFilter(new Color(0, 0, 0.6f, 1));
+
+    }
+
+    public override void End()
+    {
+        Debug.Log($"{_identifier}: EndFreeze");
+        objective._currentMask.removeAnimMult(slowdownMult);
+
+        objective._currentMask.removeMultiplier(MultiplierType.Speed, slowdownMult);
     }
 }

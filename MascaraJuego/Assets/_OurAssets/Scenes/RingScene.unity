@@ -345,7 +345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &186017065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -785,6 +785,14 @@ PrefabInstance:
       propertyPath: alwaysHit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
+      propertyPath: 'enemyPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2438057366426751718, guid: baca6d8162e98434bb7e2431bb8a30f8, type: 3}
     - target: {fileID: 3019973331114709999, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: alwaysHit
       value: 0

@@ -10,20 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32cd461fba8c3744884fb572ecff7001, type: 3}
-  m_Name: FreeMaskStats
+  m_Name: MiniEnemy
   m_EditorClassIdentifier: 
-  speedModifier: 5
+  speedModifier: 8
   detectRadius: 10
-  lifeModifier: 0
-  controller: {fileID: 22100000, guid: 5017b3d0b330f4a4da5e8a7c3f83a34d, type: 2}
+  lifeModifier: -1
+  controller: {fileID: 22100000, guid: 24348c7335d14c64289fa642790027cf, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
-  type: 1
+  type: 5
   Price: 0
   cooldown: 0.2
-  sprite: {fileID: 893803297946197341, guid: 1a1831f2f0e2f8b43b511a28f4196a63, type: 3}
+  sprite: {fileID: 0}
   attackDistance: 1
-  effects: []
+  effects:
+  - rid: 2590372047603368825
   hittablecheck: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2590372047603368825
+      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+      data:
+        owner: {fileID: 0}
+        objective: {fileID: 0}
+        damage: 0

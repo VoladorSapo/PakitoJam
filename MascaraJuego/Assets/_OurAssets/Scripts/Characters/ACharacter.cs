@@ -163,6 +163,13 @@ public abstract class ACharacter : MonoBehaviour
                 break;
             case MaskTypes.SpeedMask:
                 break;
+            case MaskTypes.RegularEnemy:
+                _currentMask = new CombatMask();
+
+                break;
+                case MaskTypes.MiniEnemy:
+                _currentMask = new CombatMask();
+                break;
         }
         _currentMask.setChar(this,Mask);
         if (firstMask)

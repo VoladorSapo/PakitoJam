@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8417668732855601588, guid: 76f78c6d64093ce4d9fdc1c4cec63ab9, type: 3}
+  m_Sprite: {fileID: -6884460448208512173, guid: 8e8704c15c2d51e4ca3638fdc0224c13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 6508752167251928211}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 883179a900c3d20478e2361d74e70445, type: 2}
+  m_Controller: {fileID: 22100000, guid: 24348c7335d14c64289fa642790027cf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4345704799082073392}
   - component: {fileID: 4964142058877452167}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: SmallEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,14 +159,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aa30199925cc8419f616608bdc3f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMask: {fileID: 11400000, guid: d41eb17fb57a6e54d8c6c161520bc32e, type: 2}
+  startingMask: {fileID: 11400000, guid: 34e97c81996f9984ebfbc826bc58c423, type: 2}
   _baseLife: 5
   _currentMaxLife: 0
   _currentLife: 0
   <_baseDamage>k__BackingField: 2
   <Dead>k__BackingField: 0
   <onRing>k__BackingField: 0
-  SpawnWeight: 0
+  SpawnWeight: 2
 --- !u!50 &44267629582793350
 Rigidbody2D:
   serializedVersion: 5

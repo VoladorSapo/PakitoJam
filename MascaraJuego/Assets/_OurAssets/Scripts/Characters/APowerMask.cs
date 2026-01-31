@@ -79,6 +79,19 @@ public abstract class APowerMask
             multipliersDict.Add(multName, val * mult);
         }
     }
+    public void sumToMultiplier(MultiplierType multName, float add)
+    {
+        float val;
+        if (multipliersDict.TryGetValue(multName, out val))
+        {
+            multipliersDict[multName] = val + add;
+        }
+        else
+        {
+            val = 1;
+            multipliersDict.Add(multName, val + add);
+        }
+    }
     public void removeMultiplier(MultiplierType multName,float mult)
     {
         float val;
