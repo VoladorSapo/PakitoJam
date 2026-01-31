@@ -20,6 +20,7 @@ public class AwakeFadingObject : MonoBehaviour
     public void OnPulsingAnimationEnd()
     {
         animator.enabled = false;
+        gameEvents.NotifyRoundStart();
         gameEvents.OnRoundAwakened -= PlayAnimation;
     }
 }
