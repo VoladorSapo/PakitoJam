@@ -6,6 +6,7 @@ public class RoundScoreTracker : MonoBehaviour
 {
     [Inject] GameEvents gameEvents;
     
+    
     [HorizontalLine(color: EColor.Blue)]
     [SerializeField] int maxCoins;
     [SerializeField] int totalCoins;
@@ -14,14 +15,24 @@ public class RoundScoreTracker : MonoBehaviour
     [ReadOnly, SerializeField] int enemiesKilled;
     [SerializeField] int enemiesToIncreaseDifficulty;
     [SerializeField] int currentDifficulty;
+    
+    public bool IsGameActive => hasStarted && !isPaused;
+    bool isPaused;
+    bool hasStarted;
     void Awake()
     {
+        gameEvents.OnRoundStarted += ProcessStart;
+        gameEvents.OnRoundEnded += ProcessEnd;
+        
         gameEvents.OnCoinsCollected += AddCoins;
         gameEvents.OnCoinsSpent += RemoveCoins;
         gameEvents.OnEnemyKilled += RegisterEnemyDeath;
     }
     void OnDestroy()
     {
+        gameEvents.OnRoundStarted -= ProcessStart;
+        gameEvents.OnRoundEnded -= ProcessEnd;
+        
         gameEvents.OnCoinsCollected -= AddCoins;
         gameEvents.OnCoinsSpent -= RemoveCoins;
         gameEvents.OnEnemyKilled -= RegisterEnemyDeath;
@@ -30,6 +41,23 @@ public class RoundScoreTracker : MonoBehaviour
     {
         gameEvents.NotifyTotalCoinsCollected(totalCoins);
     }
+    void ProcessStart()
+    {
+        hasStarted = true;
+    }
+    void ProcessEnd(bool _)
+    {
+        hasStarted = false;
+    }
+    public void Pause()
+    {
+        isPaused = true;
+    }
+    public void Resume()
+    {
+        isPaused = false;
+    }
+    
     void AddCoins(int coinsAmount)
     {
         totalCoins = Mathf.Min(totalCoins + coinsAmount, maxCoins);

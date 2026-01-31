@@ -18,26 +18,18 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] AnimationCurve spawnIntervalCurve;
     [SerializeField] AnimationCurve maxEnemyQualityCurve;
     private int maxEnemyQuality = 3;
-    
-    bool gameStarted = false;
+
     void Awake()
     {
         gameEvents.OnDifficultyIncreased += UpdateSpawnData;
-        gameEvents.OnRoundStarted += ProcessStart;
-        gameEvents.OnRoundEnded += ProcessEnd;
-
         UpdateSpawnData(0);
         countdownTimer.ResetCountdown();
     }
-
-    void ProcessStart()
+    void OnDestroy()
     {
-        gameStarted = true;
+        gameEvents.OnDifficultyIncreased -= UpdateSpawnData;
     }
-    void ProcessEnd(bool _)
-    {
-        gameStarted = false;
-    }
+    
     
     void UpdateSpawnData(int difficulty)
     {
@@ -49,7 +41,7 @@ public class EnemyFactory : MonoBehaviour
 
     void Update()
     {
-        if (!gameStarted) return;
+        if (!scoreTracker.IsGameActive) return;
 
         if (countdownTimer.Decrement(Time.deltaTime))
         {

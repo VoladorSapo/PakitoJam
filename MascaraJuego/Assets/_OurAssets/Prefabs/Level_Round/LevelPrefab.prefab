@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 807430926067421586}
   - component: {fileID: 6559675276250577799}
   - component: {fileID: 2414095928691523005}
+  - component: {fileID: 2501615058383528132}
   m_Layer: 0
   m_Name: RoundLevel
   m_TagString: Untagged
@@ -532,6 +533,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2501615058383528132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377784335603186987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71a012e789f0ae49802ea28c9049782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausable: {fileID: 6559675276250577799}
+  isPaused: 0
+  minimalPauseReason: 0
 --- !u!1 &3559662262793325838
 GameObject:
   m_ObjectHideFlags: 0

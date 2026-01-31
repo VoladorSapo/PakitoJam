@@ -18,7 +18,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
     
     BasePlayerCharacter currentHoverPlayer;
     Vector3 startPosition;
-    GlobalCamera camera;
+    GlobalCamera globalCamera;
     RectTransform rectTransform;
     
     
@@ -27,7 +27,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
     {
         rectTransform = GetComponent<RectTransform>();
         startPosition = transform.localPosition;
-        camera = singletonLocator.GlobalCamera;
+        globalCamera = singletonLocator.GlobalCamera;
         cooldownTimer.CountdownTime = maskStats.cooldown;
     }
 
@@ -41,9 +41,9 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
         
         var screenPoint = Input.mousePosition;
         screenPoint.z = 10.0f;
-        transform.position = camera.UICamera.ScreenToWorldPoint(screenPoint);
+        transform.position = globalCamera.UICamera.ScreenToWorldPoint(screenPoint);
 
-        RaycastHit2D hit = Physics2D.Raycast(camera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(globalCamera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero);
         if (hit)
         {
             BasePlayerCharacter character = hit.collider.GetComponent<BasePlayerCharacter>();
@@ -70,7 +70,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        RaycastHit2D hit = Physics2D.Raycast(camera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(globalCamera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero);
         if (hit)
         {
             BasePlayerCharacter character = hit.collider.GetComponent<BasePlayerCharacter>();

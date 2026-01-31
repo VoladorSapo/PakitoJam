@@ -11,15 +11,17 @@ public class RoundController : MonoBehaviour
     [Inject] GameEvents gameEvents;
     [Inject] PauseService pauseService;
 
+    [HorizontalLine(color: EColor.Blue)]
     [SerializeField] private float startDelay = 1;
     [SerializeField] private bool debugStartCutscene;
     [SerializeField] TimelineAsset startCutscene;
     
+    [HorizontalLine(color: EColor.Blue)]
     [SerializeField] private float endDelay = 1;
     [SerializeField] private bool debugEndCutscene;
     [SerializeField] TimelineAsset endCutscene;
     
-    [HorizontalLine(color: EColor.White)]
+    [HorizontalLine(color: EColor.Blue)]
     [SerializeField] SceneServiceClient sceneServiceClient;
     [SerializeField, Scene] private string NextRoundScene;
     [SerializeField, Scene] private string MenuScene;
@@ -119,7 +121,6 @@ public class RoundController : MonoBehaviour
     {
         sceneServiceClient.ChangeScene(MenuScene);
     }
-
     public void MoveToNextRound()
     {
         sceneServiceClient.ChangeScene(NextRoundScene);
