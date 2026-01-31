@@ -845,6 +845,10 @@ PrefabInstance:
       propertyPath: alwaysHit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6058636769879208175, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
+      propertyPath: maskStats
+      value: 
+      objectReference: {fileID: 11400000, guid: e4121a90b005c7b41b6bd597fb267fc6, type: 2}
     - target: {fileID: 6937526902211989606, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: alwaysHit
       value: 0
@@ -872,6 +876,10 @@ PrefabInstance:
     - target: {fileID: 9087881262643671439, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101062266686908911, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

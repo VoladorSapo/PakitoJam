@@ -20,7 +20,7 @@ MonoBehaviour:
   type: 1
   Price: 0
   cooldown: 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 893803297946197341, guid: 1a1831f2f0e2f8b43b511a28f4196a63, type: 3}
   attackDistance: 1
   effects: []
   hittablecheck: 0
