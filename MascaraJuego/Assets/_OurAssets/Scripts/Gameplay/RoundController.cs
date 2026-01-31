@@ -1,3 +1,4 @@
+using System;
 using NaughtyAttributes;
 using Reflex.Attributes;
 using UnityEngine;
@@ -27,19 +28,25 @@ public class RoundController : MonoBehaviour
     
     void Start()
     {
+        
         if (startCutscene != null || debugStartCutscene)
         {
             PlayOpeningCutscene();
         }
+        gameEvents.OnRoundStarted += StartRound;
     }
+
+    private void OnDestroy()
+    {
+        gameEvents.OnRoundStarted -= StartRound;
+    }
+
     void AwakeRound()
     {
         gameEvents.NotifyRoundAwakened();
-        this.InvokeDelayed(startDelay, StartRound);
     }
     void StartRound()
     {
-        gameEvents.NotifyRoundStart();
         roundStarted = true;
     }
 
