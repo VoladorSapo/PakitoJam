@@ -9,11 +9,13 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using Reflex.Attributes;
 using System.Collections;
+using PrimeTween;
+using Sequence = PrimeTween.Sequence;
 
 public abstract class ACharacter : MonoBehaviour
 {
     CharacterAssetBehaviourRunner characterBehaviour;
-
+    [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] PowerMaskStats startingMask;
     [field:SerializeField, ReadOnly] public APowerMask _currentMask {  get; private set; }
     [SerializeField] private int _baseLife;
@@ -29,6 +31,39 @@ public abstract class ACharacter : MonoBehaviour
     public void getDamaged(int damage)
     {
         _currentLife -= damage;
+        
+        /*Color ogColor = spriteRenderer.color;
+        Sequence.Create(cycles: 1)
+            .Chain(Tween.ScaleX(transform, 0.9f, 0.15f, Ease.OutBounce))
+            .Group(Tween.Custom(startValue: ogColor,
+                endValue: new Color(0.6f, 0.1f, 0.1f, 1),
+                duration: 0.15f, onValueChange:
+                value => spriteRenderer.color = value))
+            .Chain(Tween.ScaleX(transform, 1f, 0.15f, Ease.OutBounce))
+            .Group(Tween.Custom(startValue: new Color(0.6f, 0.1f, 0.1f, 1),
+                endValue: ogColor,
+                duration: 0.15f, onValueChange:
+                value => spriteRenderer.color = value));*/
+        
+        Color ogColor = spriteRenderer.color;
+        float endAngle = spriteRenderer.flipX ? -15 : 15;
+        Vector3 rot = new Vector3(0, 0, endAngle);
+        Sequence.Create(cycles: 1)
+            .Chain(Tween.ScaleX(transform, 0.7f, 0.15f, Ease.OutBounce))
+                .Group(Tween.ScaleY(transform, 0.8f, 0.15f, Ease.OutBounce))
+                .Group(Tween.LocalRotation(transform, rot, 0.15f, Ease.OutBounce))
+                .Group(Tween.Custom(startValue: ogColor,
+                    endValue: new Color(0.6f, 0.1f, 0.1f, 1),
+                    duration: 0.15f, onValueChange:
+                    value => spriteRenderer.color = value))
+            .Chain(Tween.ScaleX(transform, 1f, 0.15f, Ease.OutBounce))
+                .Group(Tween.ScaleY(transform, 1f, 0.15f, Ease.OutBounce))
+                .Group(Tween.LocalRotation(transform, Vector3.zero, 0.15f, Ease.OutBounce))
+                .Group(Tween.Custom(startValue: new Color(0.6f, 0.1f, 0.1f, 1),
+                    endValue: ogColor,
+                    duration: 0.15f, onValueChange:
+                    value => spriteRenderer.color = value));
+        
         if (_currentLife < 0)
         {
             Die();
@@ -146,15 +181,11 @@ public abstract class ACharacter : MonoBehaviour
         {
             return;
         }
-        bool firstMask = false;
-        if (_currentMask == null)
-        {
-            firstMask = true;
-        }
+        bool firstMask = _currentMask == null;
         switch (Mask.type)
         {
             case MaskTypes.CombatMask:
-              _currentMask = new CombatMask();
+                _currentMask = new CombatMask();
                 
                 break;
             case MaskTypes.FreezeMask:
@@ -180,7 +211,7 @@ public abstract class ACharacter : MonoBehaviour
         {
             StartCoroutine(_currentMask.changeAnim());
         }
-            setMaxLifeModifier(Mask.lifeModifier);
+        setMaxLifeModifier(Mask.lifeModifier);
         GetComponent<CharacterAssetBehaviourRunner>().enabled = true;
 
         print("NEW MASK");

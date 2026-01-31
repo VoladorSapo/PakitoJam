@@ -18,6 +18,7 @@ public class RoundScoreTracker : MonoBehaviour
     [HorizontalLine(color: EColor.Blue)]
     [ReadOnly] public bool IsLosing = false;
     [ReadOnly] public int PlayersInRing = 0;
+    [ReadOnly] public bool EnteredOnceInRing = false;
     public bool IsGameActive => hasStarted && !isPaused;
     bool isPaused;
     bool hasStarted;
