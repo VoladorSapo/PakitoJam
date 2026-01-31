@@ -20,6 +20,7 @@ public class enterRingAction : UnityAction
             obj++;
             if (obj >= objectiveTransform.childCount)
             {
+                character.setOnRing(true);
                 return Status.Success;
             }
         }

@@ -20,10 +20,11 @@ public abstract class ACharacter : MonoBehaviour
     [SerializeField, ReadOnly] private int _currentLife;
     [field:SerializeField] public int _baseDamage { get; private set; }
  [field:SerializeField]   public bool Dead { get; private set; }
+    [field: SerializeField] public bool onRing { get; private set; }
+
     UnityEvent<ACharacter> dieEvent;
 
     List<ATimedEffect> activeEffects;
-
 
     [Inject] GameEvents gameEvents;
     public void getDamaged(int damage)
@@ -71,13 +72,16 @@ public abstract class ACharacter : MonoBehaviour
 
     }
  
+   
     private void OnDestroy()
     {
-     //  gameEvents.OnRoundStarted -= startGame;
-
+        
+        gameEvents.OnRoundStarted -= startGame;
     }
-    private void startGame()
+
+    protected void startGame()
     {
+        setOnRing(false);
         _currentMaxLife = _baseLife;
         setLifeToMax();
         Dead = false;
@@ -140,6 +144,7 @@ public abstract class ACharacter : MonoBehaviour
     }
     public void setMask(PowerMaskStats Mask)
     {
+        print("setMask");
         if(Mask == null)
         {
             GetComponent<CharacterAssetBehaviourRunner>().enabled = false;
@@ -222,6 +227,11 @@ public abstract class ACharacter : MonoBehaviour
         dieEvent.RemoveListener(action);
 
     }
+
+    internal void setOnRing(bool onRing)
+    {
+        this.onRing = onRing;
+    }
 }
 
 
@@ -261,6 +271,8 @@ public abstract class APowerMask
         _character = character;
         powerMaskStat = stats;
         anim = _character.GetComponentInChildren<Animator>();
+        Debug.Log("animatorcontroller");
+        anim.runtimeAnimatorController = stats.controller;
         foreach (var effect in stats.effects)
         {
             effect.setOwner(character);

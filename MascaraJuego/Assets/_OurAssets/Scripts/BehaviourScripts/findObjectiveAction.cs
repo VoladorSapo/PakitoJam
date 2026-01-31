@@ -19,7 +19,7 @@ public class findObjectiveAction : UnityAction
         foreach (Collider2D col in Physics2D.OverlapCircleAll(context.Transform.position, characterBehaviour.character._currentMask.getDetectRadius(),characterBehaviour.EnemyLayerMask))
         {
             Debug.Log(col.gameObject.name);
-            if (col.gameObject == context.GameObject)
+            if (col.gameObject == context.GameObject || !col.GetComponent<ACharacter>().onRing)
             {
 
                 continue;
