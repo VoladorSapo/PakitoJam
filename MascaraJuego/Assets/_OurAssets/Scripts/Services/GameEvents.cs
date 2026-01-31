@@ -4,7 +4,6 @@ using UnityEngine;
 public class GameEvents
 {
     #region Round Flow
-
     public event Action OnRoundAwakened;
     public void NotifyRoundAwakened()
     {
@@ -15,6 +14,11 @@ public class GameEvents
     public void NotifyRoundStart()
     {
         OnRoundStarted?.Invoke();
+    }
+    public event Action<bool> OnRoundPaused;
+    public void NotifyRoundPaused(bool isPaused)
+    {
+        OnRoundPaused?.Invoke(isPaused);
     }
     
     public event Action<bool> OnRoundEnded;
@@ -56,11 +60,11 @@ public class GameEvents
         OnEnemyKilled?.Invoke();
     }
     
-    public event Action OnDifficultyIncreased;
+    public event Action<int> OnDifficultyIncreased;
 
-    public void NotifyDifficultyIncreased()
+    public void NotifyDifficultyIncreased(int currentDifficulty)
     {
-        OnDifficultyIncreased?.Invoke();
+        OnDifficultyIncreased?.Invoke(currentDifficulty);
     }
 
     #endregion

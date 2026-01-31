@@ -57,7 +57,7 @@ public class RoundScoreTracker : MonoBehaviour
         if (enemiesKilled % enemiesToIncreaseDifficulty == 0)
         {
             currentDifficulty++;
-            gameEvents.NotifyDifficultyIncreased();
+            gameEvents.NotifyDifficultyIncreased(currentDifficulty);
         }
     }
 }

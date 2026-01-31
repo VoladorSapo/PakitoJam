@@ -1,5 +1,6 @@
 public class BaseEnemy : ACharacter
 {
+    public float SpawnWeight;
     public override void Die()
     {
         base.Die();
