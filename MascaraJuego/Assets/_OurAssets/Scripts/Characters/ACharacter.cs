@@ -250,6 +250,7 @@ public enum HittableCheckTypes
 public abstract class APowerMask
 {
     Animator anim;
+    SpriteRenderer spriteRenderer;
    protected ACharacter _character;
   public  PowerMaskStats powerMaskStat {  get; private set; }
     private float speedMultiplier;
@@ -262,7 +263,8 @@ public abstract class APowerMask
 
     public virtual void Attack()
     {
-        anim.Play("Attack", 0,0);
+        Debug.Log("atacar");
+        anim.Play("attack", 0,0);
     }
 
     public virtual void setChar(ACharacter character,PowerMaskStats stats)
@@ -271,6 +273,7 @@ public abstract class APowerMask
         _character = character;
         powerMaskStat = stats;
         anim = _character.GetComponentInChildren<Animator>();
+       spriteRenderer = _character.GetComponentInChildren<SpriteRenderer>();
         Debug.Log("animatorcontroller");
         anim.runtimeAnimatorController = stats.controller;
         foreach (var effect in stats.effects)
@@ -328,8 +331,17 @@ public abstract class APowerMask
     {
         anim.speed /= mult;
     }
-    
 
+    internal void Walk(Vector3 position)
+    {
+        anim.Play("walk", 0, 0);
+     spriteRenderer.flipX =   position.x < _character.transform.position.x;
+       
+    }
+    internal void Idle()
+    {
+        anim.Play("idle", 0, 0);
+    }
 }
 public class CombatMask : APowerMask
 {
