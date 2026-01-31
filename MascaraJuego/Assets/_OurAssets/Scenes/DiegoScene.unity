@@ -310,6 +310,7 @@ MonoBehaviour:
   _currentLife: 0
   <_baseDamage>k__BackingField: 2
   <Dead>k__BackingField: 0
+  <onRing>k__BackingField: 0
 --- !u!4 &186017066
 Transform:
   m_ObjectHideFlags: 0
@@ -421,7 +422,7 @@ MonoBehaviour:
   <EnemyLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
-  walkStopDistance: 1
+  stopWalkDistance: 1
 --- !u!1 &565786308
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,9 +555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f302818bf728045ac821a256502282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEntrancePoint:
+  enemyEntraces:
   - {fileID: 145460165}
-  enemyEntrancePoint:
+  playerEntraces:
   - {fileID: 145460165}
 --- !u!4 &602818647
 Transform:
@@ -1169,7 +1170,7 @@ MonoBehaviour:
   <EnemyLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
-  walkStopDistance: 0
+  stopWalkDistance: 1
 --- !u!95 &2094722619
 Animator:
   serializedVersion: 7
@@ -1283,6 +1284,7 @@ MonoBehaviour:
   _currentLife: 0
   <_baseDamage>k__BackingField: 2
   <Dead>k__BackingField: 0
+  <onRing>k__BackingField: 0
   SpawnWeight: 0
 --- !u!4 &2094722623
 Transform:

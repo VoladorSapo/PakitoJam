@@ -72,10 +72,7 @@ public abstract class ACharacter : MonoBehaviour
 
     }
  
-    private void OnDestroy()
-    {
-     //  gameEvents.OnRoundStarted -= startGame;
-
+   
     private void OnDestroy()
     {
         

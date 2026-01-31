@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class RingEntranceManager : MonoBehaviour
 {
-
     public static RingEntranceManager Instance;
-   [SerializeField] Transform[] playerEntrancePoint;
-    [SerializeField] Transform[] enemyEntrancePoint;
+
+ [SerializeField]   Transform[] enemyEntraces;
+    [SerializeField] Transform[] playerEntraces;
+
     private void Awake()
     {
-        if (!Instance)
+        if(Instance == null)
         {
-
             Instance = this;
         }
         else
@@ -18,14 +18,13 @@ public class RingEntranceManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public Transform getEntrancePoint(ACharacter character)
     {
-
-        if (character.GetComponent<BaseEnemy>())
+        if(character.GetComponent<BaseEnemy>() != null)
         {
-            return playerEntrancePoint[Random.Range(0,enemyEntrancePoint.Length)];
+            return enemyEntraces[Random.Range(0, enemyEntraces.Length)];
         }
-        return playerEntrancePoint[Random.Range(0, playerEntrancePoint.Length)];
-
+        return playerEntraces[Random.Range(0,playerEntraces.Length)];
     }
 }
