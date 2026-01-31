@@ -28,5 +28,10 @@ public class WalkToObjectiveAction : UnityAction
         base.Start();
         characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
         character = characterBehaviour.character;
+        if (characterBehaviour.objective != null)
+        {
+            character._currentMask.Walk(characterBehaviour.objective.transform.position);
+
+        }
     }
 }

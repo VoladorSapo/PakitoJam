@@ -21,7 +21,7 @@ MonoBehaviour:
   Price: 0
   cooldown: 0
   sprite: {fileID: 0}
-  attackDistance: 0
+  attackDistance: 1
   effects: []
   hittablecheck: 0
   references:

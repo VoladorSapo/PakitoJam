@@ -21,6 +21,8 @@ public class enterRingAction : UnityAction
             if (obj >= objectiveTransform.childCount)
             {
                 character.setOnRing(true);
+                character._currentMask.Idle();
+
                 return Status.Success;
             }
         }
@@ -37,5 +39,7 @@ public class enterRingAction : UnityAction
         {
             characterBase.EnterRing();
         }
+        character._currentMask.Walk(objectiveTransform.position);
+
     }
 }
