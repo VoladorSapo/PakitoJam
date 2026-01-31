@@ -1,0 +1,97 @@
+using Reflex.Attributes;
+using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.Timeline;
+
+public class RoundController : MonoBehaviour
+{
+    [Inject] GameEvents gameEvents;
+    [Inject] PauseService pauseService;
+
+    [SerializeField] private float startDelay = 1;
+    [SerializeField] private bool debugStartCutscene;
+    [SerializeField] TimelineAsset startCutscene;
+    
+    [SerializeField] private float endDelay = 1;
+    [SerializeField] private bool debugEndCutscene;
+    [SerializeField] TimelineAsset endCutscene;
+    
+    bool roundStarted;
+    
+    void Start()
+    {
+        if (startCutscene != null || debugStartCutscene)
+        {
+            PlayOpeningCutscene();
+        }
+    }
+    void AwakeRound()
+    {
+        gameEvents.NotifyRoundAwakened();
+        this.InvokeDelayed(startDelay, StartRound);
+    }
+    void StartRound()
+    {
+        gameEvents.NotifyRoundStart();
+        roundStarted = true;
+    }
+
+    public void Update()
+    {
+        if(!roundStarted) return;
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pauseService.Pause(PauseLevel.UI);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            WinRound();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LoseRound();
+        }
+    }
+    public void WinRound()
+    {
+        if(!roundStarted) return;
+        roundStarted = false;
+        
+        gameEvents.NotifyRoundEnd(true);
+
+        if (endCutscene != null || debugEndCutscene)
+        {
+            PlayEndingCutscene();
+        }
+            
+    }
+    public void LoseRound()
+    {
+        if(!roundStarted) return;
+        roundStarted = false;
+        
+        gameEvents.NotifyRoundEnd(false);
+        this.InvokeDelayed(endDelay, () => gameEvents.NotifyResultScreenCalled());
+    }
+
+    void PlayOpeningCutscene()
+    {
+        pauseService.Pause(PauseLevel.Dialog);
+            
+        Debug.Log("startCutscene.name");
+        this.InvokeDelayed(2, AwakeRound);
+        pauseService.Resume(PauseLevel.Dialog);
+    }
+
+    void PlayEndingCutscene()
+    {
+        pauseService.Pause(PauseLevel.Dialog);
+            
+        Debug.Log("endCutscene.name");
+        this.InvokeDelayed(2 + endDelay, () => gameEvents.NotifyResultScreenCalled());
+        pauseService.Resume(PauseLevel.Dialog);
+    }
+}

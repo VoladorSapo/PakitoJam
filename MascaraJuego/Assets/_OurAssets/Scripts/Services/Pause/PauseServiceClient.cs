@@ -19,6 +19,12 @@ public class PauseServiceClient : MonoBehaviour
         pauseService.OnResumeCalled += OnResume;
     }
 
+    void OnDestroy()
+    {
+        pauseService.OnPauseCalled -= OnPause;
+        pauseService.OnResumeCalled -= OnResume;
+    }
+
     void OnPause(PauseLevel reasonToPause)
     {
         if(isPaused || minimalPauseReason == PauseLevel.None) return;
@@ -37,6 +43,12 @@ public class PauseServiceClient : MonoBehaviour
             isPaused = false;
             Pausable?.Resume();
         }
+    }
+    
+    public void SelfResume()
+    {
+        if(!isPaused || minimalPauseReason == PauseLevel.None) return;
+        pauseService.Resume(minimalPauseReason);
     }
 
     /*void Update()

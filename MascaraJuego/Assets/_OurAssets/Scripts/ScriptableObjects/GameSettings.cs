@@ -1,4 +1,5 @@
 ﻿using NaughtyAttributes;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
@@ -50,6 +51,7 @@ public class GameSettings : ScriptableObject
         if (globalVolumePorfile.TryGet(out ColorLookup lookup))
         {
             Texture2D texture = newMode > 0 ? colorblindLutTextures[newMode - 1] : null;
+            Debug.Log(texture?.name);
             lookup.texture.value = texture;
         }
     }

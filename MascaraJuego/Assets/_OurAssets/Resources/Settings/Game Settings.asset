@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMixer: {fileID: 24100000, guid: f3d6f851042543e4dbf9267c8873c7bb, type: 2}
   globalVolumePorfile: {fileID: 11400000, guid: e9ac97b40ba82d945852abecff40db2e, type: 2}
-  masterVolume: 0
-  sfxVolume: 0
-  musicVolume: 0
-  currentColorblindMode: 2
+  masterVolume: 0.7995268
+  sfxVolume: 0.8
+  musicVolume: 0.8
+  currentColorblindMode: 0
   colorblindLutTextures:
   - {fileID: 2800000, guid: 94f2f8a269949f44cb04eeb763a56bc9, type: 3}
   - {fileID: 2800000, guid: c04b2065781d62845963a7a527fe071d, type: 3}
