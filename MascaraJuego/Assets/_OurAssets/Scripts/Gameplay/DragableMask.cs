@@ -59,7 +59,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
                 }
             }
         }
-        if (currentHoverPlayer != null)
+        else if (currentHoverPlayer != null)
         {
             currentHoverPlayer.stopHover();
             currentHoverPlayer = null;

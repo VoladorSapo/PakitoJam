@@ -19,6 +19,7 @@ public class PlayerFactory : MonoBehaviour
 
     void Awake()
     {
+        countdownTimer.ResetCountdown();
         gameEvents.OnRoundStarted += SpawnStartingPlayer;
     }
 

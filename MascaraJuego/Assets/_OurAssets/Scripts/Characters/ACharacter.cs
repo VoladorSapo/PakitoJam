@@ -25,8 +25,6 @@ public abstract class ACharacter : MonoBehaviour
     UnityEvent<ACharacter> dieEvent;
 
     List<ATimedEffect> activeEffects;
-
-    [Inject] GameEvents gameEvents;
     public void getDamaged(int damage)
     {
         _currentLife -= damage;
@@ -70,13 +68,6 @@ public abstract class ACharacter : MonoBehaviour
         characterBehaviour = GetComponent<CharacterAssetBehaviourRunner>();
             activeEffects = new List<ATimedEffect>();
 
-    }
- 
-   
-    private void OnDestroy()
-    {
-        
-        gameEvents.OnRoundStarted -= startGame;
     }
 
     protected void startGame()
@@ -142,7 +133,7 @@ public abstract class ACharacter : MonoBehaviour
 
         }
     }
-    public void setMask(PowerMaskStats Mask)
+    public virtual void setMask(PowerMaskStats Mask)
     {
         print("setMask");
         if(Mask == null)
@@ -174,13 +165,14 @@ public abstract class ACharacter : MonoBehaviour
         print("NEW MASK");
     }
 
-    public void startHover()
+    public virtual void startHover()
     {
         //Efecto 
     }
 
-    public void stopHover()
+    public virtual void stopHover()
     {
+        //Efecto 
     }
     public bool checkHittable(HittableCheckTypes checkType, ACharacter attacker)
     {
