@@ -15,13 +15,14 @@ MonoBehaviour:
   speed: 5
   detectRadius: 10
   lifeModifier: 0
-  controller: {fileID: 9100000, guid: b0a11901466d56646b2ed6e366e6d659, type: 2}
+  controller: {fileID: 22100000, guid: 5017b3d0b330f4a4da5e8a7c3f83a34d, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
   type: 1
   Price: 0
-  cooldown: 0
+  cooldown: 2
   sprite: {fileID: 0}
   attackDistance: 1
+  attackCooldown: 0
   effects: []
   hittablecheck: 0
   references:
