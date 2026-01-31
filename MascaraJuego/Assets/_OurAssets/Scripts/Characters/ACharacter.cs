@@ -32,7 +32,7 @@ public abstract class ACharacter : MonoBehaviour
     {
         _currentLife -= damage;
         
-        Color ogColor = spriteRenderer.color;
+        /*Color ogColor = spriteRenderer.color;
         Sequence.Create(cycles: 1)
             .Chain(Tween.ScaleX(transform, 0.9f, 0.15f, Ease.OutBounce))
             .Group(Tween.Custom(startValue: ogColor,
@@ -43,11 +43,30 @@ public abstract class ACharacter : MonoBehaviour
             .Group(Tween.Custom(startValue: new Color(0.6f, 0.1f, 0.1f, 1),
                 endValue: ogColor,
                 duration: 0.15f, onValueChange:
-                value => spriteRenderer.color = value));
+                value => spriteRenderer.color = value));*/
+        
+        Color ogColor = spriteRenderer.color;
+        float endAngle = spriteRenderer.flipX ? -15 : 15;
+        Vector3 rot = new Vector3(0, 0, endAngle);
+        Sequence.Create(cycles: 1)
+            .Chain(Tween.ScaleX(transform, 0.7f, 0.15f, Ease.OutBounce))
+                .Group(Tween.ScaleY(transform, 0.8f, 0.15f, Ease.OutBounce))
+                .Group(Tween.LocalRotation(transform, rot, 0.15f, Ease.OutBounce))
+                .Group(Tween.Custom(startValue: ogColor,
+                    endValue: new Color(0.6f, 0.1f, 0.1f, 1),
+                    duration: 0.15f, onValueChange:
+                    value => spriteRenderer.color = value))
+            .Chain(Tween.ScaleX(transform, 1f, 0.15f, Ease.OutBounce))
+                .Group(Tween.ScaleY(transform, 1f, 0.15f, Ease.OutBounce))
+                .Group(Tween.LocalRotation(transform, Vector3.zero, 0.15f, Ease.OutBounce))
+                .Group(Tween.Custom(startValue: new Color(0.6f, 0.1f, 0.1f, 1),
+                    endValue: ogColor,
+                    duration: 0.15f, onValueChange:
+                    value => spriteRenderer.color = value));
         
         if (_currentLife < 0)
         {
-            this.InvokeDelayed(0.3f, Die);
+            Die();
         }
     }
     public void setLifeToMax()
