@@ -12,6 +12,7 @@ public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
   [field:SerializeField]  public LayerMask EnemyLayerMask { get; private set; }
     [SerializeField] float stopWalkDistance = 1;
 
+
     public void setObjective(ACharacter character)
     {
         if (objective != null && !objective.Equals(character))

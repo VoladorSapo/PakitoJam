@@ -68,10 +68,13 @@ public abstract class ACharacter : MonoBehaviour
     private void Awake()
     {
         characterBehaviour = GetComponent<CharacterAssetBehaviourRunner>();
-     startGame();
-        activeEffects = new List<ATimedEffect>();
+            activeEffects = new List<ATimedEffect>();
 
     }
+ 
+    private void OnDestroy()
+    {
+     //  gameEvents.OnRoundStarted -= startGame;
 
     private void OnDestroy()
     {
@@ -94,6 +97,8 @@ public abstract class ACharacter : MonoBehaviour
     void Start()
     {
         print("start"+gameObject.name);
+      //  gameEvents.OnRoundStarted += startGame;
+
         dieEvent = new UnityEvent<ACharacter>();
     }
 

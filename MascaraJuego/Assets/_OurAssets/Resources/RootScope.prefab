@@ -58,5 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioGallery: {fileID: 11400000, guid: 7df08c506d0bb5346bd5cf91bfe26684, type: 2}
+  musicTracks: 5
   gameSettings: {fileID: 11400000, guid: 9e8e8643b1196f2469657a676af1902e, type: 2}
   singletonLocator: {fileID: 11400000, guid: b023b9f530f4ce1438a6b2a3378c1be0, type: 2}
+  prefabLocator: {fileID: 11400000, guid: e9aeca32cad156445af215f0915495af, type: 2}

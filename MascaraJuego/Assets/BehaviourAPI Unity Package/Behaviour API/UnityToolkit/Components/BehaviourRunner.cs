@@ -102,7 +102,7 @@ namespace BehaviourAPI.UnityToolkit
                 _executionGraph.Update();
                 if (_executionGraph.Status != Status.Running)
                 {
-                    Debug.LogWarning("EndBehaviour");
+                  //  Debug.LogWarning("EndBehaviour");
 
                     if (executeOnLoop)
                     {

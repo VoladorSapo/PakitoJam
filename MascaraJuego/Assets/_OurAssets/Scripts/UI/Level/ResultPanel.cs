@@ -21,6 +21,8 @@ public class ResultPanel : MonoBehaviour
         
         canvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
         canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
         
         gameEvents.OnRoundEnded += ProcessRoundEnd;
         gameEvents.OnResultScreenCalled += FadeIn;
@@ -37,13 +39,18 @@ public class ResultPanel : MonoBehaviour
         losePanel.SetActive(!hasWon);
     }
     
-    void FadeIn() {
+    void FadeIn()
+    {
         Tween.Custom(
             startValue: 0f,
             endValue: 1f,
             duration: fadeDuration,
             onValueChange: value => canvasGroup.alpha = value
-        );
+        ).OnComplete(() =>
+        {
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
+        });
     }
     
 }

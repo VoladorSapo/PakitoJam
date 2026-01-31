@@ -17,6 +17,7 @@ public class PowerMaskStats : ScriptableObject
     public Sprite sprite;
     public float attackDistance;
     [SerializeField][SerializeReference] public List<ABaseEffect> effects;
+    public HittableCheckTypes hittablecheck;
     public void addDamageEffect(int damage)
     {
         effects.Add(new DamageEffect(damage));

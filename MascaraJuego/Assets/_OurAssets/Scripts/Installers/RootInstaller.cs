@@ -12,6 +12,7 @@ public class RootInstaller : MonoBehaviour, IInstaller
     [HorizontalLine(color: EColor.Orange)]
     [SerializeField, Expandable] GameSettings gameSettings;
     [SerializeField, Expandable] SingletonLocator singletonLocator;
+    [SerializeField, Expandable] PrefabLocator prefabLocator;
     
     public void InstallBindings(ContainerBuilder builder)
     {
@@ -26,6 +27,7 @@ public class RootInstaller : MonoBehaviour, IInstaller
         builder.RegisterValue(new GameEvents());
         builder.RegisterValue(new UIEvents());
         builder.RegisterValue(singletonLocator);
+        builder.RegisterValue(prefabLocator);
         
         //Servicios
         builder.RegisterValue(new SceneService());

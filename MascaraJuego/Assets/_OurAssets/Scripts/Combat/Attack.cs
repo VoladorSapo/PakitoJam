@@ -6,7 +6,6 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private ACharacter _owner;
 
-    [SerializeField] private HittableCheckTypes _type;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,7 +13,7 @@ public class Attack : MonoBehaviour
         ACharacter character = collision.GetComponent<ACharacter>();
         if(character!= null)
         {
-            if (character.checkHittable(_type,_owner))
+            if (character.checkHittable(_owner._currentMask.powerMaskStat.hittablecheck, _owner))
             {
                 print("Hittable");
 
