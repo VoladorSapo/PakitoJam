@@ -22,8 +22,8 @@ public class BaseEnemy : ACharacter
         var textParticle = Instantiate(prefabLocator.OnomatopoeiaParticlePrefab).GetComponent<TextParticle>();
         textParticle.transform.position = this.transform.position;
 
-        Color color1 = new Color(0.6f, 0.2f, 0.1f);
-        Color color2 = new Color(0.2f, 0.1f, 0.1f);
+        Color color1 = new Color(0.9f, 0.9f, 0.9f);
+        Color color2 = new Color(0.7f, 0.7f, 0.7f);
         Color finalColor = AuxiliaryMethods.GetRandomColor(color1, color2);
         textParticle.PlayAnimation(AuxiliaryMethods.GetRandomLetter().ToString(), finalColor);
     }
