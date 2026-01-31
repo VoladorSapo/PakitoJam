@@ -16,7 +16,10 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
   
     public void OnDrag(PointerEventData eventData)
     {
-       this.transform.position = eventData.position;
+        var screenPoint = Input.mousePosition;
+        screenPoint.z = 10.0f; //distance of the plane from the camera
+        transform.position = Camera.main.ScreenToWorldPoint(screenPoint);
+       // this.transform.position = eventData.position;
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero);
         if (hit)
         {

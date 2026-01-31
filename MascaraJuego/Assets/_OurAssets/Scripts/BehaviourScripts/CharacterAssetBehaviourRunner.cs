@@ -8,8 +8,7 @@ public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
 {
     public ACharacter character {  get; private set; }
     [field: SerializeField] public ACharacter objective;
-    [SerializeField] float attackDistance;
-
+    float attackDistance;
     public bool actionFinished {  get; private set; }
   [field:SerializeField]  public LayerMask EnemyLayerMask { get; private set; }
 

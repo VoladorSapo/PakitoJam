@@ -157,25 +157,32 @@ public abstract class APowerMask
     Animator anim;
    protected ACharacter _character;
     PowerMaskStats powerMaskStat;
+
     public abstract void Die();
 
     public abstract void receiveDamage(int damage);
 
     public virtual void Attack()
     {
-
+        anim.Play("Attack", 0,0);
     }
 
     public virtual void setChar(ACharacter character,PowerMaskStats stats)
     {
+        
         _character = character;
         powerMaskStat = stats;
+        anim = _character.GetComponentInChildren<Animator>();
     }
     
     public abstract MaskTypes type();
 
     internal float getSpeed() => powerMaskStat.speed;
+    internal float getAttackDistance() => powerMaskStat.attackDistance;
+
     internal float getDetectRadius() => powerMaskStat.detectRadius;
+
+    
 
 }
 public class CombatMask : APowerMask

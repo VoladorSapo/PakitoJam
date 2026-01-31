@@ -14,5 +14,7 @@ public class PowerMaskStats : ScriptableObject
     public int Price;
     public float cooldown;
     public Sprite sprite;
+    public float attackDistance;
+
 
 }
