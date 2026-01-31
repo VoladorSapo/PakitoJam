@@ -137,12 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aa30199925cc8419f616608bdc3f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMask: {fileID: 0}
+  startingMask: {fileID: 11400000, guid: a29d9719e08e909428d6cee362374cb1, type: 2}
   _baseLife: 5
   _currentMaxLife: 0
   _currentLife: 0
   <_baseDamage>k__BackingField: 2
   <Dead>k__BackingField: 0
+  <onRing>k__BackingField: 0
   SpawnWeight: 0
 --- !u!50 &44267629582793350
 Rigidbody2D:
@@ -261,7 +262,7 @@ MonoBehaviour:
   <EnemyLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
-  walkStopDistance: 0
+  stopWalkDistance: 1
 --- !u!1 &8498798207767024584
 GameObject:
   m_ObjectHideFlags: 0

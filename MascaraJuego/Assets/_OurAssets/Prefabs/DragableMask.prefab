@@ -90,7 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskStats: {fileID: 11400000, guid: a29d9719e08e909428d6cee362374cb1, type: 2}
-  alwaysHit: 1
+  canvas: {fileID: 0}
+  alwaysHit: 0
   cooldownImage: {fileID: 2392256099222938238}
   cooldownTimer:
     countdownTime: 0

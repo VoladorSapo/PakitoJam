@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 5
   detectRadius: 10
   lifeModifier: 2
-  controller: {fileID: 0}
+  controller: {fileID: 9100000, guid: c521f71509dc35f46aa1e706f487c17d, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
   type: 0
   Price: 0
@@ -23,6 +23,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   attackDistance: 1
   effects: []
+  hittablecheck: 0
   references:
     version: 2
     RefIds: []

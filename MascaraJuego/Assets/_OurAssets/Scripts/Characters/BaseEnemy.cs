@@ -11,6 +11,7 @@ public class BaseEnemy : ACharacter
     {
         this.gameEvents = gameEvents;
         this.prefabLocator = prefabLocator;
+        startGame();
     }
     public override void Die()
     {

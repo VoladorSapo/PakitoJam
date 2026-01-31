@@ -79,7 +79,7 @@ public abstract class ACharacter : MonoBehaviour
         gameEvents.OnRoundStarted -= startGame;
     }
 
-    private void startGame()
+    protected void startGame()
     {
         setOnRing(false);
         _currentMaxLife = _baseLife;
@@ -144,6 +144,7 @@ public abstract class ACharacter : MonoBehaviour
     }
     public void setMask(PowerMaskStats Mask)
     {
+        print("setMask");
         if(Mask == null)
         {
             GetComponent<CharacterAssetBehaviourRunner>().enabled = false;
@@ -270,6 +271,8 @@ public abstract class APowerMask
         _character = character;
         powerMaskStat = stats;
         anim = _character.GetComponentInChildren<Animator>();
+        Debug.Log("animatorcontroller");
+        anim.runtimeAnimatorController = stats.controller;
         foreach (var effect in stats.effects)
         {
             effect.setOwner(character);
