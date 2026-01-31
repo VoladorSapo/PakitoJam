@@ -20,6 +20,8 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
     Vector3 startPosition;
     GlobalCamera globalCamera;
     RectTransform rectTransform;
+
+    Image image;
     
     void Awake()
     {
@@ -27,6 +29,8 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
         startPosition = transform.localPosition;
         globalCamera = singletonLocator.GlobalCamera;
         cooldownTimer.CountdownTime = maskStats.cooldown;
+        image = GetComponent<Image>();
+        image.sprite = maskStats.sprite;
     }
 
     void Update()
