@@ -1,0 +1,15 @@
+using BehaviourAPI.UnityToolkit.GUIDesigner.Framework;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "PowerMaskStat", menuName = "ScriptableObjects/CombatMaskStats")]
+
+public class PowerMaskStats : ScriptableObject
+{
+    public float speed;
+    public float detectRadius;
+    public int lifeModifier;
+    public RuntimeAnimatorController controller;
+    public BehaviourSystem IASystem;
+    public MaskTypes type;
+
+}
