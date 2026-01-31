@@ -469,7 +469,7 @@ MonoBehaviour:
   executeOnLoop: 1
   interruptOptions: 2
   _eventHandler:
-    debugStatusChanges: 0
+    debugStatusChanges: 1
     identifier: 
   System: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
   objective: {fileID: 0}
@@ -981,7 +981,7 @@ Animator:
   m_GameObject: {fileID: 1745183924}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0e8db2e8b9b410b4387c7572974bfc68, type: 2}
+  m_Controller: {fileID: 9100000, guid: c521f71509dc35f46aa1e706f487c17d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -8,6 +8,7 @@ using System;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using Reflex.Attributes;
+using System.Collections;
 
 public abstract class ACharacter : MonoBehaviour
 {
@@ -145,6 +146,11 @@ public abstract class ACharacter : MonoBehaviour
         {
             return;
         }
+        bool firstMask = false;
+        if (_currentMask == null)
+        {
+            firstMask = true;
+        }
         switch (Mask.type)
         {
             case MaskTypes.CombatMask:
@@ -159,7 +165,15 @@ public abstract class ACharacter : MonoBehaviour
                 break;
         }
         _currentMask.setChar(this,Mask);
-        setMaxLifeModifier(Mask.lifeModifier);
+        if (firstMask)
+        {
+            _currentMask.setAnim();
+        }
+        else
+        {
+            StartCoroutine(_currentMask.changeAnim());
+        }
+            setMaxLifeModifier(Mask.lifeModifier);
         GetComponent<CharacterAssetBehaviourRunner>().enabled = true;
 
         print("NEW MASK");
@@ -167,6 +181,7 @@ public abstract class ACharacter : MonoBehaviour
 
     public virtual void startHover()
     {
+        print("HOVER");
         //Efecto 
     }
 
@@ -255,7 +270,7 @@ public abstract class APowerMask
 
     public virtual void Attack()
     {
-        Debug.Log("atacar");
+        Debug.Log($"{_character.name}: atacar");
         anim.Play("attack", 0,0);
     }
 
@@ -268,20 +283,34 @@ public abstract class APowerMask
        spriteRenderer = _character.GetComponentInChildren<SpriteRenderer>();
         Debug.Log("animatorcontroller");
 
-        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-        int stateHash = stateInfo.fullPathHash;
-        float normalizedTime = stateInfo.normalizedTime;
-
-        anim.runtimeAnimatorController = stats.controller;
-
-        // 3. Restore animation position
-        anim.Play(stateHash, 0, normalizedTime);
+       
         foreach (var effect in stats.effects)
         {
             effect.setOwner(character);
         }
     }
-    
+    public virtual void setAnim()
+    {
+        anim.runtimeAnimatorController = powerMaskStat.controller;
+    }
+   public IEnumerator changeAnim()
+    {
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        int stateHash = stateInfo.fullPathHash;
+        float normalizedTime = stateInfo.normalizedTime % 1f;
+
+        // Swap controller
+        anim.runtimeAnimatorController = powerMaskStat.controller;
+
+        // Wait for Animator to initialize
+        yield return null;
+
+        // Force animator update (important)
+        anim.Update(0f);
+
+        // Restore state
+        anim.Play(stateHash, 0, normalizedTime);
+    }
     public abstract MaskTypes type();
 
     internal float getSpeed() => powerMaskStat.speed * getMultiplier(MultiplierType.Speed);
@@ -343,10 +372,7 @@ public abstract class APowerMask
         anim.Play("idle", 0, 0);
     }
 
-    internal float getAttackCooldown()
-    {
-        return 0;
-    }
+    internal float getAttackCooldown() => powerMaskStat.cooldown / getMultiplier(MultiplierType.Speed);
 }
 public class CombatMask : APowerMask
 {

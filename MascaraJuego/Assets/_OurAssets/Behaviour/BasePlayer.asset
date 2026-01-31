@@ -21,7 +21,7 @@ MonoBehaviour:
       nodes:
       - name: 
         id: 3844902f-4c2e-4636-ab16-c574cb281454
-        position: {x: -45.6, y: -323.2}
+        position: {x: 150, y: 0}
         node:
           rid: 2590372045617102930
         references: []
@@ -29,9 +29,9 @@ MonoBehaviour:
         childIds:
         - 856766db-f228-4b86-bfc5-4640ab3c6aae
         - 4fd7c9bb-36df-4d23-9f86-14c767e2f6fd
-      - name: 
+      - name: mainLoop
         id: 4fd7c9bb-36df-4d23-9f86-14c767e2f6fd
-        position: {x: 0, y: 0}
+        position: {x: 450, y: 200}
         node:
           rid: 2590372030727586123
         references: []
@@ -41,7 +41,7 @@ MonoBehaviour:
         - afb61c33-b3c7-4315-8b0c-30649c62ec3e
       - name: Sequencer
         id: afb61c33-b3c7-4315-8b0c-30649c62ec3e
-        position: {x: 16, y: 141.6}
+        position: {x: 450, y: 400}
         node:
           rid: 2590372030727586084
         references: []
@@ -53,7 +53,7 @@ MonoBehaviour:
         - 2937ae15-d583-49e2-af2f-14fcddc2403f
       - name: WalkToObjective
         id: c5cd02c9-52f9-48cb-be0b-18b13daf9409
-        position: {x: 0, y: 400}
+        position: {x: 450, y: 600}
         node:
           rid: 2590372030727586094
         references:
@@ -67,7 +67,7 @@ MonoBehaviour:
         childIds: []
       - name: Attack
         id: 359a02f6-1454-44b4-9b33-39abd440dbd6
-        position: {x: 450, y: 800}
+        position: {x: 750, y: 1200}
         node:
           rid: 2590372030727586102
         references:
@@ -77,11 +77,11 @@ MonoBehaviour:
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
-        - 4961448b-4dbd-4ee4-9dc3-38c840b6ff4e
+        - c7b9f890-238a-4a14-9ae8-204ee920783f
         childIds: []
-      - name: 
+      - name: truefalse
         id: 2937ae15-d583-49e2-af2f-14fcddc2403f
-        position: {x: 300, y: 400}
+        position: {x: 750, y: 600}
         node:
           rid: 2590372030727586201
         references:
@@ -94,20 +94,10 @@ MonoBehaviour:
         - afb61c33-b3c7-4315-8b0c-30649c62ec3e
         childIds:
         - de2ade1d-64ea-4da9-8c42-7f87865aa495
-        - 4961448b-4dbd-4ee4-9dc3-38c840b6ff4e
-      - name: 
-        id: 4961448b-4dbd-4ee4-9dc3-38c840b6ff4e
-        position: {x: 450, y: 600}
-        node:
-          rid: 2590372030727586203
-        references: []
-        parentIds:
-        - 2937ae15-d583-49e2-af2f-14fcddc2403f
-        childIds:
-        - 359a02f6-1454-44b4-9b33-39abd440dbd6
-      - name: 
+        - a26c3f60-47bf-4332-97fe-2750cf63d9f5
+      - name: forcefail
         id: de2ade1d-64ea-4da9-8c42-7f87865aa495
-        position: {x: 150, y: 600}
+        position: {x: 600, y: 800}
         node:
           rid: 2590372030727586204
         references:
@@ -119,9 +109,9 @@ MonoBehaviour:
         parentIds:
         - 2937ae15-d583-49e2-af2f-14fcddc2403f
         childIds: []
-      - name: 
+      - name: FindOjective
         id: 65b1cbf7-4f78-437f-90ab-182b3ab73da6
-        position: {x: -300, y: 400}
+        position: {x: 150, y: 600}
         node:
           rid: 2590372030727586220
         references:
@@ -135,7 +125,7 @@ MonoBehaviour:
         childIds: []
       - name: EnterRing
         id: 856766db-f228-4b86-bfc5-4640ab3c6aae
-        position: {x: -377.6, y: -54.399998}
+        position: {x: -150, y: 200}
         node:
           rid: 2590372045617102929
         references:
@@ -147,6 +137,41 @@ MonoBehaviour:
         parentIds:
         - 3844902f-4c2e-4636-ab16-c574cb281454
         childIds: []
+      - name: waitcooldown
+        id: e510c0ab-fa5a-4019-8da1-4c0afa1ea393
+        position: {x: 1050, y: 1200}
+        node:
+          rid: 2590372047603368844
+        references:
+        - fieldName: Action
+          value:
+            rid: 2590372047603368845
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - c7b9f890-238a-4a14-9ae8-204ee920783f
+        childIds: []
+      - name: attacksequence
+        id: c7b9f890-238a-4a14-9ae8-204ee920783f
+        position: {x: 900, y: 1000}
+        node:
+          rid: 2590372047603368846
+        references: []
+        parentIds:
+        - a26c3f60-47bf-4332-97fe-2750cf63d9f5
+        childIds:
+        - 359a02f6-1454-44b4-9b33-39abd440dbd6
+        - e510c0ab-fa5a-4019-8da1-4c0afa1ea393
+      - name: attackloop
+        id: a26c3f60-47bf-4332-97fe-2750cf63d9f5
+        position: {x: 900, y: 800}
+        node:
+          rid: 2590372048874766987
+        references: []
+        parentIds:
+        - 2937ae15-d583-49e2-af2f-14fcddc2403f
+        childIds:
+        - c7b9f890-238a-4a14-9ae8-204ee920783f
     pushPerceptions: []
   references:
     version: 2
@@ -198,10 +223,6 @@ MonoBehaviour:
         unpause:
           componentName: 
           methodName: 
-    - rid: 2590372030727586203
-      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data:
-        Iterations: -1
     - rid: 2590372030727586204
       type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
@@ -239,3 +260,17 @@ MonoBehaviour:
     - rid: 2590372045617102931
       type: {class: enterRingAction, ns: , asm: Assembly-CSharp}
       data: 
+    - rid: 2590372047603368844
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 2590372047603368845
+      type: {class: WaitCoolDownAction, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2590372047603368846
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 2590372048874766987
+      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        Iterations: -1

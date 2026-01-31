@@ -40,14 +40,12 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
         var screenPoint = Input.mousePosition;
         screenPoint.z = 10.0f;
         transform.position = globalCamera.UICamera.ScreenToWorldPoint(screenPoint);
-
-        RaycastHit2D hit = Physics2D.Raycast(globalCamera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(globalCamera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero );
         if (hit)
         {
             BasePlayerCharacter character = hit.collider.GetComponent<BasePlayerCharacter>();
             if (character != null)
             {
-           
                 if (currentHoverPlayer == null || !currentHoverPlayer.Equals(character))
                 {
                     if (currentHoverPlayer != null)
