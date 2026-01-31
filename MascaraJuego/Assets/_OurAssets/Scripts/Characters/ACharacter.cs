@@ -154,20 +154,24 @@ public enum HittableCheckTypes
 
 public abstract class APowerMask
 {
+    Animator anim;
    protected ACharacter _character;
     PowerMaskStats powerMaskStat;
     public abstract void Die();
 
     public abstract void receiveDamage(int damage);
 
-    public abstract void Attack();
+    public virtual void Attack()
+    {
+
+    }
 
     public virtual void setChar(ACharacter character,PowerMaskStats stats)
     {
         _character = character;
         powerMaskStat = stats;
     }
-
+    
     public abstract MaskTypes type();
 
     internal float getSpeed() => powerMaskStat.speed;
@@ -176,10 +180,7 @@ public abstract class APowerMask
 }
 public class CombatMask : APowerMask
 {
-    public override void Attack()
-    {
-        Debug.Log("Ataque Normal");
-    }
+   
 
     public override void Die()
     {
@@ -200,12 +201,7 @@ public class CombatMask : APowerMask
 
 public class FreezeMask : APowerMask
 {
-    public override void Attack()
-    {
-        Debug.Log("Ataque Hielo");
-
-    }
-
+ 
     public override void Die()
     {
         _character.Die();

@@ -18,6 +18,7 @@ public class AttackAction : UnityAction
     {
         base.Start();
         characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
+        characterBehaviour.startAction();
         characterBehaviour.character._currentMask.Attack();
     }
 }

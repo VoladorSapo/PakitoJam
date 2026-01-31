@@ -2,6 +2,7 @@ using UnityEngine;
 using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using NaughtyAttributes;
 using BehaviourAPI.Core;
+using System;
 
 public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
 {
@@ -29,5 +30,13 @@ public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
     public Status forceFail()
     {
         return Status.Failure;
+    }
+  public  void startAction()
+    {
+        actionFinished = false;
+    }
+    public void endCurrentAction()
+    {
+        actionFinished = true;
     }
 }

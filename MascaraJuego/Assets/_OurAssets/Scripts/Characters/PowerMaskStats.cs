@@ -11,5 +11,8 @@ public class PowerMaskStats : ScriptableObject
     public RuntimeAnimatorController controller;
     public BehaviourSystem IASystem;
     public MaskTypes type;
+    public int Price;
+    public float cooldown;
+    public Sprite sprite;
 
 }
