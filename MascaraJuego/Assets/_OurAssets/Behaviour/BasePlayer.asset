@@ -38,7 +38,7 @@ MonoBehaviour:
         parentIds:
         - 3844902f-4c2e-4636-ab16-c574cb281454
         childIds:
-        - afb61c33-b3c7-4315-8b0c-30649c62ec3e
+        - 504c4af0-ad4e-4ef5-ac39-3ea224c63e79
       - name: Sequencer
         id: afb61c33-b3c7-4315-8b0c-30649c62ec3e
         position: {x: 450, y: 400}
@@ -46,14 +46,14 @@ MonoBehaviour:
           rid: 2590372030727586084
         references: []
         parentIds:
-        - 4fd7c9bb-36df-4d23-9f86-14c767e2f6fd
+        - 504c4af0-ad4e-4ef5-ac39-3ea224c63e79
         childIds:
         - 65b1cbf7-4f78-437f-90ab-182b3ab73da6
         - c5cd02c9-52f9-48cb-be0b-18b13daf9409
         - 2937ae15-d583-49e2-af2f-14fcddc2403f
       - name: WalkToObjective
         id: c5cd02c9-52f9-48cb-be0b-18b13daf9409
-        position: {x: 450, y: 600}
+        position: {x: 301.6, y: 842.4}
         node:
           rid: 2590372030727586094
         references:
@@ -111,7 +111,7 @@ MonoBehaviour:
         childIds: []
       - name: FindOjective
         id: 65b1cbf7-4f78-437f-90ab-182b3ab73da6
-        position: {x: 150, y: 600}
+        position: {x: 46.4, y: 746.4}
         node:
           rid: 2590372030727586220
         references:
@@ -172,6 +172,31 @@ MonoBehaviour:
         - 2937ae15-d583-49e2-af2f-14fcddc2403f
         childIds:
         - c7b9f890-238a-4a14-9ae8-204ee920783f
+      - name: 
+        id: 504c4af0-ad4e-4ef5-ac39-3ea224c63e79
+        position: {x: 878.4, y: 216}
+        node:
+          rid: 2590372050470436940
+        references: []
+        parentIds:
+        - 4fd7c9bb-36df-4d23-9f86-14c767e2f6fd
+        childIds:
+        - afb61c33-b3c7-4315-8b0c-30649c62ec3e
+        - a8f2049a-90ac-4855-b19c-7c630cb73aba
+      - name: 
+        id: a8f2049a-90ac-4855-b19c-7c630cb73aba
+        position: {x: 1155.865, y: 445.31223}
+        node:
+          rid: 2590372050470436945
+        references:
+        - fieldName: Action
+          value:
+            rid: 2590372050470436946
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 504c4af0-ad4e-4ef5-ac39-3ea224c63e79
+        childIds: []
     pushPerceptions: []
   references:
     version: 2
@@ -274,3 +299,13 @@ MonoBehaviour:
       type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data:
         Iterations: -1
+    - rid: 2590372050470436940
+      type: {class: SelectorNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 2590372050470436945
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 2590372050470436946
+      type: {class: IdleAction, ns: , asm: Assembly-CSharp}
+      data: 

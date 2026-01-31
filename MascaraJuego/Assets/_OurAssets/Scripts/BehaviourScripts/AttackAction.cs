@@ -22,3 +22,21 @@ public class AttackAction : UnityAction
         characterBehaviour.character._currentMask.Attack();
     }
 }
+public class IdleAction : UnityAction
+{
+    CharacterAssetBehaviourRunner characterBehaviour;
+    public override Status Update()
+    {
+        
+            return Status.Success;
+        //}
+        //return Status.Running;
+    }
+    public override void Start()
+    {
+        base.Start();
+        characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
+        //characterBehaviour.startAction();
+        characterBehaviour.character._currentMask.Idle();
+    }
+}
