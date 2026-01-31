@@ -17,6 +17,13 @@ public class PowerMaskStats : ScriptableObject
     public Sprite sprite;
     public float attackDistance;
     [SerializeField][SerializeReference] public List<ABaseEffect> effects;
-
+    public void addDamageEffect(int damage)
+    {
+        effects.Add(new DamageEffect(damage));
+    }
+    public void addFreezeEffect(float duration, float slowMultiplier)
+    {
+        effects.Add(new FreezeEffect(duration, slowMultiplier));
+    }
 
 }

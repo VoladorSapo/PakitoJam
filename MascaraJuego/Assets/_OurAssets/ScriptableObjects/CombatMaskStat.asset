@@ -22,3 +22,7 @@ MonoBehaviour:
   cooldown: 0
   sprite: {fileID: 0}
   attackDistance: 1
+  effects: []
+  references:
+    version: 2
+    RefIds: []
