@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using Reflex.Attributes;
 
 public abstract class ACharacter : MonoBehaviour
 {
@@ -19,10 +20,13 @@ public abstract class ACharacter : MonoBehaviour
     [SerializeField, ReadOnly] private int _currentLife;
     [field:SerializeField] public int _baseDamage { get; private set; }
  [field:SerializeField]   public bool Dead { get; private set; }
+    [field: SerializeField] public bool onRing { get; private set; }
+
     UnityEvent<ACharacter> dieEvent;
 
     List<ATimedEffect> activeEffects;
 
+    [Inject] GameEvents gameEvents;
     public void getDamaged(int damage)
     {
         _currentLife -= damage;
@@ -69,8 +73,15 @@ public abstract class ACharacter : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        
+        gameEvents.OnRoundStarted -= startGame;
+    }
+
     private void startGame()
     {
+        setOnRing(false);
         _currentMaxLife = _baseLife;
         setLifeToMax();
         Dead = false;
@@ -212,6 +223,11 @@ public abstract class ACharacter : MonoBehaviour
     {
         dieEvent.RemoveListener(action);
 
+    }
+
+    internal void setOnRing(bool onRing)
+    {
+        this.onRing = onRing;
     }
 }
 
