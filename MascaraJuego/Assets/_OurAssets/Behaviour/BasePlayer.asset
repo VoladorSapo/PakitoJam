@@ -30,7 +30,7 @@ MonoBehaviour:
         - afb61c33-b3c7-4315-8b0c-30649c62ec3e
       - name: Sequencer
         id: afb61c33-b3c7-4315-8b0c-30649c62ec3e
-        position: {x: 0, y: 200}
+        position: {x: 16, y: 141.6}
         node:
           rid: 2590372030727586084
         references: []

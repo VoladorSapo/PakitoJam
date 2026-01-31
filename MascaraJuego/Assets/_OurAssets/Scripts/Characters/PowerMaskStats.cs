@@ -1,4 +1,5 @@
 using BehaviourAPI.UnityToolkit.GUIDesigner.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PowerMaskStat", menuName = "ScriptableObjects/CombatMaskStats")]
@@ -15,6 +16,7 @@ public class PowerMaskStats : ScriptableObject
     public float cooldown;
     public Sprite sprite;
     public float attackDistance;
+    [SerializeField][SerializeReference] public List<ABaseEffect> effects;
 
 
 }
