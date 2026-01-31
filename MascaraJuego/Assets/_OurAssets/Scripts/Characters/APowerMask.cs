@@ -61,7 +61,7 @@ public abstract class APowerMask
     }
     public abstract MaskTypes type();
 
-    internal float getSpeed() => powerMaskStat.speed * getMultiplier(MultiplierType.Speed);
+    internal float getSpeed() => powerMaskStat.speedModifier * getMultiplier(MultiplierType.Speed);
     internal float getAttackDistance() => powerMaskStat.attackDistance;
 
     internal float getDetectRadius() => powerMaskStat.detectRadius;

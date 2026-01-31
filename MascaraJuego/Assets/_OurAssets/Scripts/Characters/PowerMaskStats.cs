@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class PowerMaskStats : ScriptableObject
 {
-    public float speed;
+    public float speedModifier;
     public float detectRadius;
     public int lifeModifier;
+    public int damageModifier;
+
     public RuntimeAnimatorController controller;
     public BehaviourSystem IASystem;
     public MaskTypes type;
@@ -16,7 +18,6 @@ public class PowerMaskStats : ScriptableObject
     public float cooldown;
     public Sprite sprite;
     public float attackDistance;
-    public float attackCooldown;
     [SerializeField][SerializeReference] public List<ABaseEffect> effects;
     public HittableCheckTypes hittablecheck;
     public void addDamageEffect(int damage)
