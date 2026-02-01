@@ -179,10 +179,13 @@ public class DragableMask : MonoBehaviour, IDragHandler, IDropHandler, IEndDragH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //if (eventData.button != PointerEventData.InputButton.)
+        //    return;
+        print("clickcount" + eventData.hovered);
         if (!enemiesSpawning) return;
 
         tutorialBox.SetActive(true);
-        tutorialBox.transform.position = startPosition + new Vector3(0,2,0);
+        tutorialBox.transform.position = startPosition + new Vector3(0, 2, 0);
         tutorialBox.GetComponentInChildren<TMP_Text>().text = maskStats.descriptionText;
     }
 
@@ -192,10 +195,7 @@ public class DragableMask : MonoBehaviour, IDragHandler, IDropHandler, IEndDragH
 
     }
 
-    //public void OnEndDrag(PointerEventData eventData)
-    //{
-    //    OnDrop(eventData);
-    //}
+
 }
 
 public enum MaskTypes
