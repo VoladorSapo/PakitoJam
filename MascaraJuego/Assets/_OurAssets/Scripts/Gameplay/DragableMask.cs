@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHandler
+public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHandler,IBeginDragHandler
 {
     [Inject] RoundScoreTracker scoreTracker;
     [Inject] GameEvents gameEvents;
@@ -29,10 +29,13 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
     private AudioConfiguration wrongHit;
     Image image;
 
+    bool enemiesSpawning;
+
   [SerializeField]  LayerMask layermask;
     
     void Awake()
     {
+         enemiesSpawning = false;
         rectTransform = GetComponent<RectTransform>();
         startPosition = transform.localPosition;
         globalCamera = singletonLocator.GlobalCamera;
@@ -44,7 +47,10 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
         confirmedHit = audioManager.CreateAudioBuilder().WithResource("ui confirm").BuildConfiguration();
         wrongHit = audioManager.CreateAudioBuilder().WithResource("ui back").WithPitch(0.5f).BuildConfiguration();
     }
-
+    private void Start()
+    {
+        gameEvents.FirstPlayerInRing += () => enemiesSpawning = true;
+    }
     void Update()
     {
         UpdateCooldown();
@@ -153,6 +159,17 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.localPosition = startPosition;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if(enemiesSpawning) return;
+        
+        tutorialArrow arrow = FindAnyObjectByType<tutorialArrow>();
+        if (arrow != null)
+        {
+            arrow.goNextPoint();
+        }
     }
 
     //public void OnEndDrag(PointerEventData eventData)

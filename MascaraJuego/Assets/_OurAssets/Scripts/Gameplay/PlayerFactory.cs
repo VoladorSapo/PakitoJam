@@ -51,7 +51,7 @@ public class PlayerFactory : MonoBehaviour
     void SpawnStartingPlayer()
     {
         float randomTime = Random.Range(1, 2);
-        this.InvokeDelayed(randomTime, () => SpawnPlayer());
+        this.InvokeDelayed(randomTime, () => SpawnFirstPlayer());
     }
     
     BasePlayerCharacter SpawnPlayer()
@@ -61,6 +61,15 @@ public class PlayerFactory : MonoBehaviour
         BasePlayerCharacter player = Instantiate(playerPrefab, slot.SpawnSpot.position, Quaternion.identity);
         player.Initialize(slot, audioManager);
         
+        return player;
+    }
+    BasePlayerCharacter SpawnFirstPlayer()
+    {
+        var slot = playerSlots[1];
+
+        BasePlayerCharacter player = Instantiate(playerPrefab, slot.SpawnSpot.position, Quaternion.identity);
+        player.Initialize(slot, audioManager);
+
         return player;
     }
 

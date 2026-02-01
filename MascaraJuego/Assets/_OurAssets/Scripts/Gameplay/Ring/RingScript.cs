@@ -61,6 +61,7 @@ public class RingScript : MonoBehaviour
         if (!roundScoreTracker.EnteredOnceInRing)
         {
             roundScoreTracker.EnteredOnceInRing = true;
+            gameEvents.NotifyFirstPlayerInRing();
             
         }
         
