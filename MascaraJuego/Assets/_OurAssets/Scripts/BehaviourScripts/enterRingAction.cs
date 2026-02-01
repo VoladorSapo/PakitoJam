@@ -1,6 +1,7 @@
 using BehaviourAPI.UnityToolkit;
 using BehaviourAPI.Core;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class enterRingAction : UnityAction
 {
@@ -53,9 +54,9 @@ public class enterRingAction : UnityAction
 }
 public class WaitCoolDownAction : UnityAction
 {
-    float time;
-    CharacterAssetBehaviourRunner characterBehaviour;
-    ACharacter character;
+ protected   float time;
+    protected CharacterAssetBehaviourRunner characterBehaviour;
+    protected ACharacter character;
     public override Status Update()
     {
         time += Time.deltaTime;
@@ -63,11 +64,15 @@ public class WaitCoolDownAction : UnityAction
         {
             Debug.Log($"Time:{time} {character._currentMask.getAttackCooldown()}");
         }
-        if(time>= character._currentMask.getAttackCooldown())
+        if(isOver())
         {
             return Status.Success;
         }
         return Status.Running;
+    }
+  protected  virtual bool isOver()
+    {
+        return time >= character._currentMask.getAttackCooldown() /2;
     }
     public override void Start()
     {
@@ -78,7 +83,18 @@ public class WaitCoolDownAction : UnityAction
     }
     }
 
-
+public class InitColDownAction : WaitCoolDownAction
+{
+    protected override bool isOver()
+    {
+        return time >= character._currentMask.getAttackCooldown();
+    }
+    public override void Start()
+    {
+        base.Start();
+        character._currentMask.Idle();
+    }
+}
 public class RetreatAction : UnityAction
 {
     CharacterAssetBehaviourRunner characterBehaviour;

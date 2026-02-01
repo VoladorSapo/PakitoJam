@@ -19,6 +19,8 @@ public class PowerMaskStats : ScriptableObject
     public float attackDistance;
     [SerializeField][SerializeReference] public List<ABaseEffect> effects;
     public HittableCheckTypes hittablecheck;
+    public float initCooldown = 0.2f;
+
     public void addDamageEffect(int damage)
     {
         effects.Add(new DamageEffect(damage));
