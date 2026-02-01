@@ -125,7 +125,6 @@ public void setLifeToMax()
 
     public virtual void Die()
     {
-        
         dieEvent.Invoke(this);
     }
     private void Awake()
