@@ -10,6 +10,7 @@ public class RoundController : MonoBehaviour
     [Inject] UIEvents uiEvents;
     [Inject] GameEvents gameEvents;
     [Inject] PauseService pauseService;
+    [Inject] MusicService musicService;
 
     [HorizontalLine(color: EColor.Blue)]
     [SerializeField] private bool debugStartCutscene;
@@ -51,25 +52,16 @@ public class RoundController : MonoBehaviour
     void StartRound()
     {
         roundStarted = true;
+        musicService.PlayMusic("Batalla", 0);
     }
 
     public void Update()
     {
         if(!roundStarted) return;
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            pauseService.Pause(PauseLevel.UI);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            WinRound();
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            LoseRound();
+            pauseService.Pause(PauseLevel.UI);
         }
     }
 
@@ -127,9 +119,11 @@ public class RoundController : MonoBehaviour
     public void MoveToMenu()
     {
         sceneServiceClient.ChangeScene(MenuScene);
+        musicService.StopMusic(0, 1);
     }
     public void MoveToCredits()
     {
         sceneServiceClient.ChangeScene(CreditsScene);
+        musicService.StopMusic(0, 1);
     }
 }
