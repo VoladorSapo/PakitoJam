@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedModifier: 1
   detectRadius: 10
-  lifeModifier: 3
+  lifeModifier: 4
   controller: {fileID: 22100000, guid: 883179a900c3d20478e2361d74e70445, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
   type: 6
   Price: 30
-  cooldown: 0.3
+  cooldown: 0.5
   sprite: {fileID: 0}
   attackDistance: 1
   effects:
@@ -33,4 +33,4 @@ MonoBehaviour:
       data:
         owner: {fileID: 0}
         objective: {fileID: 0}
-        damage: 1
+        damage: 3

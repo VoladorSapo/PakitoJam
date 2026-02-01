@@ -10449,14 +10449,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[1].time
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[1].value
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5443878206693979851, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

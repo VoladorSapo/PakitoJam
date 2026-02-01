@@ -215,8 +215,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.31879234
     - serializedVersion: 3
-      time: 9
-      value: 3
+      time: 6
+      value: 2
       inSlope: 0.1608095
       outSlope: 0.1608095
       tangentMode: 0

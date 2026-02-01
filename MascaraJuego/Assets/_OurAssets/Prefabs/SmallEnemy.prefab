@@ -189,7 +189,7 @@ MonoBehaviour:
   <onRing>k__BackingField: 0
   damagedCooldown: 0
   damagedCooldownTime: 0
-  SpawnWeight: 2
+  SpawnWeight: 0.75
 --- !u!50 &44267629582793350
 Rigidbody2D:
   serializedVersion: 5

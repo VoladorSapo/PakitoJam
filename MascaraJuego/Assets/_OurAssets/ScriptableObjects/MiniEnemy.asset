@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cd461fba8c3744884fb572ecff7001, type: 3}
   m_Name: MiniEnemy
   m_EditorClassIdentifier: 
-  speedModifier: 8
+  speedModifier: 9
   detectRadius: 10
   lifeModifier: -1
   controller: {fileID: 22100000, guid: 24348c7335d14c64289fa642790027cf, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
   type: 5
   Price: 5
-  cooldown: 0.2
+  cooldown: 0.1
   sprite: {fileID: 0}
   attackDistance: 1
   effects:
@@ -33,4 +33,4 @@ MonoBehaviour:
       data:
         owner: {fileID: 0}
         objective: {fileID: 0}
-        damage: 0
+        damage: 1
