@@ -7,6 +7,7 @@ using UnityEngine;
 public class FinalCountdown : MonoBehaviour
 {
     [Inject] GameEvents gameEvents;
+    [Inject] AudioManager audioManager;
     [SerializeField] CanvasGroup canvasGroup;
     
     [SerializeField] Transform textTransform;
@@ -19,10 +20,12 @@ public class FinalCountdown : MonoBehaviour
     
     Coroutine coroutine;
     private Tween fadeTween;
+    AudioConfiguration audioConfiguration;
     void Awake()
     {
         gameEvents.OnLosingAlerted += ProcessAlert;
         canvasGroup.alpha = 0;
+        audioConfiguration = audioManager.CreateAudioBuilder().WithResource("ui back").BuildConfiguration();
     }
     void OnDestroy()
     {
@@ -77,18 +80,25 @@ public class FinalCountdown : MonoBehaviour
         textMesh.text = "3";
         textTransform.localScale = Vector3.one * 1.5f;
         Tween.Scale(textTransform, 1, 1, Ease.InOutQuad);
+        audioManager.PlayAudio(audioConfiguration);
+        
         yield return new WaitForSeconds(1);
         
         textMesh.text = "2";
         textTransform.localScale = Vector3.one * 1.5f;
         Tween.Scale(textTransform, 1, 1, Ease.InOutQuad);
+        audioManager.PlayAudio(audioConfiguration);
+        
         yield return new WaitForSeconds(1);
         
         textMesh.text = "1";
         textTransform.localScale = Vector3.one * 1.5f;
         Tween.Scale(textTransform, 1, 1, Ease.InOutQuad);
+        audioManager.PlayAudio(audioConfiguration);
+        
         yield return new WaitForSeconds(1);
         
+        audioManager.PlayAudio(audioConfiguration);
         gameEvents.NotifyRoundEnd(false);
         FadeOut(1);
         hasLost = true;

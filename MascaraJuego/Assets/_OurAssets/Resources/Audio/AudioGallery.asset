@@ -30,7 +30,7 @@ MonoBehaviour:
     AudioResource: {fileID: 8300000, guid: 28e5b3c640c59814f8b28c89e1978da1, type: 3}
   - Name: ui select
     AudioResource: {fileID: 8300000, guid: 06269b65ed761c741af95caf3d61756b, type: 3}
-  - Name: uiconfirm
+  - Name: ui confirm
     AudioResource: {fileID: 8300000, guid: e3f4bc3339203a64db0fd33432e37c84, type: 3}
   - Name: ui start
     AudioResource: {fileID: 8300000, guid: 37e6b61b67ec1c540a3962425a147029, type: 3}

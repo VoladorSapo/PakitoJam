@@ -19,6 +19,7 @@ public class RootInstaller : MonoBehaviour, IInstaller
         PrimeTweenConfig.warnEndValueEqualsCurrent = false;
         PrimeTweenConfig.warnTweenOnDisabledTarget = false;
         
+        audioGallery.Initialize();
         var audioManager = new AudioManager(audioGallery);
         var musicService = new MusicService(audioManager, musicTracks);
         

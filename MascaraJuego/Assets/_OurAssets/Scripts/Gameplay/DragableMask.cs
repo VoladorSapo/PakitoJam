@@ -10,6 +10,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
     [Inject] GameEvents gameEvents;
     [Inject] SingletonLocator singletonLocator;
     [Inject] PrefabLocator prefabLocator;
+    [Inject] AudioManager audioManager;
     
     [SerializeField] PowerMaskStats maskStats;
     [SerializeField] Canvas canvas;
@@ -24,6 +25,8 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
     GlobalCamera globalCamera;
     RectTransform rectTransform;
 
+    private AudioConfiguration confirmedHit;
+    private AudioConfiguration wrongHit;
     Image image;
 
   [SerializeField]  LayerMask layermask;
@@ -37,6 +40,9 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
         image = GetComponent<Image>();
         image.sprite = maskStats.sprite;
         priceText.text = maskStats.Price.ToString();
+
+        confirmedHit = audioManager.CreateAudioBuilder().WithResource("ui confirm").BuildConfiguration();
+        wrongHit = audioManager.CreateAudioBuilder().WithResource("ui back").WithPitch(0.5f).BuildConfiguration();
     }
 
     void Update()
@@ -84,7 +90,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
             BasePlayerCharacter character = hit.collider.GetComponent<BasePlayerCharacter>();
             ProcessMaskHit(character);
         }
-        if (alwaysHit)
+        else if (alwaysHit)
         {
             ProcessMaskHit(null);
         }
@@ -94,6 +100,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
     {
         if (scoreTracker.HasEnoughGoldToRemove(maskStats.Price))
         {
+            audioManager.PlayAudio(confirmedHit);
             gameEvents.NotifyCoinSpent(maskStats.Price);
             character?.setMask(maskStats);
             ResetCooldown();
@@ -103,6 +110,12 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
             textParticle.transform.SetParent(canvas.transform, worldPositionStays: false);
             textParticle.transform.localPosition = GlobalCanvasPos(rectTransform, canvas);
             textParticle.PlayAnimation($"-{maskStats.Price}", new Color(0.5f, 0.1f, 0.1f, 1));
+            
+            audioManager.PlayAudio(confirmedHit);
+        }
+        else
+        {
+            audioManager.PlayAudio(wrongHit);
         }
 
     }
