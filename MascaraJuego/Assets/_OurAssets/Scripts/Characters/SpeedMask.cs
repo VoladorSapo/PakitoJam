@@ -14,6 +14,7 @@ public class SpeedMask : APowerMask
     {
         base.Attack();
         accelerate(0.1f);
+        _character.PlayGoofySound();
     }
 
     public override MaskTypes type()

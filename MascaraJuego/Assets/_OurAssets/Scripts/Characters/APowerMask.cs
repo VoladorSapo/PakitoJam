@@ -98,7 +98,10 @@ public abstract class APowerMask
         float val;
         if (multipliersDict.TryGetValue(multName, out val))
         {
-            multipliersDict[multName] = val / mult;
+            float a = val / mult;
+            a = MathF.Min(1, a);
+            multipliersDict[multName] =a;
+            
         }
     }
     public float getMultiplier(MultiplierType multName)

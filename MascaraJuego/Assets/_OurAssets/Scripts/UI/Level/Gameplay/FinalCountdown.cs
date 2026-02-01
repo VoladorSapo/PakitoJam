@@ -97,7 +97,7 @@ public class FinalCountdown : MonoBehaviour
         audioManager.PlayAudio(audioConfiguration);
         
         yield return new WaitForSeconds(1);
-        
+        yield return new WaitForSeconds(.5f);
         audioManager.PlayAudio(audioConfiguration);
         gameEvents.NotifyRoundEnd(false);
         FadeOut(1);
