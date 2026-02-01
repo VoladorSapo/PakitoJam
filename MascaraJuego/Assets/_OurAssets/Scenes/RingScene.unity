@@ -974,13 +974,17 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
+      propertyPath: 'enemyPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2438057366426751718, guid: 72eaf5363c439704bae4d1d2c679fe57, type: 3}
+    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: 'enemyPrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 2438057366426751718, guid: 7773e5e0a3b9023499cd5e7361b43094, type: 3}
+      objectReference: {fileID: 2438057366426751718, guid: baca6d8162e98434bb7e2431bb8a30f8, type: 3}
     - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: 'enemyPrefabs.Array.data[2]'
       value: 
-      objectReference: {fileID: 2438057366426751718, guid: 72eaf5363c439704bae4d1d2c679fe57, type: 3}
+      objectReference: {fileID: 2438057366426751718, guid: 7773e5e0a3b9023499cd5e7361b43094, type: 3}
     - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: countdownTimer.countdownTime
       value: 15
