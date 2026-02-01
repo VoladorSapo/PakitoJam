@@ -765,6 +765,14 @@ PrefabInstance:
       propertyPath: maskStats
       value: 
       objectReference: {fileID: 11400000, guid: ab354d8f0752ac949bbf6e562fa7baa9, type: 2}
+    - target: {fileID: 924913339601021455, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
+      propertyPath: possibleMessages.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 924913339601021455, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
+      propertyPath: 'possibleMessages.Array.data[3]'
+      value: READY TO RUMBLE !?
+      objectReference: {fileID: 0}
     - target: {fileID: 1158354515524577352, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: m_Name
       value: LevelPrefab
