@@ -18,7 +18,7 @@ public class BaseEnemy : ACharacter
         base.Die();
         gameEvents.NotifyEnemyDeath();
         Destroy(this.gameObject);
-        
+        gameEvents.NotifyCoinCollection(_currentMask.powerMaskStat.Price);
         var textParticle = Instantiate(prefabLocator.OnomatopoeiaParticlePrefab).GetComponent<TextParticle>();
         textParticle.transform.position = this.transform.position;
 
