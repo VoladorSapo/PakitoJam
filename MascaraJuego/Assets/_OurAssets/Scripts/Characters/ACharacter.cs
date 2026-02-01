@@ -18,13 +18,13 @@ public abstract class ACharacter : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] PowerMaskStats startingMask;
     [field:SerializeField, ReadOnly] public APowerMask _currentMask {  get; private set; }
-    [SerializeField] private int _baseLife;
-    [SerializeField,ReadOnly] private int _currentMaxLife;
+    [SerializeField] protected int _baseLife;
+    [SerializeField, ReadOnly] protected int _currentMaxLife;
     [SerializeField] private int _currentLife;
 
     Color supposedColor = new Color(1, 1, 1, 1);
-    [field:SerializeField] public int _baseDamage { get; private set; }
-    [field: SerializeField] public int _baseSpeed { get; private set; }
+    [field:SerializeField] public int _baseDamage { get; protected set; }
+    [field: SerializeField] public int _baseSpeed { get; protected set; }
 
     [field:SerializeField]   public bool Dead { get; private set; }
     [field: SerializeField] public bool onRing { get; private set; }

@@ -14,6 +14,10 @@ public class BasePlayerCharacter : ACharacter
 
     public void Initialize(PlayerSlot spawnSlot)
     {
+        _baseDamage = UnityEngine.Random.Range(AttackRanges.x, AttackRanges.y);
+        _baseLife  = UnityEngine.Random.Range(HealthRanges.x, HealthRanges.y);
+        _baseSpeed = UnityEngine.Random.Range(SpeedRanges.x, SpeedRanges.y);
+        
         spriteRenderer.material = new Material(spriteRenderer.material);
         this.spawnSlot = spawnSlot;
         this.spawnSlot.HasPlayer = true;
