@@ -10450,56 +10450,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: enemyPrefabs.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: 'enemyPrefabs.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2438057366426751718, guid: baca6d8162e98434bb7e2431bb8a30f8, type: 3}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: 'enemyPrefabs.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2438057366426751718, guid: 7773e5e0a3b9023499cd5e7361b43094, type: 3}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: 'enemyPrefabs.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2438057366426751718, guid: 72eaf5363c439704bae4d1d2c679fe57, type: 3}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[1].time
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[0].value
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[1].value
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[0].inSlope
-      value: 0.029658606
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[1].inSlope
-      value: 0.1608095
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[0].outSlope
-      value: 0.029658606
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[1].inWeight
-      value: 0.02700583
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[1].outSlope
-      value: 0.1608095
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414095928691523005, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
-      propertyPath: maxEnemyQualityCurve.m_Curve.Array.data[0].outWeight
-      value: 0.31879234
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5443878206693979851, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: m_AnchorMax.y

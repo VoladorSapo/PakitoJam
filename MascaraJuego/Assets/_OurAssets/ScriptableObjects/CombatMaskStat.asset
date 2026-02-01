@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedModifier: 5
   detectRadius: 10
-  lifeModifier: 6
+  lifeModifier: 3
   controller: {fileID: 9100000, guid: c521f71509dc35f46aa1e706f487c17d, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
   type: 0
   Price: 10
-  cooldown: 0.2
+  cooldown: 0.2575
   sprite: {fileID: 21300000, guid: 39f07b1e3fe778c42a83f3164b55c6e2, type: 3}
   attackDistance: 1
   effects:
