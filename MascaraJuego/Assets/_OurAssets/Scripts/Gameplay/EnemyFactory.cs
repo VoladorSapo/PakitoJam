@@ -58,10 +58,15 @@ public class EnemyFactory : MonoBehaviour
         if (countdownTimer.Decrement(Time.deltaTime * incrementFactor) && scoreTracker.EnemiesInRing - scoreTracker.PlayersInRing < maxEnemyQuantity)
         {
             BaseEnemy prefab = GetWeightedRandomEnemy(maxEnemyQuality);
-            
-            int enemiesToSpawn = prefab.SpawnCount + Mathf.RoundToInt(UnityEngine.Random.Range(0, maxMultipleSpawnFactor));
+
+            int enemiesToSpawn = 1;
+            if (prefab.SpawnCount > 1)
+            {
+                enemiesToSpawn = prefab.SpawnCount + Mathf.RoundToInt(UnityEngine.Random.Range(0, maxMultipleSpawnFactor)); 
+            }
             enemiesToSpawn *= incrementFactor;
             
+            Debug.LogWarning(enemiesToSpawn);
             for (int i = 0; i < enemiesToSpawn; i++)
             {
                 if ((scoreTracker.EnemiesInRing + i + 1) >= maxEnemyQuantity) break;
