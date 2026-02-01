@@ -20,9 +20,11 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] AnimationCurve maxEnemyQualityCurve;
     [SerializeField] private AnimationCurve maxEnemyInRingCurve;
     [SerializeField] private AnimationCurve maxMultipleEnemySpawnCurve;
+    [SerializeField] private AnimationCurve playersWaitingInRingFactorCurve;
     private int maxEnemyQuality = 3;
     private int maxEnemyQuantity;
     private float maxMultipleSpawnFactor = 2;
+    private int playersWaitingInRingFactor = 3;
 
     void Awake()
     {
@@ -44,20 +46,21 @@ public class EnemyFactory : MonoBehaviour
         maxEnemyQuality = Mathf.FloorToInt(maxEnemyQualityCurve.Evaluate(difficulty));
         maxEnemyQuantity = Mathf.FloorToInt(maxEnemyInRingCurve.Evaluate(difficulty));
         maxMultipleSpawnFactor = Mathf.RoundToInt(maxMultipleEnemySpawnCurve.Evaluate(difficulty));
+        playersWaitingInRingFactor = (int)playersWaitingInRingFactorCurve.Evaluate(difficulty);
     }
 
     void Update()
     {
         if (!scoreTracker.IsGameActive || !scoreTracker.EnteredOnceInRing) return;
 
-        int incrementFactor = scoreTracker.PlayersInRing >= 4 ? 2 : 1;
-        if (countdownTimer.Decrement(Time.deltaTime * incrementFactor) && scoreTracker.EnemiesInRing < maxEnemyQuantity)
+        int incrementFactor = scoreTracker.PlayersInRing >= playersWaitingInRingFactor ? 2 : 1;
+        if (countdownTimer.Decrement(Time.deltaTime * incrementFactor) && scoreTracker.EnemiesInRing - scoreTracker.PlayersInRing < maxEnemyQuantity)
         {
             int enemiesToSpawn = 1 + Mathf.RoundToInt(UnityEngine.Random.Range(0, maxMultipleSpawnFactor));
             enemiesToSpawn *= incrementFactor;
             for (int i = 0; i < enemiesToSpawn; i++)
             {
-                if ((scoreTracker.EnemiesInRing + i + 1) >= maxEnemyQuantity) break;
+                if ((scoreTracker.EnemiesInRing + i + 1) >= maxEnemyQuantity * 2) break;
                 SpawnEnemy();
             }
         }

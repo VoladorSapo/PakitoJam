@@ -11,20 +11,28 @@ public class PlayerFactory : MonoBehaviour
     [SerializeField] BasePlayerCharacter playerPrefab;
     
     [HorizontalLine(color: EColor.Red)]
-    [SerializeField] int MaxPlayerCount;
+    [SerializeField] private AnimationCurve maxPlayerCountCurve;
     [SerializeField] CountdownTimer countdownTimer;
     [SerializeField] PlayerSlot[] playerSlots;
 
+    int maxPlayerCount;
     private int PlayersReady => playerSlots.Count(slot => slot.HasPlayer);
     void Awake()
     {
         countdownTimer.ResetCountdown();
+        UpdateSpawnData(0);
         gameEvents.OnRoundStarted += SpawnStartingPlayer;
+        gameEvents.OnDifficultyIncreased += UpdateSpawnData;
     }
 
+    void UpdateSpawnData(int difficulty)
+    {
+        maxPlayerCount = (int)maxPlayerCountCurve.Evaluate(difficulty);
+    }
     void OnDestroy()
     {
         gameEvents.OnRoundStarted -= SpawnStartingPlayer;
+        gameEvents.OnDifficultyIncreased -= UpdateSpawnData;
     }
     void Update()
     {
@@ -33,7 +41,7 @@ public class PlayerFactory : MonoBehaviour
         float incrementFactor = scoreTracker.EnemiesInRing >= 4 ? 2 : 1;
         if (countdownTimer.Decrement(Time.deltaTime * incrementFactor)
             && PlayersReady < playerSlots.Length
-            && (scoreTracker.PlayersInRing + PlayersReady) < MaxPlayerCount)
+            && (scoreTracker.PlayersInRing + PlayersReady) < maxPlayerCount)
         {
             SpawnPlayer();
         }

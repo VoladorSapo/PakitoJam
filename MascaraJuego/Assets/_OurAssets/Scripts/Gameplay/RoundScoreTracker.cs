@@ -95,7 +95,7 @@ public class RoundScoreTracker : MonoBehaviour
             currentDifficulty++;
             if(currentDifficulty < 10 || gameSettings.InfiniteMode)
             {
-                AddCoins(200);
+                AddCoins(50);
                 gameEvents.NotifyDifficultyIncreased(currentDifficulty);
                 gameEvents.InvokeDisplayText("DIFFICULTY INCREASED");
             }

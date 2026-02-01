@@ -53,11 +53,10 @@ public class TextParticle : MonoBehaviour {
 
         transform.localScale = Vector3.one * 0.01f;
         return Sequence.Create(cycles: 1, cycleMode: Sequence.SequenceCycleMode.Rewind)
-            .Group(Tween.Scale(transform, 0.15f, thirdDuration, Ease.OutBounce))
+            .Group(Tween.Scale(transform, 0.15f, thirdDuration * 0.75f, Ease.OutBounce))
             .Group(Tween.Custom(startValue: 0f, endValue: 1f, duration: thirdDuration, onValueChange: v => textMesh.alpha = v))
-            .Chain(Tween.Scale(transform, 0.1f, thirdDuration * 2, Ease.InCubic))
-            .Group(Tween.LocalPosition(target, endPos, thirdDuration * 2,Ease.OutQuad))
-            .Chain(Tween.Custom(startValue: 1f, endValue: 0f, duration: thirdDuration * 2, onValueChange: v => textMesh.alpha = v))
+            .Chain(Tween.Scale(transform, 0.1f, thirdDuration, Ease.InCubic))
+            .Chain(Tween.Custom(startValue: 1f, endValue: 0f, duration: thirdDuration, onValueChange: v => textMesh.alpha = v))
             .OnComplete(()=>Destroy(this.gameObject));
     }
     
