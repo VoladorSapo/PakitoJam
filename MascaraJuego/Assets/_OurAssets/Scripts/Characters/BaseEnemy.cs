@@ -4,7 +4,8 @@ public class BaseEnemy : ACharacter
 {
     GameEvents gameEvents;
     PrefabLocator prefabLocator;
-    
+
+    public int SpawnCount = 1;
     public float SpawnWeight;
 
     RingScript ring;

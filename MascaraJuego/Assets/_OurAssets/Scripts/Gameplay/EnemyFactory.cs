@@ -56,19 +56,26 @@ public class EnemyFactory : MonoBehaviour
         int incrementFactor = scoreTracker.PlayersInRing >= playersWaitingInRingFactor ? 2 : 1;
         if (countdownTimer.Decrement(Time.deltaTime * incrementFactor) && scoreTracker.EnemiesInRing - scoreTracker.PlayersInRing < maxEnemyQuantity)
         {
-            int enemiesToSpawn = 1 + Mathf.RoundToInt(UnityEngine.Random.Range(0, maxMultipleSpawnFactor));
+            BaseEnemy prefab = GetWeightedRandomEnemy(maxEnemyQuality);
+            
+            int enemiesToSpawn = prefab.SpawnCount + Mathf.RoundToInt(UnityEngine.Random.Range(0, maxMultipleSpawnFactor));
             enemiesToSpawn *= incrementFactor;
+            
             for (int i = 0; i < enemiesToSpawn; i++)
             {
-                if ((scoreTracker.EnemiesInRing + i + 1) >= maxEnemyQuantity * 2) break;
-                SpawnEnemy();
+                if ((scoreTracker.EnemiesInRing + i + 1) >= maxEnemyQuantity) break;
+                SpawnEnemy(prefab);
             }
         }
     }
-    BaseEnemy SpawnEnemy() {
-        BaseEnemy prefab = GetWeightedRandomEnemy(maxEnemyQuality);
+    
+    BaseEnemy SpawnEnemy(BaseEnemy prefab) {
         
-        BaseEnemy enemy = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        Vector2 dir = Random.insideUnitCircle.normalized;
+        float dist = Random.Range(1f, 2f);
+        Vector3 finalVector = dir * dist;
+        
+        BaseEnemy enemy = Instantiate(prefab, spawnPoint.position + finalVector, Quaternion.identity);
         enemy.Initialize(gameEvents, prefabLocator);
         
         return enemy;
