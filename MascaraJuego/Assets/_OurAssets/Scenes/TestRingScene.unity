@@ -10569,6 +10569,10 @@ MonoBehaviour:
     countdownTime: 0
     autoReset: 0
     remainingTime: 0
+  priceText: {fileID: 0}
+  layermask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2146714713
 MonoBehaviour:
   m_ObjectHideFlags: 0

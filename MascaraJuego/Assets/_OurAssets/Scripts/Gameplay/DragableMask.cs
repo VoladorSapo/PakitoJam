@@ -1,4 +1,5 @@
 using Reflex.Attributes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
     [SerializeField] bool alwaysHit = false;
     [SerializeField] private Image cooldownImage;
     [SerializeField] CountdownTimer cooldownTimer;
+    
+    [SerializeField] TextMeshProUGUI priceText;
     
     BasePlayerCharacter currentHoverPlayer;
     Vector3 startPosition;
@@ -33,6 +36,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
         cooldownTimer.CountdownTime = maskStats.cooldown;
         image = GetComponent<Image>();
         image.sprite = maskStats.sprite;
+        priceText.text = maskStats.Price.ToString();
     }
 
     void Update()
