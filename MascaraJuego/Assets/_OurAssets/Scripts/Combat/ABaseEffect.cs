@@ -94,7 +94,7 @@ public class FreezeEffect : ATimedEffect
         Debug.Log($"{_identifier}: Freeze");
         character._currentMask.addMultiplier(MultiplierType.Speed, slowdownMult);
         character._currentMask.addAnimMult(slowdownMult);
-    //    character.addVisualFilter(new Color(0, 0, 0.6f, 1));
+        character.addVisualFilter(new Color(0.23f, 0.37f, 1, 1));
 
     }
 
@@ -104,6 +104,8 @@ public class FreezeEffect : ATimedEffect
         objective._currentMask.removeAnimMult(slowdownMult);
 
         objective._currentMask.removeMultiplier(MultiplierType.Speed, slowdownMult);
+        objective.removeVisualFilter();
+
     }
 }
 

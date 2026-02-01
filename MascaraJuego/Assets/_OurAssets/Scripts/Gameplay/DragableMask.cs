@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
+public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHandler
 {
     [Inject] RoundScoreTracker scoreTracker;
     [Inject] GameEvents gameEvents;
@@ -22,6 +22,8 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
     RectTransform rectTransform;
 
     Image image;
+
+  [SerializeField]  LayerMask layermask;
     
     void Awake()
     {
@@ -44,7 +46,7 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
         var screenPoint = Input.mousePosition;
         screenPoint.z = 10.0f;
         transform.position = globalCamera.UICamera.ScreenToWorldPoint(screenPoint);
-        RaycastHit2D hit = Physics2D.Raycast(globalCamera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero );
+        RaycastHit2D hit = Physics2D.Raycast(globalCamera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero,layermask);
         if (hit)
         {
             BasePlayerCharacter character = hit.collider.GetComponent<BasePlayerCharacter>();
@@ -70,9 +72,11 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        RaycastHit2D hit = Physics2D.Raycast(globalCamera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(globalCamera.UICamera.ScreenToWorldPoint(eventData.position), Vector2.zero, 100,layermask);
+       
         if (hit)
         {
+            print($"HEMOS PEGADO: {hit.transform.name}");
             BasePlayerCharacter character = hit.collider.GetComponent<BasePlayerCharacter>();
             ProcessMaskHit(character);
         }
@@ -80,9 +84,8 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
         {
             ProcessMaskHit(null);
         }
-        transform.localPosition = startPosition;
     }
-
+    
     void ProcessMaskHit(BasePlayerCharacter character)
     {
         if (scoreTracker.HasEnoughGoldToRemove(maskStats.Price))
@@ -130,6 +133,15 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler
         return localPoint;
     }
 
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        transform.localPosition = startPosition;
+    }
+
+    //public void OnEndDrag(PointerEventData eventData)
+    //{
+    //    OnDrop(eventData);
+    //}
 }
 
 public enum MaskTypes

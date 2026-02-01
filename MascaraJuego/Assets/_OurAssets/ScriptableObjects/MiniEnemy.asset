@@ -18,7 +18,7 @@ MonoBehaviour:
   controller: {fileID: 22100000, guid: 24348c7335d14c64289fa642790027cf, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
   type: 5
-  Price: 0
+  Price: 5
   cooldown: 0.2
   sprite: {fileID: 0}
   attackDistance: 1

@@ -124,9 +124,8 @@ public abstract class APowerMask
 
     internal void Walk(Vector3 position)
     {
+        anim.transform.localScale = new Vector3(position.x < _character.transform.position.x ? -1:1, 1, 1);
         anim.Play("walk", 0, 0);
-     spriteRenderer.flipX =   position.x < _character.transform.position.x;
-       
     }
     internal void Idle()
     {
