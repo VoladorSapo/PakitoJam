@@ -16,7 +16,6 @@ public class PlayerFactory : MonoBehaviour
     [SerializeField] PlayerSlot[] playerSlots;
 
     private int PlayersReady => playerSlots.Count(slot => slot.HasPlayer);
-    private float incrementFactor = 1;
     void Awake()
     {
         countdownTimer.ResetCountdown();
@@ -31,7 +30,7 @@ public class PlayerFactory : MonoBehaviour
     {
         if (!scoreTracker.IsGameActive) return;
 
-        incrementFactor = scoreTracker.EnemiesInRing >= 4 ? 2 : 1;
+        float incrementFactor = scoreTracker.EnemiesInRing >= 4 ? 2 : 1;
         if (countdownTimer.Decrement(Time.deltaTime * incrementFactor)
             && PlayersReady < playerSlots.Length
             && (scoreTracker.PlayersInRing + PlayersReady) < MaxPlayerCount)
