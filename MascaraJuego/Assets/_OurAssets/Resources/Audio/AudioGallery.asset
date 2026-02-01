@@ -38,3 +38,11 @@ MonoBehaviour:
     AudioResource: {fileID: 8300000, guid: aa333e8b82a4354429854773cabb74bf, type: 3}
   - Name: main menu
     AudioResource: {fileID: 8300000, guid: 5047cd5b8ca092e4fb1127a6cd40db51, type: 3}
+  - Name: money
+    AudioResource: {fileID: 8300000, guid: ff03f5bdb2fd95d4cad25721d7443e87, type: 3}
+  - Name: lose
+    AudioResource: {fileID: 8300000, guid: c69bc0b9a5090254c9c6988dd4f9750d, type: 3}
+  - Name: punch
+    AudioResource: {fileID: 6418180475301049370, guid: 99f6e48b1cc19a8469ea65dd8c99f602, type: 2}
+  - Name: defeat
+    AudioResource: {fileID: 8300000, guid: a4737e7df6df06a458112c4225e75f75, type: 3}
