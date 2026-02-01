@@ -155,15 +155,15 @@ MonoBehaviour:
   - {fileID: 2438057366426751718, guid: 7773e5e0a3b9023499cd5e7361b43094, type: 3}
   spawnPoint: {fileID: 7734179211722877377}
   countdownTimer:
-    countdownTime: 3
+    countdownTime: 15
     autoReset: 1
     remainingTime: 0
   spawnIntervalCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 2
+      time: -0.12264633
+      value: 2.0132828
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 5
-      value: 1.6
+      time: 5.0093384
+      value: 1.5047822
       inSlope: -0.015694624
       outSlope: -0.015694624
       tangentMode: 0
@@ -180,8 +180,8 @@ MonoBehaviour:
       inWeight: 0.28030768
       outWeight: 0.029325295
     - serializedVersion: 3
-      time: 10
-      value: 0.75
+      time: 10.711845
+      value: 1.1058044
       inSlope: -0.057170745
       outSlope: -0.12790029
       tangentMode: 1
@@ -189,8 +189,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.1802248
     - serializedVersion: 3
-      time: 20
-      value: 0.25
+      time: 20.071983
+      value: 0.7706299
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -244,6 +244,30 @@ MonoBehaviour:
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.07865076
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxMultipleEnemySpawnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.25
+      inSlope: 0.06875
+      outSlope: 0.06875
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 40
+      value: 4
+      inSlope: 0.06875
+      outSlope: 0.06875
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -441,6 +465,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1261238964299520868, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
+      propertyPath: maskStats
+      value: 
+      objectReference: {fileID: 11400000, guid: e4121a90b005c7b41b6bd597fb267fc6, type: 2}
     - target: {fileID: 1465163628137184375, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 45
@@ -816,6 +844,10 @@ PrefabInstance:
     - target: {fileID: 5899749680085884508, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
       propertyPath: m_Color.r
       value: 0.13962269
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899749680085884508, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5933639210466694682, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
       propertyPath: m_Name

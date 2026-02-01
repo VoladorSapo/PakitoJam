@@ -53,7 +53,7 @@ public class FinalCountdown : MonoBehaviour
     void StartLosing()
     {
         if(fadeTween.isAlive) fadeTween.Stop();
-        
+        textMesh.text = "3";
         fadeTween = FadeIn(1);
         wasLosing = true;
         coroutine = StartCoroutine(IEBeginCountdown());

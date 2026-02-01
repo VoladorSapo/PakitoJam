@@ -19,8 +19,10 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] AnimationCurve spawnIntervalCurve;
     [SerializeField] AnimationCurve maxEnemyQualityCurve;
     [SerializeField] private AnimationCurve maxEnemyInRingCurve;
+    [SerializeField] private AnimationCurve maxMultipleEnemySpawnCurve;
     private int maxEnemyQuality = 3;
     private int maxEnemyQuantity;
+    private float maxMultipleSpawnFactor = 2;
 
     void Awake()
     {
@@ -41,6 +43,7 @@ public class EnemyFactory : MonoBehaviour
         
         maxEnemyQuality = Mathf.FloorToInt(maxEnemyQualityCurve.Evaluate(difficulty));
         maxEnemyQuantity = Mathf.FloorToInt(maxEnemyInRingCurve.Evaluate(difficulty));
+        maxMultipleSpawnFactor = Mathf.RoundToInt(maxMultipleEnemySpawnCurve.Evaluate(difficulty));
     }
 
     void Update()
@@ -49,10 +52,14 @@ public class EnemyFactory : MonoBehaviour
 
         if (countdownTimer.Decrement(Time.deltaTime) && scoreTracker.EnemiesInRing < maxEnemyQuantity)
         {
-            SpawnEnemy();
+            int enemiesToSpawn = Mathf.RoundToInt(UnityEngine.Random.Range(1, maxMultipleSpawnFactor));
+            for (int i = 0; i < enemiesToSpawn; i++)
+            {
+                if ((scoreTracker.EnemiesInRing + i + 1) >= maxEnemyQuantity) break;
+                SpawnEnemy();
+            }
         }
     }
-    
     BaseEnemy SpawnEnemy() {
         BaseEnemy prefab = GetWeightedRandomEnemy(maxEnemyQuality);
         

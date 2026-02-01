@@ -15,6 +15,7 @@ using Sequence = PrimeTween.Sequence;
 public abstract class ACharacter : MonoBehaviour
 {
     CharacterAssetBehaviourRunner characterBehaviour;
+    [SerializeField] protected ParticlePlayer particlePlayer;
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] PowerMaskStats startingMask;
     [field:SerializeField, ReadOnly] public APowerMask _currentMask {  get; private set; }
@@ -34,7 +35,7 @@ public abstract class ACharacter : MonoBehaviour
     List<ATimedEffect> activeEffects;
     Sequence damageTween;
 
-  [SerializeField]  bool damagedCooldown;
+    [SerializeField]  bool damagedCooldown;
     [SerializeField] float damagedCooldownTime =1;
 
     public void getDamaged(int damage)
@@ -44,18 +45,6 @@ public abstract class ACharacter : MonoBehaviour
         print($"{name} GETDAMAGED");
         _currentLife -= damage;
         
-        /*Color ogColor = spriteRenderer.color;
-        Sequence.Create(cycles: 1)
-            .Chain(Tween.ScaleX(transform, 0.9f, 0.15f, Ease.OutBounce))
-            .Group(Tween.Custom(startValue: ogColor,
-                endValue: new Color(0.6f, 0.1f, 0.1f, 1),
-                duration: 0.15f, onValueChange:
-                value => spriteRenderer.color = value))
-            .Chain(Tween.ScaleX(transform, 1f, 0.15f, Ease.OutBounce))
-            .Group(Tween.Custom(startValue: new Color(0.6f, 0.1f, 0.1f, 1),
-                endValue: ogColor,
-                duration: 0.15f, onValueChange:
-                value => spriteRenderer.color = value));*/
         
         Color ogColor = spriteRenderer.color;
         float endAngle = spriteRenderer.flipX ? -15 : 15;
@@ -75,6 +64,8 @@ public abstract class ACharacter : MonoBehaviour
                     endValue: spriteRenderer.color,
                     duration: 0.15f, onValueChange:
                     value => spriteRenderer.color = value)).OnComplete(()=>spriteRenderer.color = supposedColor);
+        
+        particlePlayer.PlayParticle(2);
         
         if (_currentLife <= 0)
         {
