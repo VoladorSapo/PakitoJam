@@ -71,7 +71,7 @@ public abstract class ACharacter : MonoBehaviour
 
         particlePlayer.PlayParticle(2);
 
-        AudioManager.CreateAudioBuilder().WithResource("punch").WithMaxSimultaneousPlays(5).PlayAudio();
+        AudioManager.CreateAudioBuilder().WithResource("punch").WithMaxSimultaneousPlays(1).PlayAudio();
 
         if (hasDied)
         {
@@ -325,7 +325,7 @@ _currentMask = new CombatMask();
 
     internal void PlayGoofySound()
     {
-        AudioManager.CreateAudioBuilder().WithResource("jester punch").WithMaxSimultaneousPlays(5).PlayAudio();
+        AudioManager.CreateAudioBuilder().WithResource("jester punch").WithMaxSimultaneousPlays(1).PlayAudio();
 
     }
 }
