@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8831363800548505416
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jester07_{-8831363800548505416}
+  m_AudioClip: {fileID: 8300000, guid: d6429acd99264f24bb661921648149fc, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-8723169670875930466
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jester08_{-8723169670875930466}
+  m_AudioClip: {fileID: 8300000, guid: 4f736b8475211554281c827ba0c2c3b6, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-8146661434354311050
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jesterhit02_{-8146661434354311050}
+  m_AudioClip: {fileID: 8300000, guid: 66856e510359ffb41b4483c18f37fad8, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-6438349365587162212
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jesterhit04_{-6438349365587162212}
+  m_AudioClip: {fileID: 8300000, guid: 63ee6d087e635ab43a42e32dd77e895a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4051106863609684165
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jester09_{-4051106863609684165}
+  m_AudioClip: {fileID: 8300000, guid: 0be23dbf5bde6ec43bedd61535ab9f09, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4350209471909642433
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jester06_{4350209471909642433}
+  m_AudioClip: {fileID: 8300000, guid: ddab963c979c64e4fa386f4d2fc23e8a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4952978917713598044
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jesterhit01_{4952978917713598044}
+  m_AudioClip: {fileID: 8300000, guid: 567d187e364a8f048b9be19cb33defc6, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jesterhit
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: -5, y: 5}
+  m_PitchRandomizationRange: {x: -5, y: 5}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 4952978917713598044}
+  - {fileID: -8146661434354311050}
+  - {fileID: 7006720114202587168}
+  - {fileID: -6438349365587162212}
+  - {fileID: 6436245885257274722}
+  - {fileID: 4350209471909642433}
+  - {fileID: -8831363800548505416}
+  - {fileID: -8723169670875930466}
+  - {fileID: -4051106863609684165}
+  - {fileID: 7436366852650340607}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 0
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &6436245885257274722
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jester05_{6436245885257274722}
+  m_AudioClip: {fileID: 8300000, guid: 41cd387a5ca28404bbfcf1be1e89ee1a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &7006720114202587168
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jesterhit03_{7006720114202587168}
+  m_AudioClip: {fileID: 8300000, guid: 7345fe9656712364cabc8915deaa1019, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &7436366852650340607
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: jester10_{7436366852650340607}
+  m_AudioClip: {fileID: 8300000, guid: 226aa4df0b494534db2413e837dbe458, type: 3}
+  m_Volume: 0
+  m_Enabled: 1

@@ -46,3 +46,5 @@ MonoBehaviour:
     AudioResource: {fileID: 6418180475301049370, guid: 99f6e48b1cc19a8469ea65dd8c99f602, type: 2}
   - Name: defeat
     AudioResource: {fileID: 8300000, guid: a4737e7df6df06a458112c4225e75f75, type: 3}
+  - Name: jester punch
+    AudioResource: {fileID: 6418180475301049370, guid: 8da2962b11f38c446a5676ed35322cb2, type: 2}
