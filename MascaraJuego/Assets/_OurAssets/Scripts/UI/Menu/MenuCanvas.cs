@@ -23,6 +23,7 @@ public class MenuCanvas : MonoBehaviour
 
     private void Awake()
     {
+        musicService.PlayMusic("main menu", 0);
         ChangeMenuState(ManuCanvasState.MainMenu);
     }
 

@@ -384,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3594831273029205768, guid: 6677bc41118748c4d95e9392d359623a, type: 3}
       propertyPath: m_text
-      value: Credtis
+      value: Credits
       objectReference: {fileID: 0}
     - target: {fileID: 3594831273029205768, guid: 6677bc41118748c4d95e9392d359623a, type: 3}
       propertyPath: m_fontSize

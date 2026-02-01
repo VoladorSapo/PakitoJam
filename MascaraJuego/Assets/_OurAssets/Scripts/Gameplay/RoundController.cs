@@ -59,10 +59,10 @@ public class RoundController : MonoBehaviour
     {
         if(!roundStarted) return;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseService.Pause(PauseLevel.UI);
-        }
+        }*/
     }
 
     void CheckEnd(bool hasWon)
