@@ -345,7 +345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &186017065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,6 +848,10 @@ PrefabInstance:
       propertyPath: alwaysHit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5289144442236070687, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
+      propertyPath: maskStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 4625218663523264cb6c137cb3063fa1, type: 2}
     - target: {fileID: 5443878206693979851, guid: 3c1e777133dd96b43822117b6f17711f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
