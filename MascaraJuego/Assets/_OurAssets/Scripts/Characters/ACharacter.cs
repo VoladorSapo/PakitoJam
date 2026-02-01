@@ -324,6 +324,11 @@ _currentMask = new CombatMask();
     }
     public abstract bool anyOpponent();
 
+    internal void PlayGoofySound()
+    {
+        AudioManager.CreateAudioBuilder().WithResource("jester punch").WithMaxSimultaneousPlays(5).PlayAudio();
+
+    }
 }
 
 
