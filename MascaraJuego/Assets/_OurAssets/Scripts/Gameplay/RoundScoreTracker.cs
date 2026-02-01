@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoundScoreTracker : MonoBehaviour
 {
     [Inject] GameEvents gameEvents;
+    [Inject] GameSettings gameSettings;
     
     [HorizontalLine(color: EColor.Blue)]
     [SerializeField] int maxCoins;
@@ -19,9 +20,11 @@ public class RoundScoreTracker : MonoBehaviour
     [ReadOnly] public bool IsLosing = false;
     [ReadOnly] public int PlayersInRing = 0;
     [ReadOnly] public bool EnteredOnceInRing = false;
+    [ReadOnly] public bool HasWon;
     public bool IsGameActive => hasStarted && !isPaused;
     bool isPaused;
     bool hasStarted;
+    
     void Awake()
     {
         gameEvents.OnRoundStarted += ProcessStart;
@@ -89,9 +92,18 @@ public class RoundScoreTracker : MonoBehaviour
         if (enemiesKilled % enemiesToIncreaseDifficulty == 0)
         {
             currentDifficulty++;
-            AddCoins(200);
-            gameEvents.NotifyDifficultyIncreased(currentDifficulty);
-            gameEvents.InvokeDisplayText("ROUND INCREASED");
+            if(currentDifficulty < 10 || gameSettings.InfiniteMode)
+            {
+                AddCoins(200);
+                gameEvents.NotifyDifficultyIncreased(currentDifficulty);
+                gameEvents.InvokeDisplayText("DIFFICULTY INCREASED");
+            }
+            else
+            {
+                HasWon = true;
+                gameEvents.NotifyRoundEnd(true);
+                gameEvents.InvokeDisplayText("THAT'S HOW BRAWL WORKS!!!");
+            }
         }
     }
 }

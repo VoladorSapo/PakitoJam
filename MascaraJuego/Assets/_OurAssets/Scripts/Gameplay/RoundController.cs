@@ -22,7 +22,7 @@ public class RoundController : MonoBehaviour
     
     [HorizontalLine(color: EColor.Blue)]
     [SerializeField] SceneServiceClient sceneServiceClient;
-    [SerializeField, Scene] private string NextRoundScene;
+    [SerializeField, Scene] private string CreditsScene;
     [SerializeField, Scene] private string MenuScene;
     
     bool roundStarted;
@@ -41,6 +41,7 @@ public class RoundController : MonoBehaviour
     private void OnDestroy()
     {
         gameEvents.OnRoundStarted -= StartRound;
+        gameEvents.OnRoundEnded -= CheckEnd;
     }
 
     void AwakeRound()
@@ -127,8 +128,8 @@ public class RoundController : MonoBehaviour
     {
         sceneServiceClient.ChangeScene(MenuScene);
     }
-    public void MoveToNextRound()
+    public void MoveToCredits()
     {
-        sceneServiceClient.ChangeScene(NextRoundScene);
+        sceneServiceClient.ChangeScene(CreditsScene);
     }
 }

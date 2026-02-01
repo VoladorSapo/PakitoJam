@@ -89,7 +89,7 @@ MonoBehaviour:
   debugEndCutscene: 1
   endCutscene: {fileID: 0}
   sceneServiceClient: {fileID: 807430926067421586}
-  NextRoundScene: RaulTest2
+  CreditsScene: CreditsScene
   MenuScene: MenuScene
 --- !u!114 &807430926067421586
 MonoBehaviour:
@@ -136,6 +136,8 @@ MonoBehaviour:
   currentDifficulty: 0
   IsLosing: 0
   PlayersInRing: 0
+  EnteredOnceInRing: 0
+  HasWon: 0
 --- !u!114 &2414095928691523005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +372,10 @@ PrefabInstance:
       propertyPath: OnPointerClickInsideEvent._PersistentCalls.Array.data[0]._Target
       value: 
       objectReference: {fileID: 8441500827255353133}
+    - target: {fileID: 2099678731511487605, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
+      propertyPath: OnPointerClickInsideEvent._PersistentCalls.Array.data[0]._MemberName
+      value: MoveToCredits
+      objectReference: {fileID: 0}
     - target: {fileID: 2804422398555972339, guid: 689b004309e5f38429d8c89571e1c623, type: 3}
       propertyPath: rotateSpeed
       value: -60
