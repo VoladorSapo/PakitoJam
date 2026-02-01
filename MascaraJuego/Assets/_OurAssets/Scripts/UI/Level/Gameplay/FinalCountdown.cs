@@ -75,7 +75,7 @@ public class FinalCountdown : MonoBehaviour
 
     IEnumerator IEBeginCountdown()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.25f);
         
         textMesh.text = "3";
         textTransform.localScale = Vector3.one * 1.5f;

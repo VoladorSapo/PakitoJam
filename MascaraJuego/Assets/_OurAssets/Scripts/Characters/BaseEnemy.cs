@@ -34,14 +34,6 @@ public class BaseEnemy : ACharacter
         this.InvokeDelayed(0.5f, base.Die);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Die();
-        }
-    }
-
     public override bool anyOpponent()
     {
         print(ring.getPlayerCount());

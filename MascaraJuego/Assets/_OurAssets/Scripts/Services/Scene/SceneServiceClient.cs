@@ -32,11 +32,4 @@ public class SceneServiceClient : MonoBehaviour
         
         transitionController.DoTransition(closingParameters);
     }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T)) ResetScene();
-        
-        if(Input.GetKeyDown(KeyCode.R)) ChangeScene("RaulTest2");
-    }
 }
