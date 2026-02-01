@@ -18,7 +18,9 @@ public class EnemyFactory : MonoBehaviour
     [HorizontalLine(color: EColor.Red)]
     [SerializeField] AnimationCurve spawnIntervalCurve;
     [SerializeField] AnimationCurve maxEnemyQualityCurve;
+    [SerializeField] private AnimationCurve maxEnemyInRingCurve;
     private int maxEnemyQuality = 3;
+    private int maxEnemyQuantity;
 
     void Awake()
     {
@@ -38,13 +40,14 @@ public class EnemyFactory : MonoBehaviour
         countdownTimer.SetCountdownTime(spawnInterval);
         
         maxEnemyQuality = Mathf.FloorToInt(maxEnemyQualityCurve.Evaluate(difficulty));
+        maxEnemyQuantity = Mathf.FloorToInt(maxEnemyInRingCurve.Evaluate(difficulty));
     }
 
     void Update()
     {
         if (!scoreTracker.IsGameActive || !scoreTracker.EnteredOnceInRing) return;
 
-        if (countdownTimer.Decrement(Time.deltaTime))
+        if (countdownTimer.Decrement(Time.deltaTime) && scoreTracker.EnemiesInRing < maxEnemyQuantity)
         {
             SpawnEnemy();
         }

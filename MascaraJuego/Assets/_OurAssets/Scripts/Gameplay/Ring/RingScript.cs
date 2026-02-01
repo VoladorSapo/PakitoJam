@@ -61,5 +61,6 @@ public class RingScript : MonoBehaviour
         if(!roundScoreTracker.EnteredOnceInRing) roundScoreTracker.EnteredOnceInRing = true;
         
         roundScoreTracker.PlayersInRing = playerList.Count;
+        roundScoreTracker.EnemiesInRing = enemyList.Count;
     }
 }
