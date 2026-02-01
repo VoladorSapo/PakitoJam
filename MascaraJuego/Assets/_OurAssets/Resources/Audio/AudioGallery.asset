@@ -13,4 +13,26 @@ MonoBehaviour:
   m_Name: AudioGallery
   m_EditorClassIdentifier: 
   AudioProducerPrefab: {fileID: 6519040788258812611, guid: 695e006239fdca742919d7e39fb1531d, type: 3}
-  audioResources: []
+  audioResources:
+  - Name: Batalla
+    AudioResource: {fileID: 8300000, guid: 2f7877ae34547bb4bbda016ad0ec2549, type: 3}
+  - Name: ice hit
+    AudioResource: {fileID: 8300000, guid: 92b84e6f53b4fcc4396203343c0748c9, type: 3}
+  - Name: jester_hit
+    AudioResource: {fileID: 8300000, guid: 169bed0585bbb524baafb3b001d65454, type: 3}
+  - Name: multi hit
+    AudioResource: {fileID: 8300000, guid: d271c8ec458d1e24f8c3061755da8f26, type: 3}
+  - Name: fighter hit
+    AudioResource: {fileID: 8300000, guid: 56a4cc9e615e0d04093bfda6fbd7ac32, type: 3}
+  - Name: begin fanfare
+    AudioResource: {fileID: 8300000, guid: a856fd98213e73e40975822d4c48ab3a, type: 3}
+  - Name: ui back
+    AudioResource: {fileID: 8300000, guid: 28e5b3c640c59814f8b28c89e1978da1, type: 3}
+  - Name: ui select
+    AudioResource: {fileID: 8300000, guid: 06269b65ed761c741af95caf3d61756b, type: 3}
+  - Name: uiconfirm
+    AudioResource: {fileID: 8300000, guid: e3f4bc3339203a64db0fd33432e37c84, type: 3}
+  - Name: ui start
+    AudioResource: {fileID: 8300000, guid: 37e6b61b67ec1c540a3962425a147029, type: 3}
+  - Name: ui options
+    AudioResource: {fileID: 8300000, guid: aa333e8b82a4354429854773cabb74bf, type: 3}
