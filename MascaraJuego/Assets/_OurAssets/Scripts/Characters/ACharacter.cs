@@ -118,7 +118,9 @@ public void setLifeToMax()
 
     public virtual void Die()
     {
-        damageTween.Complete();
+       
+            damageTween.Complete();
+        
         dieEvent.Invoke(this);
     }
     private void Awake()
@@ -128,7 +130,7 @@ public void setLifeToMax()
             activeEffects = new List<ATimedEffect>();
 
     }
-    public bool inOnRing() { print(onRing); return onRing; }
+    public bool inOnRing() { return onRing; }
     protected void startGame()
     {
         setOnRing(false);
