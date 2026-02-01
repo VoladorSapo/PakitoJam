@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class RingEntranceManager : MonoBehaviour
@@ -6,7 +7,7 @@ public class RingEntranceManager : MonoBehaviour
 
  [SerializeField]   Transform[] enemyEntraces;
     [SerializeField] Transform[] playerEntraces;
-
+    [SerializeField, MinMaxSlider(0, 10)] Vector2 retreatRanges;
     private void Awake()
     {
         if(Instance == null)
@@ -26,5 +27,11 @@ public class RingEntranceManager : MonoBehaviour
             return enemyEntraces[Random.Range(0, enemyEntraces.Length)];
         }
         return playerEntraces[Random.Range(0,playerEntraces.Length)];
+    }
+
+    internal float getRetreatX(ACharacter character)
+    {
+        return Random.Range(retreatRanges.x,retreatRanges.y) * (character.GetComponent<BaseEnemy>() ? 1:-1);
+
     }
 }

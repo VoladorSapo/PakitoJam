@@ -45,6 +45,11 @@ public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
         return Vector3.SqrMagnitude(transform.position - objectiveTransform.position) <= stopWalkDistance;
 
     }
+    public bool vectorOnWalkDistance(Vector3 position)
+    {
+        return Vector3.SqrMagnitude(transform.position - position) <= stopWalkDistance;
+
+    }
     protected override void OnStarted()
     {
         character = GetComponent<ACharacter>();

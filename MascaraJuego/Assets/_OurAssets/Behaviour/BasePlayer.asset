@@ -14,6 +14,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     graphs:
+    - name: VaseFSM
+      id: edec3b06-2257-48b7-a0f1-60d96252d64a
+      graph:
+        rid: 2590372052700496962
+      nodes:
+      - name: Fight
+        id: b11fb684-94ee-4084-97ed-91d0000db8c9
+        position: {x: -77.6, y: 326.4}
+        node:
+          rid: 2590372052700496963
+        references:
+        - fieldName: Action
+          value:
+            rid: 2590372052700496966
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 8f06d01d-edf5-418d-83fa-54a41d08b77a
+        childIds:
+        - 6a24a853-dbec-4cc2-9dc7-2e3618ea09df
+      - name: Retreat
+        id: e3950471-fd80-4eaf-9ebc-ae29f1d1a2da
+        position: {x: 800, y: 292.8}
+        node:
+          rid: 2590372052700496964
+        references:
+        - fieldName: Action
+          value:
+            rid: 9023803004306326012
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 6a24a853-dbec-4cc2-9dc7-2e3618ea09df
+        childIds:
+        - 8f06d01d-edf5-418d-83fa-54a41d08b77a
+      - name: 
+        id: 8f06d01d-edf5-418d-83fa-54a41d08b77a
+        position: {x: 370.4, y: 392}
+        node:
+          rid: 2590372052700497059
+        references:
+        - fieldName: Perception
+          value:
+            rid: 2590372052700497060
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - e3950471-fd80-4eaf-9ebc-ae29f1d1a2da
+        childIds:
+        - b11fb684-94ee-4084-97ed-91d0000db8c9
+      - name: 
+        id: 6a24a853-dbec-4cc2-9dc7-2e3618ea09df
+        position: {x: 452, y: 162.4}
+        node:
+          rid: 2590372052700497061
+        references:
+        - fieldName: Perception
+          value:
+            rid: 2590372052700497075
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - b11fb684-94ee-4084-97ed-91d0000db8c9
+        childIds:
+        - e3950471-fd80-4eaf-9ebc-ae29f1d1a2da
     - name: BaseBT
       id: fa5c9122-3969-4b76-a359-365175f1201a
       graph:
@@ -201,6 +276,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 2590372030727586082
       type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
@@ -308,4 +385,108 @@ MonoBehaviour:
       data: 
     - rid: 2590372050470436946
       type: {class: IdleAction, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2590372052700496962
+      type: {class: FSM, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 2590372052700496963
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 2590372052700496964
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 2590372052700496966
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        ExecuteOnLoop: 0
+        InterruptOptions: 2
+        subgraphId: fa5c9122-3969-4b76-a359-365175f1201a
+    - rid: 2590372052700497059
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 2590372052700497060
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: ACharacter
+          methodName: anyOpponent
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 2590372052700497061
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 2590372052700497075
+      type: {class: CompoundPerceptionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        compoundPerception:
+          rid: 2590372052700497076
+        subPerceptions:
+        - perception:
+            rid: 2590372052700497077
+        - perception:
+            rid: 2590372052700497079
+    - rid: 2590372052700497076
+      type: {class: AndPerception, ns: BehaviourAPI.Core.Perceptions, asm: BehaviourAPI.Core}
+      data: 
+    - rid: 2590372052700497077
+      type: {class: CompoundPerceptionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        compoundPerception:
+          rid: 2590372052700497078
+        subPerceptions:
+        - perception:
+            rid: 2590372052700497080
+    - rid: 2590372052700497078
+      type: {class: OppositePerception, ns: BehaviourAPI.Core.Perceptions, asm: BehaviourAPI.Core}
+      data: 
+    - rid: 2590372052700497079
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: ACharacter
+          methodName: inOnRing
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 2590372052700497080
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: ACharacter
+          methodName: anyOpponent
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 9023803004306326012
+      type: {class: RetreatAction, ns: , asm: Assembly-CSharp}
       data: 

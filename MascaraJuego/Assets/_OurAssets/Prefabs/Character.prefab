@@ -9956,10 +9956,13 @@ MonoBehaviour:
   _currentMaxLife: 0
   _currentLife: 0
   <_baseDamage>k__BackingField: 2
+  <_baseSpeed>k__BackingField: 0
   <Dead>k__BackingField: 0
   <onRing>k__BackingField: 0
+  damagedCooldown: 0
+  damagedCooldownTime: 1
   HealthRanges: {x: 0, y: 0}
-  SpeedRanges: {x: 0, y: 0}
+  SpeedRanges: {x: 1, y: 3}
   AttackRanges: {x: 0, y: 0}
 --- !u!50 &280283017004441820
 Rigidbody2D:

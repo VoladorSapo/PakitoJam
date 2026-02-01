@@ -10,6 +10,7 @@ public class BasePlayerCharacter : ACharacter
     [MinMaxSlider(-5, 10)] public Vector2Int HealthRanges;
     [MinMaxSlider(-5, 10)] public Vector2Int SpeedRanges;
     [MinMaxSlider(-5, 10)] public Vector2Int AttackRanges;
+    RingScript ring;
 
 
     public void Initialize(PlayerSlot spawnSlot)
@@ -22,6 +23,8 @@ public class BasePlayerCharacter : ACharacter
         this.spawnSlot = spawnSlot;
         this.spawnSlot.HasPlayer = true;
         StartCoroutine(Slide(transform, transform.position, spawnSlot.transform.position, 0.5f));
+        ring = FindAnyObjectByType<RingScript>();
+
     }
     public void EnterRing()
     {
@@ -62,5 +65,10 @@ public class BasePlayerCharacter : ACharacter
         spriteRenderer.material.SetInt("_UseOutline", 0);
     }
 
+    public override bool anyOpponent()
+    {
+        print(ring.getEnemyCount());
+        return ring.getEnemyCount() > 0;
+    }
 }
 

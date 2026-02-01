@@ -63,4 +63,13 @@ public class RingScript : MonoBehaviour
         roundScoreTracker.PlayersInRing = playerList.Count;
         roundScoreTracker.EnemiesInRing = enemyList.Count;
     }
+    public int getPlayerCount()
+    {
+        return playerList.Count;
+    }
+    public int getEnemyCount()
+    {
+        return enemyList.Count;
+    }
+
 }

@@ -10,6 +10,10 @@ public class enterRingAction : UnityAction
     int obj = 0;
     public override Status Update()
     {
+        if (character.inOnRing())
+        {
+            return Status.Success;
+        }
         if (objectiveTransform == null)
         {
             return Status.Failure;
@@ -34,11 +38,15 @@ public class enterRingAction : UnityAction
         characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
         character = characterBehaviour.character;
         objectiveTransform = RingEntranceManager.Instance.getEntrancePoint(character);
-
+        if (character.inOnRing())
+        {
+            return;
+        }
         if (character is BasePlayerCharacter characterBase)
         {
             characterBase.EnterRing();
         }
+        
         character._currentMask.Walk(objectiveTransform.position);
 
     }
@@ -69,3 +77,36 @@ public class WaitCoolDownAction : UnityAction
         character = characterBehaviour.character;
     }
     }
+
+
+public class RetreatAction : UnityAction
+{
+    CharacterAssetBehaviourRunner characterBehaviour;
+    ACharacter character;
+    Vector3 objectivePos;
+    int obj = 0;
+    public override Status Update()
+    {
+        context.Transform.position = Vector3.MoveTowards(context.Transform.position, objectivePos, character._currentMask.getSpeed() * Time.deltaTime);
+        if (characterBehaviour.vectorOnWalkDistance(objectivePos))
+        {
+            character._currentMask.Idle();
+            return Status.Success;
+        }
+        return Status.Running;
+    }
+    public override void Start()
+    {
+        base.Start();
+        characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
+        character = characterBehaviour.character;
+        objectivePos = new Vector3(RingEntranceManager.Instance.getRetreatX(character), context.Transform.position.y, context.Transform.position.z); 
+
+        if (character is BasePlayerCharacter characterBase)
+        {
+            characterBase.EnterRing();
+        }
+        character._currentMask.Walk(objectivePos);
+
+    }
+}

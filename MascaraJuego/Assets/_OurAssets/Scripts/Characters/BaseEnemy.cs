@@ -7,11 +7,14 @@ public class BaseEnemy : ACharacter
     
     public float SpawnWeight;
 
+    RingScript ring;
+
     public void Initialize(GameEvents gameEvents, PrefabLocator prefabLocator)
     {
         this.gameEvents = gameEvents;
         this.prefabLocator = prefabLocator;
         startGame();
+        ring = FindAnyObjectByType<RingScript>();
     }
     public override void Die()
     {
@@ -34,6 +37,12 @@ public class BaseEnemy : ACharacter
         {
             Die();
         }
+    }
+
+    public override bool anyOpponent()
+    {
+        print(ring.getPlayerCount());
+       return ring.getPlayerCount() > 0;
     }
 }
 

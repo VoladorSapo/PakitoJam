@@ -33,8 +33,15 @@ public abstract class ACharacter : MonoBehaviour
 
     List<ATimedEffect> activeEffects;
     Sequence damageTween;
+
+  [SerializeField]  bool damagedCooldown;
+    [SerializeField] float damagedCooldownTime =1;
+
     public void getDamaged(int damage)
     {
+        //if (damagedCooldown)
+        //    return;
+
         _currentLife -= damage;
         
         /*Color ogColor = spriteRenderer.color;
@@ -73,7 +80,25 @@ public abstract class ACharacter : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            damagedCooldown = true;
+          //  StartCoroutine(damageCooldown());
+        }
     }
+    //IEnumerator damageCooldown()
+    ////{
+    ////    for (int i = 0; i < 5; i++)
+    ////    {
+    ////        yield return new WaitForSecondsRealtime(damagedCooldownTime / 5f);
+    ////        spriteRenderer.enabled = !spriteRenderer.enabled;
+            
+
+    ////    }
+    ////    damagedCooldown = false;
+    ////    spriteRenderer.enabled = true;
+
+    //}
     public void setLifeToMax()
     {
         _currentLife = _currentMaxLife;
@@ -114,7 +139,7 @@ public abstract class ACharacter : MonoBehaviour
             activeEffects = new List<ATimedEffect>();
 
     }
-
+    public bool inOnRing() { print(onRing); return onRing; }
     protected void startGame()
     {
         setOnRing(false);
@@ -296,6 +321,8 @@ public abstract class ACharacter : MonoBehaviour
         spriteRenderer.color = supposedColor = new Color(1,1,1,1);
 
     }
+    public abstract bool anyOpponent();
+
 }
 
 
