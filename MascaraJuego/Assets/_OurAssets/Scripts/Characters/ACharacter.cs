@@ -35,7 +35,6 @@ public abstract class ACharacter : MonoBehaviour
     UnityEvent<ACharacter> dieEvent;
 
     List<ATimedEffect> activeEffects;
-    Sequence damageTween;
 
     [SerializeField]  bool damagedCooldown;
     [SerializeField] float damagedCooldownTime =1;
@@ -47,11 +46,12 @@ public abstract class ACharacter : MonoBehaviour
         print($"{name} GETDAMAGED");
         _currentLife -= damage;
         
+        bool hasDied = _currentLife <= 0;
         
         Color ogColor = spriteRenderer.color;
         float endAngle = spriteRenderer.flipX ? -15 : 15;
         Vector3 rot = new Vector3(0, 0, endAngle);
-        damageTween = Sequence.Create(cycles: 1)
+        var damageTween = Sequence.Create(cycles: 1)
             .Chain(Tween.ScaleX(transform, 0.7f, 0.15f, Ease.OutBounce))
                 .Group(Tween.ScaleY(transform, 0.8f, 0.15f, Ease.OutBounce))
                 .Group(Tween.LocalRotation(transform, rot, 0.15f, Ease.OutBounce))
@@ -65,13 +65,17 @@ public abstract class ACharacter : MonoBehaviour
                 .Group(Tween.Custom(startValue: new Color(0.6f, 0.1f, 0.1f, 1),
                     endValue: spriteRenderer.color,
                     duration: 0.15f, onValueChange:
-                    value => spriteRenderer.color = value)).OnComplete(()=>spriteRenderer.color = supposedColor);
-        
+                    value => spriteRenderer.color = value));
+
+        if(!hasDied) damageTween.OnComplete(() => spriteRenderer.color = supposedColor);
+
         particlePlayer.PlayParticle(2);
 
         AudioManager.CreateAudioBuilder().WithResource("punch").WithMaxSimultaneousPlays(5).PlayAudio();
-        if (_currentLife <= 0)
+
+        if (hasDied)
         {
+            damageTween.Stop();
             Die();
         }
         else
@@ -121,8 +125,6 @@ public void setLifeToMax()
 
     public virtual void Die()
     {
-       
-            damageTween.Complete();
         
         dieEvent.Invoke(this);
     }
