@@ -25,6 +25,7 @@ MonoBehaviour:
   effects:
   - rid: 2590372047603368825
   hittablecheck: 1
+  initCooldown: 0.15
   references:
     version: 2
     RefIds:

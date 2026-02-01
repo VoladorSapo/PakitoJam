@@ -142,7 +142,7 @@ MonoBehaviour:
         childIds: []
       - name: Attack
         id: 359a02f6-1454-44b4-9b33-39abd440dbd6
-        position: {x: 750, y: 1200}
+        position: {x: 992, y: 1165.6}
         node:
           rid: 2590372030727586102
         references:
@@ -156,7 +156,7 @@ MonoBehaviour:
         childIds: []
       - name: truefalse
         id: 2937ae15-d583-49e2-af2f-14fcddc2403f
-        position: {x: 750, y: 600}
+        position: {x: 808.8, y: 569.60004}
         node:
           rid: 2590372030727586201
         references:
@@ -169,7 +169,7 @@ MonoBehaviour:
         - afb61c33-b3c7-4315-8b0c-30649c62ec3e
         childIds:
         - de2ade1d-64ea-4da9-8c42-7f87865aa495
-        - a26c3f60-47bf-4332-97fe-2750cf63d9f5
+        - bbe1f60b-9275-4898-8537-292320b6c737
       - name: forcefail
         id: de2ade1d-64ea-4da9-8c42-7f87865aa495
         position: {x: 600, y: 800}
@@ -214,7 +214,7 @@ MonoBehaviour:
         childIds: []
       - name: waitcooldown
         id: e510c0ab-fa5a-4019-8da1-4c0afa1ea393
-        position: {x: 1050, y: 1200}
+        position: {x: 636, y: 1157.6}
         node:
           rid: 2590372047603368844
         references:
@@ -235,16 +235,16 @@ MonoBehaviour:
         parentIds:
         - a26c3f60-47bf-4332-97fe-2750cf63d9f5
         childIds:
-        - 359a02f6-1454-44b4-9b33-39abd440dbd6
         - e510c0ab-fa5a-4019-8da1-4c0afa1ea393
+        - 359a02f6-1454-44b4-9b33-39abd440dbd6
       - name: attackloop
         id: a26c3f60-47bf-4332-97fe-2750cf63d9f5
-        position: {x: 900, y: 800}
+        position: {x: 989.6, y: 944.80005}
         node:
           rid: 2590372048874766987
         references: []
         parentIds:
-        - 2937ae15-d583-49e2-af2f-14fcddc2403f
+        - bbe1f60b-9275-4898-8537-292320b6c737
         childIds:
         - c7b9f890-238a-4a14-9ae8-204ee920783f
       - name: 
@@ -272,12 +272,47 @@ MonoBehaviour:
         parentIds:
         - 504c4af0-ad4e-4ef5-ac39-3ea224c63e79
         childIds: []
+      - name: attackstartsequence
+        id: bbe1f60b-9275-4898-8537-292320b6c737
+        position: {x: 916, y: 750.4}
+        node:
+          rid: 1690441984811466845
+        references: []
+        parentIds:
+        - 2937ae15-d583-49e2-af2f-14fcddc2403f
+        childIds:
+        - 64c8d3e5-29f1-489f-ab18-a01dcd654787
+        - a26c3f60-47bf-4332-97fe-2750cf63d9f5
+      - name: Initcooldown
+        id: 64c8d3e5-29f1-489f-ab18-a01dcd654787
+        position: {x: 533.6, y: 991.2001}
+        node:
+          rid: 1690441984811466855
+        references:
+        - fieldName: Action
+          value:
+            rid: 1690441984811466859
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - bbe1f60b-9275-4898-8537-292320b6c737
+        childIds: []
     pushPerceptions: []
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 1690441984811466845
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 1690441984811466855
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 1690441984811466859
+      type: {class: InitColDownAction, ns: , asm: Assembly-CSharp}
+      data: 
     - rid: 2590372030727586082
       type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 

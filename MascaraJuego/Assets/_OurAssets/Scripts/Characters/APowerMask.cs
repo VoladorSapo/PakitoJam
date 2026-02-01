@@ -135,6 +135,8 @@ public abstract class APowerMask
 
     internal virtual float getAttackCooldown() => powerMaskStat.cooldown / getMultiplier(MultiplierType.Speed);
 
+    internal virtual float getInitCooldown() => powerMaskStat.initCooldown / getMultiplier(MultiplierType.Speed);
+
     internal virtual void NewObjective()
     {
 
