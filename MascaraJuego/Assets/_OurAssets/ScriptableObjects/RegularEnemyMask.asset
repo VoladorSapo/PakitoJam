@@ -17,9 +17,9 @@ MonoBehaviour:
   lifeModifier: 0
   controller: {fileID: 22100000, guid: 883179a900c3d20478e2361d74e70445, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
-  type: 0
-  Price: 0
-  cooldown: 2
+  type: 3
+  Price: 10
+  cooldown: 0.2
   sprite: {fileID: 0}
   attackDistance: 1
   effects:

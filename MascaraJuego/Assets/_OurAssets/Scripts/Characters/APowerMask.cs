@@ -79,6 +79,19 @@ public abstract class APowerMask
             multipliersDict.Add(multName, val * mult);
         }
     }
+    public void sumToMultiplier(MultiplierType multName, float add)
+    {
+        float val;
+        if (multipliersDict.TryGetValue(multName, out val))
+        {
+            multipliersDict[multName] = val + add;
+        }
+        else
+        {
+            val = 1;
+            multipliersDict.Add(multName, val + add);
+        }
+    }
     public void removeMultiplier(MultiplierType multName,float mult)
     {
         float val;
@@ -111,9 +124,8 @@ public abstract class APowerMask
 
     internal void Walk(Vector3 position)
     {
+        anim.transform.localScale = new Vector3(position.x < _character.transform.position.x ? -1:1, 1, 1);
         anim.Play("walk", 0, 0);
-     spriteRenderer.flipX =   position.x < _character.transform.position.x;
-       
     }
     internal void Idle()
     {

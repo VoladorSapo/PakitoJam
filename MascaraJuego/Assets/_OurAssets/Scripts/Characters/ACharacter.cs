@@ -20,14 +20,19 @@ public abstract class ACharacter : MonoBehaviour
     [field:SerializeField, ReadOnly] public APowerMask _currentMask {  get; private set; }
     [SerializeField] private int _baseLife;
     [SerializeField,ReadOnly] private int _currentMaxLife;
-    [SerializeField, ReadOnly] private int _currentLife;
+    [SerializeField] private int _currentLife;
+
+    Color supposedColor = new Color(1, 1, 1, 1);
     [field:SerializeField] public int _baseDamage { get; private set; }
- [field:SerializeField]   public bool Dead { get; private set; }
+    [field: SerializeField] public int _baseSpeed { get; private set; }
+
+    [field:SerializeField]   public bool Dead { get; private set; }
     [field: SerializeField] public bool onRing { get; private set; }
 
     UnityEvent<ACharacter> dieEvent;
 
     List<ATimedEffect> activeEffects;
+    Sequence damageTween;
     public void getDamaged(int damage)
     {
         _currentLife -= damage;
@@ -48,7 +53,7 @@ public abstract class ACharacter : MonoBehaviour
         Color ogColor = spriteRenderer.color;
         float endAngle = spriteRenderer.flipX ? -15 : 15;
         Vector3 rot = new Vector3(0, 0, endAngle);
-        Sequence.Create(cycles: 1)
+        damageTween = Sequence.Create(cycles: 1)
             .Chain(Tween.ScaleX(transform, 0.7f, 0.15f, Ease.OutBounce))
                 .Group(Tween.ScaleY(transform, 0.8f, 0.15f, Ease.OutBounce))
                 .Group(Tween.LocalRotation(transform, rot, 0.15f, Ease.OutBounce))
@@ -60,9 +65,9 @@ public abstract class ACharacter : MonoBehaviour
                 .Group(Tween.ScaleY(transform, 1f, 0.15f, Ease.OutBounce))
                 .Group(Tween.LocalRotation(transform, Vector3.zero, 0.15f, Ease.OutBounce))
                 .Group(Tween.Custom(startValue: new Color(0.6f, 0.1f, 0.1f, 1),
-                    endValue: ogColor,
+                    endValue: spriteRenderer.color,
                     duration: 0.15f, onValueChange:
-                    value => spriteRenderer.color = value));
+                    value => spriteRenderer.color = value)).OnComplete(()=>spriteRenderer.color = supposedColor);
         
         if (_currentLife < 0)
         {
@@ -97,10 +102,14 @@ public abstract class ACharacter : MonoBehaviour
 
     public virtual void Die()
     {
+       
+            damageTween.Complete();
+        
         dieEvent.Invoke(this);
     }
     private void Awake()
     {
+        spriteRenderer=GetComponentInChildren<SpriteRenderer>();
         characterBehaviour = GetComponent<CharacterAssetBehaviourRunner>();
             activeEffects = new List<ATimedEffect>();
 
@@ -194,6 +203,13 @@ public abstract class ACharacter : MonoBehaviour
                 break;
             case MaskTypes.SpeedMask:
                 break;
+            case MaskTypes.RegularEnemy:
+                _currentMask = new CombatMask();
+
+                break;
+                case MaskTypes.MiniEnemy:
+                _currentMask = new CombatMask();
+                break;
         }
         _currentMask.setChar(this,Mask);
         if (firstMask)
@@ -269,6 +285,16 @@ public abstract class ACharacter : MonoBehaviour
     internal void setOnRing(bool onRing)
     {
         this.onRing = onRing;
+    }
+    internal void addVisualFilter(Color color)
+    {
+        spriteRenderer.color= supposedColor = color;
+    }
+
+    internal void removeVisualFilter()
+    {
+        spriteRenderer.color = supposedColor = new Color(1,1,1,1);
+
     }
 }
 
