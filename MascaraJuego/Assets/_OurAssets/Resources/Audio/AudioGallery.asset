@@ -36,3 +36,5 @@ MonoBehaviour:
     AudioResource: {fileID: 8300000, guid: 37e6b61b67ec1c540a3962425a147029, type: 3}
   - Name: ui options
     AudioResource: {fileID: 8300000, guid: aa333e8b82a4354429854773cabb74bf, type: 3}
+  - Name: main menu
+    AudioResource: {fileID: 8300000, guid: 5047cd5b8ca092e4fb1127a6cd40db51, type: 3}
