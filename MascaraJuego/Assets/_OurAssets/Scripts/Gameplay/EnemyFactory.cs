@@ -53,7 +53,7 @@ public class EnemyFactory : MonoBehaviour
         int incrementFactor = scoreTracker.PlayersInRing >= 4 ? 2 : 1;
         if (countdownTimer.Decrement(Time.deltaTime * incrementFactor) && scoreTracker.EnemiesInRing < maxEnemyQuantity)
         {
-            int enemiesToSpawn = Mathf.RoundToInt(UnityEngine.Random.Range(1, maxMultipleSpawnFactor));
+            int enemiesToSpawn = 1 + Mathf.RoundToInt(UnityEngine.Random.Range(0, maxMultipleSpawnFactor));
             enemiesToSpawn *= incrementFactor;
             for (int i = 0; i < enemiesToSpawn; i++)
             {
