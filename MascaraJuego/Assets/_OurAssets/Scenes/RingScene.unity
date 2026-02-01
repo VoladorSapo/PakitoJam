@@ -1303,6 +1303,10 @@ PrefabInstance:
       value: -0.96
       objectReference: {fileID: 0}
     - target: {fileID: 9174140506548746932, guid: d4f08e6961a3e7e41a8217cbd487c452, type: 3}
+      propertyPath: MaxPlayerCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174140506548746932, guid: d4f08e6961a3e7e41a8217cbd487c452, type: 3}
       propertyPath: countdownTimer.countdownTime
       value: 4
       objectReference: {fileID: 0}
