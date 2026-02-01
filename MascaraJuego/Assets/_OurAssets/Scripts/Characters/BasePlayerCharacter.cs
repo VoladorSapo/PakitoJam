@@ -13,8 +13,9 @@ public class BasePlayerCharacter : ACharacter
     RingScript ring;
 
 
-    public void Initialize(PlayerSlot spawnSlot)
+    public void Initialize(PlayerSlot spawnSlot, AudioManager audioManager)
     {
+        this.AudioManager = audioManager;
         _baseDamage = UnityEngine.Random.Range(AttackRanges.x, AttackRanges.y);
         _baseLife  = UnityEngine.Random.Range(HealthRanges.x, HealthRanges.y);
         _baseSpeed = UnityEngine.Random.Range(SpeedRanges.x, SpeedRanges.y);

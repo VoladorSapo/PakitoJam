@@ -7,6 +7,7 @@ public class PlayerFactory : MonoBehaviour
 {
     [Inject] RoundScoreTracker scoreTracker;
     [Inject] GameEvents gameEvents;
+    [Inject] AudioManager audioManager;
     
     [SerializeField] BasePlayerCharacter playerPrefab;
     
@@ -58,7 +59,7 @@ public class PlayerFactory : MonoBehaviour
         var slot = GetEmptySlot();
         
         BasePlayerCharacter player = Instantiate(playerPrefab, slot.SpawnSpot.position, Quaternion.identity);
-        player.Initialize(slot);
+        player.Initialize(slot, audioManager);
         
         return player;
     }

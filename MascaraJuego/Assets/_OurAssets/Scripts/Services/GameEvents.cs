@@ -43,6 +43,12 @@ public class GameEvents
     
     #region Gameplay
 
+    public event Action FirstPlayerInRing;
+
+    public void NotifyFirstPlayerInRing()
+    {
+        FirstPlayerInRing?.Invoke();
+    }
     public event Action<int> OnCoinsCollected;
     public void NotifyCoinCollection(int coinsAmount)
     {

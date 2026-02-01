@@ -7,6 +7,7 @@ public class EnemyFactory : MonoBehaviour
     [Inject] RoundScoreTracker scoreTracker;
     [Inject] GameEvents gameEvents;
     [Inject] PrefabLocator prefabLocator;
+    [Inject] AudioManager audioManager;
 
     [HorizontalLine(color: EColor.Red)]
     [SerializeField] BaseEnemy[] enemyPrefabs;
@@ -76,7 +77,7 @@ public class EnemyFactory : MonoBehaviour
         Vector3 finalVector = dir * dist;
         
         BaseEnemy enemy = Instantiate(prefab, spawnPoint.position + finalVector, Quaternion.identity);
-        enemy.Initialize(gameEvents, prefabLocator);
+        enemy.Initialize(gameEvents, prefabLocator, audioManager);
         
         return enemy;
     }

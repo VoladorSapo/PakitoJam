@@ -14,6 +14,8 @@ using Sequence = PrimeTween.Sequence;
 
 public abstract class ACharacter : MonoBehaviour
 {
+    protected AudioManager AudioManager;
+    
     CharacterAssetBehaviourRunner characterBehaviour;
     [SerializeField] protected ParticlePlayer particlePlayer;
     [SerializeField] protected SpriteRenderer spriteRenderer;
@@ -66,7 +68,8 @@ public abstract class ACharacter : MonoBehaviour
                     value => spriteRenderer.color = value)).OnComplete(()=>spriteRenderer.color = supposedColor);
         
         particlePlayer.PlayParticle(2);
-        
+
+        AudioManager.CreateAudioBuilder().WithResource("punch").WithMaxSimultaneousPlays(5).PlayAudio();
         if (_currentLife <= 0)
         {
             Die();

@@ -10,8 +10,9 @@ public class BaseEnemy : ACharacter
 
     RingScript ring;
 
-    public void Initialize(GameEvents gameEvents, PrefabLocator prefabLocator)
+    public void Initialize(GameEvents gameEvents, PrefabLocator prefabLocator, AudioManager audioManager)
     {
+        this.AudioManager = audioManager;
         this.gameEvents = gameEvents;
         this.prefabLocator = prefabLocator;
         startGame();
