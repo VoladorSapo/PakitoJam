@@ -20,7 +20,7 @@ MonoBehaviour:
   type: 0
   Price: 10
   cooldown: 0.2
-  sprite: {fileID: 7445333725256641948, guid: d303532d343e88c4fbd3a4ede6ea5c11, type: 3}
+  sprite: {fileID: 21300000, guid: 39f07b1e3fe778c42a83f3164b55c6e2, type: 3}
   attackDistance: 1
   effects:
   - rid: 2590372047603368825
