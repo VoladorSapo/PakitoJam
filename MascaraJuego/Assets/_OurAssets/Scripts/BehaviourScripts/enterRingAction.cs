@@ -101,11 +101,6 @@ public class RetreatAction : UnityAction
         characterBehaviour = context.GameObject.GetComponent<CharacterAssetBehaviourRunner>();
         character = characterBehaviour.character;
         objectivePos = new Vector3(RingEntranceManager.Instance.getRetreatX(character), context.Transform.position.y, context.Transform.position.z); 
-
-        if (character is BasePlayerCharacter characterBase)
-        {
-            characterBase.EnterRing();
-        }
         character._currentMask.Walk(objectivePos);
 
     }

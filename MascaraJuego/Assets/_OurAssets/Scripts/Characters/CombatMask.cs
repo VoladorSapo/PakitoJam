@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CombatMask : APowerMask
 {
@@ -20,8 +21,9 @@ public class CombatMask : APowerMask
     }
  
 }
-public class SpeedMas : APowerMask
+public class SpeedMask : APowerMask
 {
+    float currentAcceleration;
     public override void Die()
     {
         _character.Die();
@@ -34,13 +36,28 @@ public class SpeedMas : APowerMask
     public override void Attack()
     {
         base.Attack();
-    FreezeEffect fr =    new FreezeEffect(1, 2);
-        fr.setOwner(_character);
-        fr.Activate(_character);
+        accelerate(0.1f);
     }
 
     public override MaskTypes type()
     {
         return MaskTypes.SpeedMask;
+    }
+    void accelerate(float amount)
+    {
+        currentAcceleration += amount;
+    }
+    internal override void NewObjective()
+    {
+        base.NewObjective();
+        currentAcceleration = 0;
+    }
+    internal override float getSpeed()
+    {
+        return base.getSpeed() + currentAcceleration;
+    }
+    internal override float getAttackCooldown()
+    {
+        return base.getAttackCooldown()/currentAcceleration;
     }
 }

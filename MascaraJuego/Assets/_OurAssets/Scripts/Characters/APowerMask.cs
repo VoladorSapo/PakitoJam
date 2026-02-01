@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 public abstract class APowerMask
 {
@@ -61,7 +62,7 @@ public abstract class APowerMask
     }
     public abstract MaskTypes type();
 
-    internal float getSpeed() =>(_character._baseSpeed+ powerMaskStat.speedModifier) * getMultiplier(MultiplierType.Speed);
+    internal virtual float getSpeed() =>(_character._baseSpeed+ powerMaskStat.speedModifier) * getMultiplier(MultiplierType.Speed);
     internal float getAttackDistance() => powerMaskStat.attackDistance;
 
     internal float getDetectRadius() => powerMaskStat.detectRadius;
@@ -132,5 +133,10 @@ public abstract class APowerMask
         anim.Play("idle");
     }
 
-    internal float getAttackCooldown() => powerMaskStat.cooldown / getMultiplier(MultiplierType.Speed);
+    internal virtual float getAttackCooldown() => powerMaskStat.cooldown / getMultiplier(MultiplierType.Speed);
+
+    internal virtual void NewObjective()
+    {
+
+    }
 }
