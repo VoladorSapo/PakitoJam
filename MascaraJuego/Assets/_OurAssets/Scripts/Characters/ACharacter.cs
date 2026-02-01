@@ -230,6 +230,10 @@ public void setLifeToMax()
                 case MaskTypes.MiniEnemy:
                 _currentMask = new CombatMask();
                 break;
+            case MaskTypes.HeavyEnemy:
+_currentMask = new CombatMask();
+            break;
+
         }
         _currentMask.setChar(this,Mask);
         if (firstMask)
