@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerSlot : MonoBehaviour
 {
     [Inject] GameEvents gameEvents;
+    [Inject] RoundScoreTracker scoreTracker;
     public Transform SpawnSpot;
     [SerializeField] private CountdownTimer goldTimer;
     
@@ -27,7 +28,8 @@ public class PlayerSlot : MonoBehaviour
     }
     void Update()
     {
-        if (goldTimer.Decrement(Time.deltaTime) && HasPlayer)
+        if (goldTimer.Decrement(Time.deltaTime) && HasPlayer 
+            && (scoreTracker.PlayersInRing > 0 || scoreTracker.PlayersInRing == 0 && scoreTracker.EnemiesInRing >= 2))
         {
             gameEvents.NotifyCoinCollection(1);
             attachedPlayer.PlayParticleEffect(3);

@@ -12,6 +12,11 @@ public class RoundText : MonoBehaviour
     {
         gameEvents.OnDifficultyIncreased += UpdateRoundText;
     }
+
+    void OnDestroy()
+    {
+        gameEvents.OnDifficultyIncreased -= UpdateRoundText;
+    }
     
     void UpdateRoundText(int difficulty)
     {
