@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHandler,IBeginDragHandler
+public class DragableMask : MonoBehaviour, IDragHandler, IDropHandler, IEndDragHandler, IBeginDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Inject] RoundScoreTracker scoreTracker;
     [Inject] GameEvents gameEvents;
@@ -32,12 +32,15 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
     bool enemiesSpawning;
 
   [SerializeField]  LayerMask layermask;
+
+    GameObject tutorialBox;
     
     void Awake()
     {
+        tutorialBox = GameObject.FindGameObjectWithTag("TutorialBox");
          enemiesSpawning = false;
         rectTransform = GetComponent<RectTransform>();
-        startPosition = transform.localPosition;
+        startPosition = transform.position;
         globalCamera = singletonLocator.GlobalCamera;
         cooldownTimer.CountdownTime = maskStats.cooldown;
         image = GetComponent<Image>();
@@ -158,18 +161,35 @@ public class DragableMask :MonoBehaviour, IDragHandler,IDropHandler, IEndDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.localPosition = startPosition;
+        transform.position = startPosition;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(enemiesSpawning) return;
+        tutorialBox.SetActive(false);
+
+        if (enemiesSpawning) return;
         
         tutorialArrow arrow = FindAnyObjectByType<tutorialArrow>();
         if (arrow != null)
         {
             arrow.goNextPoint();
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!enemiesSpawning) return;
+
+        tutorialBox.SetActive(true);
+        tutorialBox.transform.position = startPosition + new Vector3(0,2,0);
+        tutorialBox.GetComponentInChildren<TMP_Text>().text = maskStats.descriptionText;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        tutorialBox.SetActive(false);
+
     }
 
     //public void OnEndDrag(PointerEventData eventData)

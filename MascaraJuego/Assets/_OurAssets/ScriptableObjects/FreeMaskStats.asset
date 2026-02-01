@@ -18,7 +18,7 @@ MonoBehaviour:
   controller: {fileID: 22100000, guid: 5017b3d0b330f4a4da5e8a7c3f83a34d, type: 2}
   IASystem: {fileID: 11400000, guid: 67cc2c04e02810f42884da8549a27935, type: 2}
   type: 1
-  Price: 25
+  Price: 30
   cooldown: 0.2
   sprite: {fileID: 21300000, guid: 154862920bf073f43bd1a84b1ed7ed13, type: 3}
   attackDistance: 6
@@ -26,6 +26,7 @@ MonoBehaviour:
   - rid: 2590372052700495989
   hittablecheck: 1
   initCooldown: 0.1
+  descriptionText: 'Support Lchador: Makes enemies slower'
   references:
     version: 2
     RefIds:

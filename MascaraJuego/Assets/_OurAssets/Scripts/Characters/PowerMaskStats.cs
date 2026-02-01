@@ -20,6 +20,7 @@ public class PowerMaskStats : ScriptableObject
     [SerializeField][SerializeReference] public List<ABaseEffect> effects;
     public HittableCheckTypes hittablecheck;
     public float initCooldown = 0.2f;
+    public string descriptionText;
 
     public void addDamageEffect(int damage)
     {

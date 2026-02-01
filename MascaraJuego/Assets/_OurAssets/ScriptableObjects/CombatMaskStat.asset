@@ -26,6 +26,7 @@ MonoBehaviour:
   - rid: 2590372047603368825
   hittablecheck: 0
   initCooldown: 0.15
+  descriptionText: Balanced Luchador
   references:
     version: 2
     RefIds:
