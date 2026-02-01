@@ -8,6 +8,7 @@ public class FinalCountdown : MonoBehaviour
 {
     [Inject] GameEvents gameEvents;
     [Inject] AudioManager audioManager;
+    [Inject] private RoundScoreTracker scoreTracker;
     [SerializeField] CanvasGroup canvasGroup;
     
     [SerializeField] Transform textTransform;
@@ -98,6 +99,8 @@ public class FinalCountdown : MonoBehaviour
         
         yield return new WaitForSeconds(1);
         yield return new WaitForSeconds(.5f);
+
+        if (scoreTracker.PlayersInRing > 0) yield break;
         audioManager.PlayAudio(audioConfiguration);
         gameEvents.NotifyRoundEnd(false);
         FadeOut(1);
