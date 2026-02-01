@@ -39,9 +39,9 @@ public abstract class ACharacter : MonoBehaviour
 
     public void getDamaged(int damage)
     {
-        //if (damagedCooldown)
-        //    return;
-
+        if (damagedCooldown)
+            return;
+        print($"{name} GETDAMAGED");
         _currentLife -= damage;
         
         /*Color ogColor = spriteRenderer.color;
@@ -76,30 +76,30 @@ public abstract class ACharacter : MonoBehaviour
                     duration: 0.15f, onValueChange:
                     value => spriteRenderer.color = value)).OnComplete(()=>spriteRenderer.color = supposedColor);
         
-        if (_currentLife < 0)
+        if (_currentLife <= 0)
         {
             Die();
         }
         else
         {
-            damagedCooldown = true;
-          //  StartCoroutine(damageCooldown());
+            if (GetComponent<BasePlayerCharacter>())
+            {
+                damagedCooldown = true;
+                StartCoroutine(damageCooldown());
+            }
         }
     }
-    //IEnumerator damageCooldown()
-    ////{
-    ////    for (int i = 0; i < 5; i++)
-    ////    {
-    ////        yield return new WaitForSecondsRealtime(damagedCooldownTime / 5f);
-    ////        spriteRenderer.enabled = !spriteRenderer.enabled;
-            
+    IEnumerator damageCooldown()
+    {
+        
+            yield return new WaitForSecondsRealtime(damagedCooldownTime);
 
-    ////    }
-    ////    damagedCooldown = false;
-    ////    spriteRenderer.enabled = true;
 
-    //}
-    public void setLifeToMax()
+        
+        damagedCooldown = false;
+
+    }
+public void setLifeToMax()
     {
         _currentLife = _currentMaxLife;
     }
@@ -227,6 +227,7 @@ public abstract class ACharacter : MonoBehaviour
 
                 break;
             case MaskTypes.SpeedMask:
+                _currentMask = new SpeedMask();
                 break;
             case MaskTypes.RegularEnemy:
                 _currentMask = new CombatMask();

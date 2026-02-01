@@ -159,13 +159,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aa30199925cc8419f616608bdc3f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   startingMask: {fileID: 11400000, guid: 34e97c81996f9984ebfbc826bc58c423, type: 2}
-  _baseLife: 5
+  _baseLife: 1
   _currentMaxLife: 0
   _currentLife: 0
-  <_baseDamage>k__BackingField: 2
+  <_baseDamage>k__BackingField: 1
+  <_baseSpeed>k__BackingField: 0
   <Dead>k__BackingField: 0
   <onRing>k__BackingField: 0
+  damagedCooldown: 0
+  damagedCooldownTime: 0
   SpawnWeight: 2
 --- !u!50 &44267629582793350
 Rigidbody2D:

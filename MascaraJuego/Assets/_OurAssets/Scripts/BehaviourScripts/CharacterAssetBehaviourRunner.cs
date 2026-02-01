@@ -23,6 +23,7 @@ public class CharacterAssetBehaviourRunner : AssetBehaviourRunner
         if (objective != null)
         {
             objective.subscribeToDieEvent(objectiveDie);
+            character._currentMask.NewObjective();
         }
 
     }

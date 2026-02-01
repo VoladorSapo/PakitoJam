@@ -161,12 +161,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2649774245253526996}
   startingMask: {fileID: 11400000, guid: d41eb17fb57a6e54d8c6c161520bc32e, type: 2}
-  _baseLife: 5
+  _baseLife: 3
   _currentMaxLife: 0
   _currentLife: 0
-  <_baseDamage>k__BackingField: 2
+  <_baseDamage>k__BackingField: 1
+  <_baseSpeed>k__BackingField: 0
   <Dead>k__BackingField: 0
   <onRing>k__BackingField: 0
+  damagedCooldown: 0
+  damagedCooldownTime: 0.6
   SpawnWeight: 0
 --- !u!50 &44267629582793350
 Rigidbody2D:
