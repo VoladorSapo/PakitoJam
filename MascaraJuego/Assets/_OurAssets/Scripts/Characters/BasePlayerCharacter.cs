@@ -21,14 +21,14 @@ public class BasePlayerCharacter : ACharacter
         
         spriteRenderer.material = new Material(spriteRenderer.material);
         this.spawnSlot = spawnSlot;
-        this.spawnSlot.HasPlayer = true;
+        this.spawnSlot.AssignPlayer(this);
         StartCoroutine(Slide(transform, transform.position, spawnSlot.transform.position, 0.5f));
         ring = FindAnyObjectByType<RingScript>();
 
     }
     public void EnterRing()
     {
-        spawnSlot.HasPlayer = false;
+        spawnSlot.LeavePlayer(this);
         spawnSlot = null;
     }
     public override void Die()
@@ -47,6 +47,10 @@ public class BasePlayerCharacter : ACharacter
         obj.position = b;
     }
 
+    public void PlayParticleEffect(int particleIndex)
+    {
+        particlePlayer.PlayParticle(particleIndex);
+    }
     public override void startHover()
     {
         Debug.Log("StartHover");

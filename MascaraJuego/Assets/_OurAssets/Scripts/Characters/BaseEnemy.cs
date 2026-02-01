@@ -18,7 +18,6 @@ public class BaseEnemy : ACharacter
     }
     public override void Die()
     {
-        base.Die();
         gameEvents.NotifyEnemyDeath();
         Destroy(this.gameObject);
         gameEvents.NotifyCoinCollection(_currentMask.powerMaskStat.Price);
@@ -29,6 +28,8 @@ public class BaseEnemy : ACharacter
         Color color2 = new Color(0.7f, 0.7f, 0.7f);
         Color finalColor = AuxiliaryMethods.GetRandomColor(color1, color2);
         textParticle.PlayAnimation(AuxiliaryMethods.GetRandomLetter().ToString(), finalColor);
+        
+        this.InvokeDelayed(0.5f, base.Die);
     }
 
     void Update()
