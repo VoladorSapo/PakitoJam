@@ -7,6 +7,7 @@ using UnityEngine;
 public class DisplayText : MonoBehaviour
 {
     [Inject] GameEvents gameEvents;
+    [Inject] GameSettings gameSettings;
 
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] TextMeshProUGUI textMesh;
@@ -24,9 +25,6 @@ public class DisplayText : MonoBehaviour
     {
         gameEvents.OnDisplayTextCalled -= ProcessRequest;
     }
-
-
-
     void ProcessRequest(string text)
     {
         if (sequence.isAlive)

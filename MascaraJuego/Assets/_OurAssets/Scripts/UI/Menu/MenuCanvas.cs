@@ -12,6 +12,7 @@ public class MenuCanvas : MonoBehaviour
         OptionsMenu,
         CreditsMenu,
     }
+    [Inject] private GameSettings gameSettings;
     [Inject] private SingletonLocator singletonLocator;
     [Inject] private MusicService musicService;
     
@@ -42,8 +43,16 @@ public class MenuCanvas : MonoBehaviour
         }
     }
     
-    public void PlayGame()
+    public void PlayNormalGame()
     {
+        gameSettings.InfiniteMode = false;
+        musicService.StopMusic(0, 1);
+        GetComponent<SceneServiceClient>().ChangeScene("RingScene");
+    }
+
+    public void PlayInfiniteGame()
+    {
+        gameSettings.InfiniteMode = true;
         musicService.StopMusic(0, 1);
         GetComponent<SceneServiceClient>().ChangeScene("RingScene");
     }

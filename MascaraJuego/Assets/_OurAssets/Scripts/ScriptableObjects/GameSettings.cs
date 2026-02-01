@@ -8,6 +8,8 @@ using UnityEngine.Rendering.Universal;
 [CreateAssetMenu(fileName = "Game Settings", menuName = "Game/Settings")]
 public class GameSettings : ScriptableObject
 {
+    [HideInInspector] public bool InfiniteMode;
+    
     [HorizontalLine(color: EColor.Green)]
     [Header("Necessary References")]
     [SerializeField] AudioMixer gameMixer;
