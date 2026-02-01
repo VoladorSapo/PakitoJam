@@ -83,6 +83,7 @@ public class EnemyFactory : MonoBehaviour
     }
     
     BaseEnemy GetWeightedRandomEnemy(int maxIndex) {
+        Debug.LogWarning(maxIndex);
         maxIndex = Mathf.Clamp(maxIndex, 0, enemyPrefabs.Length - 1);
         
         float totalWeight = 0f;
