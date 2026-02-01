@@ -31,7 +31,7 @@ public class PlayerFactory : MonoBehaviour
     {
         if (!scoreTracker.IsGameActive) return;
 
-        incrementFactor = scoreTracker.EnemiesInRing > 5 ? 2 : 1;
+        incrementFactor = scoreTracker.EnemiesInRing >= 4 ? 2 : 1;
         if (countdownTimer.Decrement(Time.deltaTime * incrementFactor)
             && PlayersReady < playerSlots.Length
             && (scoreTracker.PlayersInRing + PlayersReady) < MaxPlayerCount)
